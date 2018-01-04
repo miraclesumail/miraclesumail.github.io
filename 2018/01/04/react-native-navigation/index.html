@@ -6,18 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wcnmb.com">
-  <title>异步队列 | miracle的博客</title>
+  <title>react-native-navigation | miracle的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="wwww 123456789101112131415161718192021222324const quene = () =&amp;gt; &amp;#123;   const lists = [];   let index = 0;      next: () =&amp;gt; &amp;#123;      if(index &amp;gt;= list.length - 1) return;      const cur =">
+  <meta name="description" content="react-native 导航教程 本篇文章适合于react技术栈的人阅读，对native开发有兴趣的可以关注。 废话不多说，直接上代码。 1简单路由配置 1234567891011121314151617const ExampleRoutes = &amp;#123;  SimpleStack: &amp;#123;    name: &apos;Stack Example&apos;,    description: &apos;A ca">
 <meta property="og:type" content="article">
-<meta property="og:title" content="异步队列">
-<meta property="og:url" content="http://wcnmb.com/2017/10/01/异步队列/index.html">
+<meta property="og:title" content="react-native-navigation">
+<meta property="og:url" content="http://wcnmb.com/2018/01/04/react-native-navigation/index.html">
 <meta property="og:site_name" content="miracle的博客">
-<meta property="og:description" content="wwww 123456789101112131415161718192021222324const quene = () =&amp;gt; &amp;#123;   const lists = [];   let index = 0;      next: () =&amp;gt; &amp;#123;      if(index &amp;gt;= list.length - 1) return;      const cur =">
-<meta property="og:updated_time" content="2017-10-01T03:42:06.000Z">
+<meta property="og:description" content="react-native 导航教程 本篇文章适合于react技术栈的人阅读，对native开发有兴趣的可以关注。 废话不多说，直接上代码。 1简单路由配置 1234567891011121314151617const ExampleRoutes = &amp;#123;  SimpleStack: &amp;#123;    name: &apos;Stack Example&apos;,    description: &apos;A ca">
+<meta property="og:updated_time" content="2018-01-04T14:20:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="异步队列">
-<meta name="twitter:description" content="wwww 123456789101112131415161718192021222324const quene = () =&amp;gt; &amp;#123;   const lists = [];   let index = 0;      next: () =&amp;gt; &amp;#123;      if(index &amp;gt;= list.length - 1) return;      const cur =">
+<meta name="twitter:title" content="react-native-navigation">
+<meta name="twitter:description" content="react-native 导航教程 本篇文章适合于react技术栈的人阅读，对native开发有兴趣的可以关注。 废话不多说，直接上代码。 1简单路由配置 1234567891011121314151617const ExampleRoutes = &amp;#123;  SimpleStack: &amp;#123;    name: &apos;Stack Example&apos;,    description: &apos;A ca">
   
     <link rel="alternative" href="/atom.xml" title="miracle的博客" type="application/atom+xml">
   
@@ -157,28 +157,70 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-异步队列" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-react-native-navigation" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      异步队列
+      react-native-navigation
     </h1>
   
 
         
-        <a href="/2017/10/01/异步队列/" class="archive-article-date">
-  	<time datetime="2017-10-01T03:31:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-01</time>
+        <a href="/2018/01/04/react-native-navigation/" class="archive-article-date">
+  	<time datetime="2018-01-04T14:00:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5>wwww</h5>
-<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> quene = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">   <span class="keyword">const</span> lists = [];</div><div class="line">   <span class="keyword">let</span> index = <span class="number">0</span>;</div><div class="line">   </div><div class="line">   next: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">if</span>(index &gt;= list.length - <span class="number">1</span>) <span class="keyword">return</span>;</div><div class="line">      <span class="keyword">const</span> cur = list[index++];</div><div class="line">      cur(next)</div><div class="line">   &#125;</div><div class="line">   </div><div class="line">   add: <span class="function">(<span class="params">...fns</span>)=&gt;</span>&#123;</div><div class="line">       lists.push(...fns)</div><div class="line">   &#125;     </div><div class="line"></div><div class="line">   run: <span class="function"><span class="params">()</span>=&gt;</span>&#123;</div><div class="line">       <span class="keyword">const</span> cur = list[index];</div><div class="line">       <span class="keyword">typeof</span> cur == <span class="string">'function'</span> &amp;&amp; cur(next)</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="keyword">return</span> &#123;</div><div class="line">       add:add,</div><div class="line">       run:run</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        <h3>react-native 导航教程</h3>
+<p>本篇文章适合于react技术栈的人阅读，对native开发有兴趣的可以关注。</p>
+<p>废话不多说，直接上代码。</p>
+<h5>1简单路由配置</h5>
+<p><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> ExampleRoutes = &#123;</div><div class="line">  SimpleStack: &#123;</div><div class="line">    name: <span class="string">'Stack Example'</span>,</div><div class="line">    description: <span class="string">'A card stack'</span>,</div><div class="line">    screen: SimpleStack,</div><div class="line">  &#125;,</div><div class="line">  SimpleTabs: &#123;</div><div class="line">    name: <span class="string">'Tabs Example'</span>,</div><div class="line">    description: <span class="string">'Tabs following platform conventions'</span>,</div><div class="line">    screen: SimpleTabs,</div><div class="line">  &#125;,</div><div class="line">  Drawer: &#123;</div><div class="line">    name: <span class="string">'Drawer Example'</span>,</div><div class="line">    description: <span class="string">'Android-style drawer navigation'</span>,</div><div class="line">    screen: Drawer,</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上述是三个简单的路由配件，下面用到代码中</p>
+<p><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainScreen</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span>&lt;*&gt; </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">const</span> &#123; navigation &#125; = <span class="keyword">this</span>.props;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style=&#123;&#123; <span class="attr">flex</span>: <span class="number">1</span> &#125;&#125;&gt;</div><div class="line">        &lt;ScrollView style=&#123;&#123; <span class="attr">flex</span>: <span class="number">1</span> &#125;&#125;&gt;</div><div class="line">          &lt;Banner /&gt;</div><div class="line">          &#123;<span class="built_in">Object</span>.keys(ExampleRoutes).map(<span class="function">(<span class="params">routeName: string</span>) =&gt;</span> (</div><div class="line">            &lt;TouchableOpacity</div><div class="line">              key=&#123;routeName&#125;</div><div class="line">              onPress=&#123;() =&gt; &#123;</div><div class="line">                <span class="keyword">const</span> &#123; path, params, screen &#125; = ExampleRoutes[routeName];</div><div class="line">                <span class="keyword">const</span> &#123; router &#125; = screen;</div><div class="line">                <span class="keyword">const</span> action =</div><div class="line">                  path &amp;&amp; router.getActionForPathAndParams(path, params);</div><div class="line">                navigation.navigate(routeName, &#123;&#125;, action);</div><div class="line">              &#125;&#125;</div><div class="line">            &gt;</div><div class="line">              &lt;SafeAreaView</div><div class="line">                style=&#123;styles.itemContainer&#125;</div><div class="line">                forceInset=&#123;&#123; <span class="attr">vertical</span>: <span class="string">'never'</span> &#125;&#125;</div><div class="line">              &gt;</div><div class="line">                &lt;View style=&#123;styles.item&#125;&gt;</div><div class="line">                  &lt;Text style=&#123;styles.title&#125;&gt;</div><div class="line">                    &#123;ExampleRoutes[routeName].name&#125;</div><div class="line">                  &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">                  &lt;Text style=&#123;styles.description&#125;&gt;</span></div><div class="line"><span class="regexp">                    &#123;ExampleRoutes[routeName].description&#125;</span></div><div class="line"><span class="regexp">                  &lt;/</span>Text&gt;</div><div class="line">                &lt;<span class="regexp">/View&gt;</span></div><div class="line"><span class="regexp">              &lt;/</span>SafeAreaView&gt;</div><div class="line">            &lt;<span class="regexp">/TouchableOpacity&gt;</span></div><div class="line"><span class="regexp">          ))&#125;</span></div><div class="line"><span class="regexp">        &lt;/</span>ScrollView&gt;</div><div class="line">        &lt;StatusBar barStyle=<span class="string">"light-content"</span> /&gt;</div><div class="line">        &lt;View style=&#123;styles.statusBarUnderlay&#125; /&gt;</div><div class="line">      &lt;<span class="regexp">/View&gt;</span></div><div class="line"><span class="regexp">    );</span></div><div class="line"><span class="regexp">  &#125;</span></div><div class="line"><span class="regexp">&#125;</span></div></pre></td></tr></table></figure></p>
+<p>相信对react有研究的同学看上面代码应该比较轻松。</p>
+<ul>
+<li>
+<p>react-native中使用view，忘记div，而且这种内置需要引入。
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;ScrollView,StyleSheet,TouchableOpacity,Text,StatusBar,View&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div></pre></td></tr></table></figure></p>
+</li>
+<li>
+<p>对es6了解的人对于这种解构操作比较习惯，navigation.navigate是push视图。</p>
+</li>
+</ul>
+<p>接下来是样式用法
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">  item: &#123;</div><div class="line">    paddingHorizontal: <span class="number">16</span>,</div><div class="line">    paddingVertical: <span class="number">12</span>,</div><div class="line">  &#125;,</div><div class="line">  itemContainer: &#123;</div><div class="line">    backgroundColor: <span class="string">'#fff'</span>,</div><div class="line">    borderBottomWidth: StyleSheet.hairlineWidth,</div><div class="line">    borderBottomColor: <span class="string">'#ddd'</span>,</div><div class="line">  &#125;,</div><div class="line">  image: &#123;</div><div class="line">    width: <span class="number">120</span>,</div><div class="line">    height: <span class="number">120</span>,</div><div class="line">    alignSelf: <span class="string">'center'</span>,</div><div class="line">    marginBottom: <span class="number">20</span>,</div><div class="line">    resizeMode: <span class="string">'contain'</span>,</div><div class="line">  &#125;,</div><div class="line">  statusBarUnderlay: &#123;</div><div class="line">    backgroundColor: <span class="string">'#673ab7'</span>,</div><div class="line">    position: <span class="string">'absolute'</span>,</div><div class="line">    top: <span class="number">0</span>,</div><div class="line">    left: <span class="number">0</span>,</div><div class="line">    right: <span class="number">0</span>,</div><div class="line">    height: Constants.statusBarHeight,</div><div class="line">  &#125;,</div><div class="line">  title: &#123;</div><div class="line">    fontSize: <span class="number">16</span>,</div><div class="line">    fontWeight: <span class="string">'bold'</span>,</div><div class="line">    color: <span class="string">'#444'</span>,</div><div class="line">  &#125;,</div><div class="line">  description: &#123;</div><div class="line">    fontSize: <span class="number">13</span>,</div><div class="line">    color: <span class="string">'#999'</span>,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>注意到view上面的样式是如何绑定的 style={styles.itemContainer}</p>
+<p>关键的位置来了，如何将这个路由串联起来</p>
+<pre><code class="language-js">const AppNavigator = StackNavigator(
+  {
+    ...ExampleRoutes,
+    Index: {
+      screen: MainScreen,
+    },
+  },
+  {
+    initialRouteName: 'Index',
+    headerMode: 'none',
+
+    /*
+   * Use modal on iOS because the card mode comes from the right,
+   * which conflicts with the drawer example gesture
+   */
+    mode: Platform.OS === 'ios' ? 'modal' : 'card',
+  }
+);
+
+export default () =&gt; &lt;AppNavigator /&gt;;
+</code></pre>
+<p>Index对应的是screen: MainScreen,mainscreen其实就是所有路由列表。
+initialRouteName: 'Index'将其呈现出来。</p>
 
       
 
@@ -258,7 +300,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://wcnmb.com/2017/10/01/异步队列/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://wcnmb.com/2018/01/04/react-native-navigation/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -272,18 +314,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/01/04/react-native-navigation/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          react-native-navigation
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/08/14/test/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">test</div>
+    <a href="/2017/10/01/异步队列/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">异步队列</div>
       <i class="icon-circle-right"></i>
     </a>
   
