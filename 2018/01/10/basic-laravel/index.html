@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wcnmb.com">
-  <title>Archives: 2018/1 | miracle的博客</title>
+  <title>basic-laravel | miracle的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="miracle的博客">
-<meta property="og:url" content="http://wcnmb.com/archives/2018/01/index.html">
+  <meta name="description" content="laravel基础教程1 路由配置12345678Route::group([&apos;prefix&apos; =&amp;gt; &apos;User&apos;], function () &amp;#123;    $resource   = &apos;User&apos;;    $controller = &apos;UserController@&apos;;    Route::get(&apos;/&apos;,             [&apos;as&apos; =&amp;gt; $resource . &apos;.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="basic-laravel">
+<meta property="og:url" content="http://wcnmb.com/2018/01/10/basic-laravel/index.html">
 <meta property="og:site_name" content="miracle的博客">
+<meta property="og:description" content="laravel基础教程1 路由配置12345678Route::group([&apos;prefix&apos; =&amp;gt; &apos;User&apos;], function () &amp;#123;    $resource   = &apos;User&apos;;    $controller = &apos;UserController@&apos;;    Route::get(&apos;/&apos;,             [&apos;as&apos; =&amp;gt; $resource . &apos;.">
+<meta property="og:updated_time" content="2018-01-10T14:21:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="miracle的博客">
+<meta name="twitter:title" content="basic-laravel">
+<meta name="twitter:description" content="laravel基础教程1 路由配置12345678Route::group([&apos;prefix&apos; =&amp;gt; &apos;User&apos;], function () &amp;#123;    $resource   = &apos;User&apos;;    $controller = &apos;UserController@&apos;;    Route::get(&apos;/&apos;,             [&apos;as&apos; =&amp;gt; $resource . &apos;.">
   
     <link rel="alternative" href="/atom.xml" title="miracle的博客" type="application/atom+xml">
   
@@ -153,76 +157,167 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-basic-laravel" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      basic-laravel
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/10/basic-laravel/" class="archive-article-date">
+
+        
+        <a href="/2018/01/10/basic-laravel/" class="archive-article-date">
   	<time datetime="2018-01-10T14:05:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-10</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/10/basic-laravel/">basic-laravel</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="laravel基础教程"><a href="#laravel基础教程" class="headerlink" title="laravel基础教程"></a>laravel基础教程</h3><h5 id="1-路由配置"><a href="#1-路由配置" class="headerlink" title="1 路由配置"></a>1 路由配置</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Route::group([<span class="string">'prefix'</span> =&gt; <span class="string">'User'</span>], <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">    $resource   = <span class="string">'User'</span>;</div><div class="line">    $controller = <span class="string">'UserController@'</span>;</div><div class="line">    Route::get(<span class="string">'/'</span>,             [<span class="string">'as'</span> =&gt; $resource . <span class="string">'.index'</span>,          <span class="string">'uses'</span> =&gt; $controller . <span class="string">'index'</span>]);</div><div class="line">    Route::get(<span class="string">'/detail/&#123;name&#125;'</span>,             [<span class="string">'as'</span> =&gt; $resource . <span class="string">'.detail'</span>,          <span class="string">'uses'</span> =&gt; $controller . <span class="string">'detail'</span>]);</div><div class="line">    Route::get(<span class="string">'/create'</span>, [<span class="string">'as'</span> =&gt; $resource . <span class="string">'.create'</span>,          <span class="string">'uses'</span> =&gt; $controller . <span class="string">'create'</span>]);</div><div class="line">    Route::post(<span class="string">'/create'</span>, [<span class="string">'as'</span> =&gt; $resource . <span class="string">'.add'</span>,          <span class="string">'uses'</span> =&gt; $controller . <span class="string">'add'</span>]);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h5 id="2-在public的index-blade-php下可以自定义函数"><a href="#2-在public的index-blade-php下可以自定义函数" class="headerlink" title="2 在public的index.blade.php下可以自定义函数"></a>2 在public的index.blade.php下可以自定义函数</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">style</span><span class="params">($aliases, $attributes = array<span class="params">()</span>, $interim = <span class="string">''</span>)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (is_array($aliases)) &#123;</div><div class="line">        <span class="keyword">foreach</span> ($aliases <span class="keyword">as</span> $key =&gt; $value) &#123;</div><div class="line">            $interim .= (is_int($key)) ? style($value, $attributes, $interim) : style($key, $value, $interim);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> $interim;</div><div class="line">    &#125;</div><div class="line">    $cssAliases = Config::get(<span class="string">'extend.webAssets.cssAliases'</span>);</div><div class="line">    $url = <span class="keyword">isset</span>($cssAliases[$aliases]) ? $cssAliases[$aliases] : $aliases;</div><div class="line">    <span class="keyword">return</span> HTML::style($url, $attributes);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><em>注意到可以用config的get方法获取配置信息</em></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> <span class="keyword">array</span>(</div><div class="line">    <span class="string">'webAssets'</span> =&gt; <span class="keyword">array</span>(</div><div class="line"></div><div class="line">        <span class="string">'cssAliases'</span> =&gt; <span class="keyword">array</span>(</div><div class="line">            <span class="string">'hero'</span>   =&gt; <span class="string">'css/hero.css'</span>,</div><div class="line">        ),</div><div class="line">    )</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>这个配置是写在config的extend目录下</p>
+<p>我们会发现HTML 这个东西找不到</p>
+<ol>
+<li>运行composer require “laravelcollective/html”</li>
+<li>config的app下面providers添加 Collective\Html\HtmlServiceProvider::class</li>
+<li>aliases下添加’HTML’ =&gt; Collective\Html\HtmlFacade::class</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">新建模型并生成迁移：php artusan make:model hero -m </div><div class="line"></div><div class="line">生成hero随机种子：php artisan make:seeder HeroesTableSeeder 在database的seed下</div><div class="line"></div><div class="line">factory(App\hero::class)-&gt;times(<span class="number">10</span>)-&gt;make()-&gt;each(<span class="function"><span class="keyword">function</span><span class="params">($hero,$index)</span></span>&#123;</div><div class="line">             $hero-&gt;save();</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">先定义factory php artisan make:factory HeroFactory --model=hero</div><div class="line">$factory-&gt;define(App\hero::class, <span class="function"><span class="keyword">function</span> <span class="params">(Faker $faker)</span> </span>&#123;</div><div class="line"></div><div class="line">         <span class="keyword">return</span> [</div><div class="line">             <span class="comment">// 直接调用 faker API 生成假数据，更多 faker 相关查看 文档。</span></div><div class="line">             <span class="string">'name'</span> =&gt; $faker-&gt;name,</div><div class="line">             <span class="string">'airline'</span> =&gt; $faker-&gt;unique()-&gt;safeEmail,</div><div class="line">         ];</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://wcnmb.com/2018/01/10/basic-laravel/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/04/react-native-navigation/" class="archive-article-date">
-  	<time datetime="2018-01-04T14:00:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/04/react-native-navigation/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">react-native-navigation</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/04/react-native-navigation/">react-native-navigation</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -245,8 +340,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
