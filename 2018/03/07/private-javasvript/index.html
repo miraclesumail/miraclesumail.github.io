@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wcnmb.com">
-  <title>Archives: 2018 | miracle的博客</title>
+  <title>private-javascript | miracle的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="miracle的博客">
-<meta property="og:url" content="http://wcnmb.com/archives/2018/index.html">
+  <meta name="description" content="javascript中存在私有吗12345678910111213class Shape &amp;#123;  constructor(width, height) &amp;#123;    this._width = width;    this._height = height;  &amp;#125;  get area() &amp;#123;    return this._width * this._height">
+<meta property="og:type" content="article">
+<meta property="og:title" content="private-javascript">
+<meta property="og:url" content="http://wcnmb.com/2018/03/07/private-javasvript/index.html">
 <meta property="og:site_name" content="miracle的博客">
+<meta property="og:description" content="javascript中存在私有吗12345678910111213class Shape &amp;#123;  constructor(width, height) &amp;#123;    this._width = width;    this._height = height;  &amp;#125;  get area() &amp;#123;    return this._width * this._height">
+<meta property="og:updated_time" content="2018-03-07T14:18:03.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="miracle的博客">
+<meta name="twitter:title" content="private-javascript">
+<meta name="twitter:description" content="javascript中存在私有吗12345678910111213class Shape &amp;#123;  constructor(width, height) &amp;#123;    this._width = width;    this._height = height;  &amp;#125;  get area() &amp;#123;    return this._width * this._height">
   
     <link rel="alternative" href="/atom.xml" title="miracle的博客" type="application/atom+xml">
   
@@ -153,211 +157,160 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-private-javasvript" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      private-javascript
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/03/07/private-javasvript/" class="archive-article-date">
+
+        
+        <a href="/2018/03/07/private-javasvript/" class="archive-article-date">
   	<time datetime="2018-03-07T13:29:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-07</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/07/private-javasvript/">private-javascript</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="javascript中存在私有吗"><a href="#javascript中存在私有吗" class="headerlink" title="javascript中存在私有吗"></a>javascript中存在私有吗</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(width, height) &#123;</div><div class="line">    <span class="keyword">this</span>._width = width;</div><div class="line">    <span class="keyword">this</span>._height = height;</div><div class="line">  &#125;</div><div class="line">  get area() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._width * <span class="keyword">this</span>._height;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> square = <span class="keyword">new</span> Shape(<span class="number">10</span>, <span class="number">10</span>);</div><div class="line"><span class="built_in">console</span>.log(square.area);    <span class="comment">// 100</span></div><div class="line"><span class="built_in">console</span>.log(square._width);  <span class="comment">// 10</span></div></pre></td></tr></table></figure>
+<p>我们通常以_表示私有，但其实这样病没用</p>
+<p>于是有以下方法实现<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">WeakMap</span>();</div><div class="line"></div><div class="line"><span class="comment">// 创建一个在每个实例中存储私有变量的对象</span></div><div class="line"><span class="keyword">const</span> internal = <span class="function"><span class="params">obj</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span> (!map.has(obj)) &#123;</div><div class="line">    map.set(obj, &#123;&#125;);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> map.get(obj);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(width, height) &#123;</div><div class="line">    internal(<span class="keyword">this</span>).width = width;</div><div class="line">    internal(<span class="keyword">this</span>).height = height;</div><div class="line">  &#125;</div><div class="line">  get area() &#123;</div><div class="line">    <span class="keyword">return</span> internal(<span class="keyword">this</span>).width * internal(<span class="keyword">this</span>).height;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> square = <span class="keyword">new</span> Shape(<span class="number">10</span>, <span class="number">10</span>);</div><div class="line"><span class="built_in">console</span>.log(square.area);      <span class="comment">// 100</span></div><div class="line"><span class="built_in">console</span>.log(map.get(square));  <span class="comment">// &#123; height: 100, width: 100 &#125;</span></div></pre></td></tr></table></figure></p>
+<p>这种方法其实也是土方子</p>
+<p>终于在es6中找到了一个好方法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(width, height) &#123;</div><div class="line">    <span class="keyword">this</span>._width = width;</div><div class="line">    <span class="keyword">this</span>._height = height;</div><div class="line">  &#125;</div><div class="line">  get area() &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._width * <span class="keyword">this</span>._height;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> handler = &#123;</div><div class="line">  get: <span class="function"><span class="keyword">function</span>(<span class="params">target, key</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (key[<span class="number">0</span>] === <span class="string">'_'</span>) &#123;</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Attempt to access private property'</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> target[key];</div><div class="line">  &#125;,</div><div class="line">  set: <span class="function"><span class="keyword">function</span>(<span class="params">target, key, value</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (key[<span class="number">0</span>] === <span class="string">'_'</span>) &#123;</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Attempt to access private property'</span>);</div><div class="line">    &#125;</div><div class="line">    target[key] = value;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> square = <span class="keyword">new</span> <span class="built_in">Proxy</span>(<span class="keyword">new</span> Shape(<span class="number">10</span>, <span class="number">10</span>), handler);</div><div class="line"><span class="built_in">console</span>.log(square.area);             <span class="comment">// 100</span></div><div class="line"><span class="built_in">console</span>.log(square <span class="keyword">instanceof</span> Shape); <span class="comment">// true</span></div><div class="line">square._width = <span class="number">200</span>;                  <span class="comment">// 错误：试图访问私有属性</span></div></pre></td></tr></table></figure></p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://wcnmb.com/2018/03/07/private-javasvript/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/22/vue-mongo/" class="archive-article-date">
-  	<time datetime="2018-01-22T12:39:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-22</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/01/22/vue-mongo/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue-mongo</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/22/vue-mongo/">vue-mongo</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/17/vue-is/" class="archive-article-date">
-  	<time datetime="2018-01-17T13:17:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/17/vue-is/">vue-is</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/14/swift-motion/" class="archive-article-date">
-  	<time datetime="2018-01-14T13:34:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/14/swift-motion/">swift-motion</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/14/egret-one/" class="archive-article-date">
-  	<time datetime="2018-01-14T12:51:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/14/egret-one/">egret-one</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/10/basic-laravel/" class="archive-article-date">
-  	<time datetime="2018-01-10T14:05:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/10/basic-laravel/">basic-laravel</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/04/react-native-navigation/" class="archive-article-date">
-  	<time datetime="2018-01-04T14:00:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/04/react-native-navigation/">react-native-navigation</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -380,8 +333,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
