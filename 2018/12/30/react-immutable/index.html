@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wcnmb.com">
-  <title>Tag: ccc | miracle的博客</title>
+  <title>react-immutable | miracle的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="miracle的博客">
-<meta property="og:url" content="http://wcnmb.com/tags/ccc/index.html">
+  <meta name="description" content="2018年最后来一篇react的文章 1.如何在react中使用immutable 1npm i immutable --save 2.在redux中使用immutale转化js数据 123456import Immutable from &apos;immutable&apos;const initialState = Immutable.fromJS(&amp;#123;    campus:[],    selecte">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-immutable">
+<meta property="og:url" content="http://wcnmb.com/2018/12/30/react-immutable/index.html">
 <meta property="og:site_name" content="miracle的博客">
+<meta property="og:description" content="2018年最后来一篇react的文章 1.如何在react中使用immutable 1npm i immutable --save 2.在redux中使用immutale转化js数据 123456import Immutable from &apos;immutable&apos;const initialState = Immutable.fromJS(&amp;#123;    campus:[],    selecte">
+<meta property="og:updated_time" content="2018-12-30T07:37:56.689Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="miracle的博客">
+<meta name="twitter:title" content="react-immutable">
+<meta name="twitter:description" content="2018年最后来一篇react的文章 1.如何在react中使用immutable 1npm i immutable --save 2.在redux中使用immutale转化js数据 123456import Immutable from &apos;immutable&apos;const initialState = Immutable.fromJS(&amp;#123;    campus:[],    selecte">
   
     <link rel="alternative" href="/atom.xml" title="miracle的博客" type="application/atom+xml">
   
@@ -153,68 +157,170 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-react-immutable" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/14/test/" class="archive-article-date">
-  	<time datetime="2017-08-14T12:33:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-14</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/14/test/">test</a>
+    <h1 class="article-title" itemprop="name">
+      react-immutable
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">aaa</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bbb</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ccc</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        <a href="/2018/12/30/react-immutable/" class="archive-article-date">
+  	<time datetime="2018-12-30T07:11:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3>2018年最后来一篇react的文章</h3>
+<p>1.如何在react中使用immutable
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i immutable --save</div></pre></td></tr></table></figure></p>
+<p>2.在redux中使用immutale转化js数据
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Immutable <span class="keyword">from</span> <span class="string">'immutable'</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> initialState = Immutable.fromJS(&#123;</div><div class="line">    campus:[],</div><div class="line">    selectedCampus:&#123;<span class="attr">name</span>: <span class="string">"axiba"</span>, <span class="attr">number</span>:<span class="number">10</span>&#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>immutable对象是不可变的,每一个都是全新的对象</p>
+<p>3.如何在reducer中编写代码
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span>(<span class="params">state=initialState, action</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'mngbgbgbgdd'</span>);</div><div class="line">    <span class="keyword">switch</span>(action.type)&#123;</div><div class="line">        <span class="keyword">case</span> <span class="string">'GET_CAMPUS'</span>:</div><div class="line">           <span class="built_in">console</span>.log(<span class="string">'immutable'</span>);</div><div class="line">           <span class="keyword">return</span> state.set(<span class="string">'campus'</span>, Immutable.fromJS(action.campus));</div><div class="line">        <span class="keyword">case</span> <span class="string">'SET_NUMBER'</span>:</div><div class="line">           <span class="keyword">return</span> state.setIn([<span class="string">'selectedCampus'</span>, <span class="string">'number'</span>], action.number);   </div><div class="line">        <span class="keyword">case</span> <span class="string">'ADD_CAMPUS'</span>:</div><div class="line">           <span class="keyword">return</span> state.update(<span class="string">'campus'</span>, (campuses) =&gt; campuses.push(Immutable.fromJS(action.campus)));</div><div class="line">        <span class="keyword">default</span>:</div><div class="line">           <span class="keyword">return</span> state;      </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>4.看到这里你需要对immutable的数据结构需要一点了解
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">  <span class="comment">////List</span></div><div class="line"><span class="keyword">const</span> list = List([ <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span> ])</div><div class="line"><span class="keyword">const</span> result = list.update(<span class="number">2</span>, val =&gt; val.toUpperCase())</div><div class="line"></div><div class="line"><span class="comment">///Map</span></div><div class="line"><span class="keyword">const</span> aMap = <span class="built_in">Map</span>(&#123; <span class="attr">key</span>: <span class="string">'value'</span> &#125;)</div><div class="line"><span class="keyword">const</span> newMap = aMap.update(<span class="string">'key'</span>, value =&gt; value + value)</div></pre></td></tr></table></figure></p>
+<p>5.react后续操作 页面数据获取
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> configureStore = <span class="function"><span class="params">()</span> =&gt;</span> (applyMiddleware(thunk)(createStore)(reducer, initialState));</div><div class="line"></div><div class="line"><span class="keyword">const</span> mapStateToProps = <span class="function"><span class="params">state</span> =&gt;</span> (&#123;</div><div class="line">     cc: state.reducer2.getIn([<span class="string">'selectedCampus'</span>, <span class="string">'name'</span>]),</div><div class="line">     number: state.reducer2.getIn([<span class="string">'selectedCampus'</span>, <span class="string">'number'</span>]),</div><div class="line">     campus: state.reducer2.get(<span class="string">'campus'</span>)</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 视图渲染</span></div><div class="line">&#123;</div><div class="line">     <span class="keyword">this</span>.props.campus.size ? (</div><div class="line">         <span class="keyword">this</span>.props.campus.map(<span class="function">(<span class="params">v,i</span>) =&gt;</span> (</div><div class="line">             &lt;div key=&#123;i&#125;&gt;&#123;v.get(<span class="string">'name'</span>)&#125;&lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp">         ))</span></div><div class="line"><span class="regexp">     ) : null</span></div><div class="line"><span class="regexp">&#125;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">export default connect(mapStateToProps)(Mayi);</span></div></pre></td></tr></table></figure></p>
+<p>6.使用immutable的优点
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> oddSquares = Immutable.seq.of(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>).filter(</div><div class="line">    x =&gt; &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'immutable对象的 filter执行'</span>)；</div><div class="line">        <span class="keyword">return</span> x % <span class="number">2</span></div><div class="line">    &#125;</div><div class="line">).map(<span class="function"><span class="params">x</span> =&gt;</span> x*x)</div><div class="line"></div><div class="line">oddSquares.get(<span class="number">1</span>);</div></pre></td></tr></table></figure></p>
+<p>猜猜上述 filter会执行多少次 答案是3次, 为什么不是7次。。。</p>
 
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://wcnmb.com/2018/12/30/react-immutable/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/12/12/vue-register-component/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">vue-register-component</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -237,9 +343,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
