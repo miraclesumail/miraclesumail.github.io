@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wcnmb.com">
-  <title>Archives: 2019 | miracle的博客</title>
+  <title>entry-apollo-graphql | miracle的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="miracle的博客">
-<meta property="og:url" content="http://wcnmb.com/archives/2019/index.html">
+  <meta name="description" content="###年前最后一篇文章，纪念过去不曾察觉的一年，后天就过年了，新年快乐 1.apollo与graphql, gql支持很多语言，包括与前端的express和koa框架已集成。 123// 引入依赖const Koa = require(&apos;koa&apos;);const &amp;#123; ApolloServer, gql &amp;#125; = require(&apos;apollo-server-koa&apos;); 2.创建数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="entry-apollo-graphql">
+<meta property="og:url" content="http://wcnmb.com/2019/02/03/entry-apollo-graphql/index.html">
 <meta property="og:site_name" content="miracle的博客">
+<meta property="og:description" content="###年前最后一篇文章，纪念过去不曾察觉的一年，后天就过年了，新年快乐 1.apollo与graphql, gql支持很多语言，包括与前端的express和koa框架已集成。 123// 引入依赖const Koa = require(&apos;koa&apos;);const &amp;#123; ApolloServer, gql &amp;#125; = require(&apos;apollo-server-koa&apos;); 2.创建数">
+<meta property="og:updated_time" content="2019-02-03T06:30:45.419Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="miracle的博客">
+<meta name="twitter:title" content="entry-apollo-graphql">
+<meta name="twitter:description" content="###年前最后一篇文章，纪念过去不曾察觉的一年，后天就过年了，新年快乐 1.apollo与graphql, gql支持很多语言，包括与前端的express和koa框架已集成。 123// 引入依赖const Koa = require(&apos;koa&apos;);const &amp;#123; ApolloServer, gql &amp;#125; = require(&apos;apollo-server-koa&apos;); 2.创建数">
   
     <link rel="alternative" href="/atom.xml" title="miracle的博客" type="application/atom+xml">
   
@@ -153,157 +157,178 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-entry-apollo-graphql" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      entry-apollo-graphql
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/03/entry-apollo-graphql/" class="archive-article-date">
+
+        
+        <a href="/2019/02/03/entry-apollo-graphql/" class="archive-article-date">
   	<time datetime="2019-02-03T05:40:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-03</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/03/entry-apollo-graphql/">entry-apollo-graphql</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###年前最后一篇文章，纪念过去不曾察觉的一年，后天就过年了，新年快乐
+1.apollo与graphql, gql支持很多语言，包括与前端的express和koa框架已集成。
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 引入依赖</span></div><div class="line"><span class="keyword">const</span> Koa = <span class="built_in">require</span>(<span class="string">'koa'</span>);</div><div class="line"><span class="keyword">const</span> &#123; ApolloServer, gql &#125; = <span class="built_in">require</span>(<span class="string">'apollo-server-koa'</span>);</div></pre></td></tr></table></figure></p>
+<p>2.创建数据模型
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 创建数据模型</span></div><div class="line"><span class="keyword">const</span> typeDefs = gql<span class="string">`</span></div><div class="line"><span class="string">  type Book&#123;</span></div><div class="line"><span class="string">    id: Int!</span></div><div class="line"><span class="string">    title: String</span></div><div class="line"><span class="string">    author: String</span></div><div class="line"><span class="string">  &#125;</span></div><div class="line"><span class="string">  type Person&#123;</span></div><div class="line"><span class="string">    id: Int!</span></div><div class="line"><span class="string">    name: String</span></div><div class="line"><span class="string">    country: String,</span></div><div class="line"><span class="string">    books: [Book]</span></div><div class="line"><span class="string">  &#125;</span></div><div class="line"><span class="string">  type Query &#123;</span></div><div class="line"><span class="string">    books: [Book]</span></div><div class="line"><span class="string">    book(id: Int!):Book</span></div><div class="line"><span class="string">    person(id: Int!):Person</span></div><div class="line"><span class="string">  &#125;</span></div><div class="line"><span class="string">  type Mutation &#123;</span></div><div class="line"><span class="string">    addBook(title: String!, author: String!):Book</span></div><div class="line"><span class="string">    updateBook(id: Int!, title: String, author: String):Book</span></div><div class="line"><span class="string">    deleteBook(id: Int!):Book,</span></div><div class="line"><span class="string">    deleteBookByPerson(id: Int!, title:String):Person</span></div><div class="line"><span class="string">  &#125;</span></div><div class="line"><span class="string">`</span>;</div></pre></td></tr></table></figure></p>
+<p>上述定义了试题类型和查询类型，不明白的可以去看graphql官网。</p>
+<p>3.定义resolver实现查询接口
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> incrementID = <span class="number">2</span>;</div><div class="line"></div><div class="line"><span class="comment">// 为数据模型创建解析函数</span></div><div class="line"><span class="keyword">const</span> resolvers = &#123;</div><div class="line">  Query: &#123;</div><div class="line">    <span class="comment">// 查询全部数据</span></div><div class="line">    books(root, args, context) &#123;</div><div class="line">      <span class="keyword">return</span> BOOKS;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 根据 id 查询单条数据</span></div><div class="line">    book(root, args, context, info) &#123;</div><div class="line">      <span class="keyword">return</span> BOOKS.filter(<span class="function"><span class="params">book</span> =&gt;</span> book.id === args.id)[<span class="number">0</span>];</div><div class="line">    &#125;,</div><div class="line">    person(root, args, context, info) &#123;</div><div class="line">      <span class="keyword">return</span> PERSONS.filter(<span class="function"><span class="params">person</span> =&gt;</span> person.id === args.id)[<span class="number">0</span>];</div><div class="line">    &#125; </div><div class="line">  &#125;,</div><div class="line">  Mutation: &#123;</div><div class="line">    addBook(root, args, context) &#123;</div><div class="line">      <span class="comment">// 此行代码会在下集讲解  </span></div><div class="line">      <span class="keyword">const</span> &#123;books&#125; = context.cache.readQuery(&#123;<span class="attr">query</span>: GET_BOOKS&#125;);</div><div class="line">      <span class="keyword">let</span> book = &#123;<span class="attr">id</span>: ++incrementID, ...args&#125;</div><div class="line">      BOOKS.push(book)</div><div class="line">      <span class="keyword">return</span> book</div><div class="line">    &#125;,</div><div class="line">    updateBook(root, args, context) &#123;</div><div class="line">      <span class="keyword">let</span> modifiedBook = &#123;&#125;;</div><div class="line">      <span class="comment">// fake update book</span></div><div class="line">      BOOKS.forEach(<span class="function"><span class="params">book</span> =&gt;</span> &#123;</div><div class="line">        <span class="keyword">if</span> (book.id === args.id) &#123;</div><div class="line">          <span class="built_in">Object</span>.assign(book, args);</div><div class="line">          modifiedBook = book;</div><div class="line">        &#125;</div><div class="line">      &#125;);</div><div class="line">      <span class="keyword">return</span> modifiedBook;</div><div class="line">    &#125;,</div><div class="line">    deleteBook(root, args, context) &#123;</div><div class="line">      <span class="keyword">let</span> deletedBook = &#123;&#125;;</div><div class="line">      BOOKS.forEach(<span class="function">(<span class="params">book, i</span>) =&gt;</span> &#123;</div><div class="line">        <span class="keyword">if</span> (book.id === args.id) &#123;</div><div class="line">          BOOKS.splice(i, <span class="number">1</span>);</div><div class="line">          deletedBook = book;</div><div class="line">        &#125;</div><div class="line">      &#125;);</div><div class="line">      <span class="keyword">return</span> deletedBook;</div><div class="line">    &#125;,</div><div class="line">    deleteBookByPerson(root, args, context) &#123;</div><div class="line">      <span class="keyword">let</span> person = PERSONS.filter(<span class="function"><span class="params">person</span> =&gt;</span> person.id === args.id)[<span class="number">0</span>];</div><div class="line">      <span class="keyword">let</span> books = person.books.filter(<span class="function"><span class="params">book</span> =&gt;</span> book.title !== args.title);</div><div class="line">      person.books = books;</div><div class="line">      <span class="keyword">return</span> person;</div><div class="line">    &#125; </div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>上述就是简单的crud操作，相信大家比较了解了。</p>
+<p>4.提供前端数据来源,启动程序。
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Fake Data</span></div><div class="line"><span class="keyword">let</span> BOOKS = [</div><div class="line">  &#123;</div><div class="line">    id: <span class="number">1</span>,</div><div class="line">    title: <span class="string">'HTML5 Tutorial'</span>,</div><div class="line">    author: <span class="string">'xiaowang'</span></div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    id: <span class="number">2</span>,</div><div class="line">    title: <span class="string">'Deep Learning With React'</span>,</div><div class="line">    author: <span class="string">'xiaoli'</span></div><div class="line">  &#125;</div><div class="line">];</div><div class="line"></div><div class="line"><span class="keyword">let</span> PERSONS= [</div><div class="line">  &#123;</div><div class="line">    id: <span class="number">1</span>,</div><div class="line">    name: <span class="string">'jerry'</span>,</div><div class="line">    country: <span class="string">'china'</span>,</div><div class="line">    books: BOOKS</div><div class="line">  &#125;</div><div class="line">]</div><div class="line"></div><div class="line"><span class="keyword">const</span> server = <span class="keyword">new</span> ApolloServer(&#123; typeDefs, resolvers &#125;);</div><div class="line"></div><div class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</div><div class="line">server.applyMiddleware(&#123; app &#125;);</div><div class="line"></div><div class="line">app.listen(&#123; <span class="attr">port</span>: <span class="number">4000</span> &#125;, () =&gt;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`🚀 Server ready at http://localhost:4000<span class="subst">$&#123;server.graphqlPath&#125;</span>`</span>),</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>用node运行之后就可以开始使用graphql查询，作者现在大概也只掌握了一半多点的查询。。。</p>
+<p>5.将apollo引入到已有的react项目中。
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 在入口文件index.js中引入依赖</span></div><div class="line"><span class="keyword">import</span> &#123; ApolloProvider &#125; <span class="keyword">from</span> <span class="string">'react-apollo'</span>;</div><div class="line"><span class="keyword">import</span> &#123; ApolloClient &#125; <span class="keyword">from</span> <span class="string">'apollo-client'</span>;</div><div class="line"><span class="keyword">import</span> &#123; InMemoryCache &#125; <span class="keyword">from</span> <span class="string">'apollo-cache-inmemory'</span>;</div><div class="line"><span class="keyword">import</span> &#123; HttpLink &#125; <span class="keyword">from</span> <span class="string">'apollo-link-http'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> client = <span class="keyword">new</span> ApolloClient(&#123;</div><div class="line">  link: <span class="keyword">new</span> HttpLink(&#123; <span class="attr">uri</span>: <span class="string">'http://127.0.0.1:4000/graphql'</span> &#125;),</div><div class="line">  cache: <span class="keyword">new</span> InMemoryCache()</div><div class="line">&#125;);</div><div class="line"></div><div class="line">ReactDOM.render(</div><div class="line">  &lt;ApolloProvider client=&#123;client&#125;&gt;</div><div class="line">    &lt;App/&gt;</div><div class="line">  &lt;<span class="regexp">/ApolloProvider&gt;,</span></div><div class="line"><span class="regexp">  document.getElementById('app')</span></div><div class="line"><span class="regexp">);</span></div></pre></td></tr></table></figure></p>
+<p>是的大家会感到奇怪，熟悉的redux的provider不见了，其实这里就是用Apollo来取代redux来做数据传递的。。。</p>
+<p>6.在react页面中使用gql查询的数据
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> gql <span class="keyword">from</span> <span class="string">'graphql-tag'</span>;</div><div class="line"><span class="keyword">import</span> &#123; Query &#125; <span class="keyword">from</span> <span class="string">'react-apollo'</span>;</div><div class="line"></div><div class="line"><span class="comment">// 这里将会把刚才的books全部查询出来</span></div><div class="line"><span class="keyword">const</span> GET_BOOKS = gql<span class="string">`</span></div><div class="line"><span class="string">  &#123;</span></div><div class="line"><span class="string">    books &#123;</span></div><div class="line"><span class="string">      id</span></div><div class="line"><span class="string">      title</span></div><div class="line"><span class="string">      author</span></div><div class="line"><span class="string">    &#125;</span></div><div class="line"><span class="string">  &#125;</span></div><div class="line"><span class="string">`</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;p&gt;Book Lists&lt;<span class="regexp">/p&gt;</span></div><div class="line"><span class="regexp">        &lt;Query query=&#123;GET_BOOKS&#125;&gt;</span></div><div class="line"><span class="regexp">          &#123;(&#123; loading, error, data &#125;) =&gt; &#123;</span></div><div class="line"><span class="regexp">            if (loading) return 'Loading...';</span></div><div class="line"><span class="regexp">            if (error) return `Error! $&#123;error.message&#125;`;</span></div><div class="line"><span class="regexp">            return (</span></div><div class="line"><span class="regexp">              &lt;ul&gt;</span></div><div class="line"><span class="regexp">                &#123;</span></div><div class="line"><span class="regexp">                  data.books.map(book =&gt; &lt;li key=&#123;book.id&#125;&gt;&#123;book.id&#125;, &#123;book.title&#125;, &#123;book.author&#125;&lt;/</span>li&gt;)</div><div class="line">                &#125;</div><div class="line">              &lt;<span class="regexp">/ul&gt;</span></div><div class="line"><span class="regexp">            )</span></div><div class="line"><span class="regexp">          &#125;&#125;</span></div><div class="line"><span class="regexp">        &lt;/</span>Query&gt;</div><div class="line">      &lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp">    );</span></div><div class="line"><span class="regexp">  &#125;</span></div><div class="line"><span class="regexp">&#125;</span></div></pre></td></tr></table></figure></p>
+<p>到这里我们刚才创建的books就可以显示到页面上了。</p>
+<p>7.另一种方式呈现
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> gql <span class="keyword">from</span> <span class="string">'graphql-tag'</span>;</div><div class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">'react-apollo'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> GET_BOOKS = gql<span class="string">`</span></div><div class="line"><span class="string">  &#123;</span></div><div class="line"><span class="string">    books &#123;</span></div><div class="line"><span class="string">      id</span></div><div class="line"><span class="string">      title</span></div><div class="line"><span class="string">      author</span></div><div class="line"><span class="string">    &#125;</span></div><div class="line"><span class="string">  &#125;</span></div><div class="line"><span class="string">`</span>;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">    <span class="keyword">super</span>(props)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">const</span> authors = <span class="keyword">this</span>.props.data.authors</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;div&gt;</div><div class="line">        &lt;p&gt;Book Lists&lt;<span class="regexp">/p&gt;</span></div><div class="line"><span class="regexp">         &#123;authors.map((author, idx) =&gt; (</span></div><div class="line"><span class="regexp">          &lt;div key=&#123;'author-'+idx&#125;&gt;</span></div><div class="line"><span class="regexp">            &lt;h1&gt;&#123;author.firstName&#125;'s posts&lt;/</span>h1&gt;</div><div class="line">            &#123;author.posts &amp;&amp; author.posts.map(<span class="function">(<span class="params">post, idx</span>) =&gt;</span> (</div><div class="line">              &lt;li key=&#123;idx&#125;&gt;&#123;post.title&#125;&lt;<span class="regexp">/li&gt;</span></div><div class="line"><span class="regexp">            ))&#125;</span></div><div class="line"><span class="regexp">          &lt;/</span>div&gt;</div><div class="line">        ))&#125;</div><div class="line">      &lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp">    );</span></div><div class="line"><span class="regexp">  &#125;</span></div><div class="line"><span class="regexp">&#125;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">const mapQueriesToProps = (&#123; ownProps, state &#125;) =&gt; &#123;</span></div><div class="line"><span class="regexp">  return &#123;</span></div><div class="line"><span class="regexp">    data: &#123;</span></div><div class="line"><span class="regexp">      query: `</span></div><div class="line"><span class="regexp">        query authors&#123;</span></div><div class="line"><span class="regexp">          authors &#123;</span></div><div class="line"><span class="regexp">            firstName</span></div><div class="line"><span class="regexp">            posts &#123;</span></div><div class="line"><span class="regexp">              title</span></div><div class="line"><span class="regexp">            &#125;</span></div><div class="line"><span class="regexp">          &#125;</span></div><div class="line"><span class="regexp">        &#125;</span></div><div class="line"><span class="regexp">      `</span></div><div class="line"><span class="regexp">    &#125;</span></div><div class="line"><span class="regexp">  &#125;</span></div><div class="line"><span class="regexp">&#125;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">export default connect(&#123;</span></div><div class="line"><span class="regexp">    mapQueriesToProps</span></div><div class="line"><span class="regexp">&#125;)App</span></div></pre></td></tr></table></figure></p>
+<p>这种方式大家会更熟悉吧，这也是redux像组件传递数据的一种形式。</p>
+<p>8.每一期结尾送一波福利
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"middle"</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"btn"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fab fa-facebook-f"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"btn"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fab fa-twitter"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"btn"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fab fa-google"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"btn"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fab fa-instagram"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">      <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"btn"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fab fa-youtube"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">      <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">  body&#123;</span></div><div class="line"><span class="undefined">  padding: 0;</span></div><div class="line"><span class="undefined">  margin: 0;</span></div><div class="line"><span class="undefined">&#125;</span></div><div class="line"><span class="undefined">.middle&#123;</span></div><div class="line"><span class="undefined">  position: absolute;</span></div><div class="line"><span class="undefined">  top: 50%;</span></div><div class="line"><span class="undefined">  transform: translateY(-50%);</span></div><div class="line"><span class="undefined">  width: 100%;</span></div><div class="line"><span class="undefined">  text-align: center;</span></div><div class="line"><span class="undefined">&#125;</span></div><div class="line"><span class="undefined">.btn&#123;</span></div><div class="line"><span class="undefined">  display: inline-block;</span></div><div class="line"><span class="undefined">  width: 90px;</span></div><div class="line"><span class="undefined">  height: 90px;</span></div><div class="line"><span class="undefined">  background: #f1f1f1;</span></div><div class="line"><span class="undefined">  margin: 10px;</span></div><div class="line"><span class="undefined">  border-radius: 30%;</span></div><div class="line"><span class="undefined">  box-shadow: 0 5px 15px -5px #00000070;</span></div><div class="line"><span class="undefined">  color: #3498db;</span></div><div class="line"><span class="undefined">  overflow: hidden;</span></div><div class="line"><span class="undefined">  position: relative;</span></div><div class="line"><span class="undefined">&#125;</span></div><div class="line"><span class="undefined">.btn i&#123;</span></div><div class="line"><span class="undefined">  line-height: 90px;</span></div><div class="line"><span class="undefined">  font-size: 26px;</span></div><div class="line"><span class="undefined">  transition: 0.2s linear;</span></div><div class="line"><span class="undefined">&#125;</span></div><div class="line"><span class="undefined">.btn:hover i&#123;</span></div><div class="line"><span class="undefined">  transform: scale(1.3);</span></div><div class="line"><span class="undefined">  color: #f1f1f1;</span></div><div class="line"><span class="undefined">&#125;</span></div><div class="line"><span class="undefined">.btn::before&#123;</span></div><div class="line"><span class="undefined">  content: "";</span></div><div class="line"><span class="undefined">  position: absolute;</span></div><div class="line"><span class="undefined">  width: 120%;</span></div><div class="line"><span class="undefined">  height: 120%;</span></div><div class="line"><span class="undefined">  background: #3498db;</span></div><div class="line"><span class="undefined">  transform: rotate(45deg);</span></div><div class="line"><span class="undefined">  left: -110%;</span></div><div class="line"><span class="undefined">  top: 90%;</span></div><div class="line"><span class="undefined">&#125;</span></div><div class="line"><span class="undefined">.btn:hover::before&#123;</span></div><div class="line"><span class="undefined">  animation: aaa 0.7s 1;</span></div><div class="line"><span class="undefined">  top: -10%;</span></div><div class="line"><span class="undefined">  left: -10%;</span></div><div class="line"><span class="undefined">&#125;</span></div><div class="line"><span class="undefined">@keyframes aaa &#123;</span></div><div class="line"><span class="undefined">  0%&#123;</span></div><div class="line"><span class="undefined">    left: -110%;</span></div><div class="line"><span class="undefined">    top: 90%;</span></div><div class="line"><span class="undefined">  &#125;50%&#123;</span></div><div class="line"><span class="undefined">    left: 10%;</span></div><div class="line"><span class="undefined">    top: -30%;</span></div><div class="line"><span class="undefined">  &#125;100%&#123;</span></div><div class="line"><span class="undefined">    top: -10%;</span></div><div class="line"><span class="undefined">    left: -10%;</span></div><div class="line"><span class="undefined">  &#125;</span></div><div class="line"><span class="undefined">&#125;</span></div><div class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure></p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://wcnmb.com/2019/02/03/entry-apollo-graphql/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/30/custom-player/" class="archive-article-date">
-  	<time datetime="2019-01-30T12:20:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-30</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/01/30/custom-player/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">custom-player</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/30/custom-player/">custom-player</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/24/canvas-magic/" class="archive-article-date">
-  	<time datetime="2019-01-24T13:03:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/24/canvas-magic/">canvas-magic</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/19/java-react-socket/" class="archive-article-date">
-  	<time datetime="2019-01-19T06:02:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/19/java-react-socket/">java-react-socket</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/05/proxy-pro/" class="archive-article-date">
-  	<time datetime="2019-01-05T11:50:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/05/proxy-pro/">proxy-pro</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -326,8 +351,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
