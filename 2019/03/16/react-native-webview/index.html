@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wcnmb.com">
-  <title>Archives: 2019 | miracle的博客</title>
+  <title>react-native-webview | miracle的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="miracle的博客">
-<meta property="og:url" content="http://wcnmb.com/archives/2019/index.html">
+  <meta name="description" content="最近公务缠身, 转做了产品所以很久没写博客, 今天补一期  webview的基本介绍 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980import">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-native-webview">
+<meta property="og:url" content="http://wcnmb.com/2019/03/16/react-native-webview/index.html">
 <meta property="og:site_name" content="miracle的博客">
+<meta property="og:description" content="最近公务缠身, 转做了产品所以很久没写博客, 今天补一期  webview的基本介绍 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980import">
+<meta property="og:updated_time" content="2019-03-16T13:22:15.766Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="miracle的博客">
+<meta name="twitter:title" content="react-native-webview">
+<meta name="twitter:description" content="最近公务缠身, 转做了产品所以很久没写博客, 今天补一期  webview的基本介绍 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980import">
   
     <link rel="alternative" href="/atom.xml" title="miracle的博客" type="application/atom+xml">
   
@@ -153,295 +157,170 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-react-native-webview" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      react-native-webview
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/16/react-native-webview/" class="archive-article-date">
+
+        
+        <a href="/2019/03/16/react-native-webview/" class="archive-article-date">
   	<time datetime="2019-03-16T12:06:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-16</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/16/react-native-webview/">react-native-webview</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3>最近公务缠身, 转做了产品所以很久没写博客, 今天补一期</h3>
+<ol>
+<li>webview的基本介绍
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"><span class="keyword">import</span> &#123; View, Text, WebView, StyleSheet, BackHandler, TouchableHighlight, TouchableOpacity &#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="class"><span class="keyword">class</span> <span class="title">Wb</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">    <span class="keyword">super</span>(props);</div><div class="line">    <span class="keyword">this</span>.state = &#123;</div><div class="line">        backButtonEnabled:<span class="literal">null</span></div><div class="line">    &#125;;</div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     *  监听物理后退键 只支持android return true 会拦截后退</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    BackHandler.addEventListener(<span class="string">'hardwareBackPress'</span>, <span class="keyword">this</span>.backAndroid)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  backAndroid = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        <span class="comment">// 只有return false才会走物理后退</span></div><div class="line">        <span class="keyword">if</span> (<span class="keyword">this</span>.state.backButtonEnabled) &#123;</div><div class="line">            <span class="comment">// webview网页后退 但是app页面还是不变</span></div><div class="line">            <span class="keyword">this</span>.web.goBack();</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  onNavigationStateChange = <span class="function">(<span class="params">navState</span>) =&gt;</span> &#123;</div><div class="line">        <span class="comment">// 尝试去打印该值</span></div><div class="line">        <span class="built_in">console</span>.log(navState);</div><div class="line">        <span class="keyword">this</span>.setState(&#123;</div><div class="line">            <span class="comment">// 是否能后退</span></div><div class="line">            backButtonEnabled: navState.canGoBack,</div><div class="line">        &#125;);    </div><div class="line">  &#125;</div><div class="line"></div><div class="line">  sendPostMessage = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'send'</span>);</div><div class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">         <span class="comment">// 这个是往webview里面发送信息</span></div><div class="line">         <span class="keyword">this</span>.web.postMessage(<span class="string">"Post message from react native"</span>)</div><div class="line">      &#125;, <span class="number">1000</span>)</div><div class="line">  &#125;</div><div class="line"> </div><div class="line">  <span class="comment">// 该函数是来监听来自webview的postmessage</span></div><div class="line">  onMessage(event) &#123;</div><div class="line">    <span class="built_in">console</span>.log( <span class="string">"On Message"</span>, event.nativeEvent.data );</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">let</span> jsCode = <span class="string">` </span></div><div class="line"><span class="string">        document.querySelector('#main').style.backgroundColor = 'red';   </span></div><div class="line"><span class="string">    `</span>;</div><div class="line">    <span class="comment">//source=&#123;&#123;uri: 'https://www.whatismybrowser.com/detect/is-javascript-enabled'&#125;&#125;</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> (</div><div class="line">        &lt;View style=&#123;&#123;<span class="attr">flex</span>:<span class="number">1</span>&#125;&#125;&gt;</div><div class="line">            &lt;TouchableOpacity&gt;</div><div class="line">                    &lt;MyButton label=<span class="string">"Press me!"</span> /&gt;</div><div class="line">           &lt;<span class="regexp">/TouchableOpacity&gt;   </span></div><div class="line"><span class="regexp">            &lt;TouchableHighlight style=&#123;&#123;padding: 10, backgroundColor: 'blue', marginTop: 20&#125;&#125; onPress=&#123;() =&gt; this.sendPostMessage()&#125;&gt;</span></div><div class="line"><span class="regexp">                &lt;Text style=&#123;&#123;color: 'white'&#125;&#125;&gt;Send post message from react native&lt;/</span>Text&gt;</div><div class="line">            &lt;<span class="regexp">/TouchableHighlight&gt;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">            &lt;WebView  ref=&#123;web =&gt; this.web = web&#125;</span></div><div class="line"><span class="regexp">                /</span><span class="regexp">/ 注意这个位置 在android里面 需要这样写静态html路径 同时先把静态资源放到 android/</span>app/src/main/assets 目录下面</div><div class="line">                source=&#123;&#123;<span class="attr">uri</span>: <span class="string">'file:///android_asset/pages/demo.html'</span>&#125;&#125;</div><div class="line">                javaScriptEnabled=&#123;<span class="literal">true</span>&#125; startInLoadingState=&#123;<span class="literal">true</span>&#125;</div><div class="line">                renderLoading=&#123;() =&gt; (<span class="xml"><span class="tag">&lt;<span class="name">View</span> <span class="attr">style</span>=<span class="string">&#123;styles.indicator&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">View</span>&gt;</span></span>)&#125;</div><div class="line">                onLoadStart=&#123;() =&gt; &#123;<span class="built_in">console</span>.log(<span class="string">'loadStart'</span>)&#125;&#125; onLoad=&#123;() =&gt; &#123;<span class="built_in">console</span>.log(<span class="string">'loadFinish'</span>)&#125;&#125;</div><div class="line">                onNavigationStateChange = &#123;<span class="keyword">this</span>.onNavigationStateChange&#125; onMessage=&#123;<span class="keyword">this</span>.onMessage&#125;</div><div class="line">            /&gt;</div><div class="line">        &lt;<span class="regexp">/View&gt;   </span></div><div class="line"><span class="regexp">    );</span></div><div class="line"><span class="regexp">  &#125;</span></div><div class="line"><span class="regexp">&#125;</span></div><div class="line"><span class="regexp">1. renderLoading 这个是在嵌入到app的webview尚未加载完成的loading组件, 需要startInLoadingState设置为true</span></div><div class="line"><span class="regexp">2. javaScriptEnabled是否允许webview里面的js脚本执行, injectedJavaScript可以接受一个js脚本字符串, webview初始化玩就执行。</span></div><div class="line"><span class="regexp">3. onNavigationStateChange 是webview里面的html页面前进后退触发的事件。</span></div><div class="line"><span class="regexp">4. onShouldStartLoadWithRequest 这个属性支持ios 接受一个函数返回bool 如果是false 就会中断webview的加载 这个在项目里可能会有需求</span></div><div class="line"><span class="regexp">很有很多其他属性大家可以去官网查阅。</span></div></pre></td></tr></table></figure></li>
+</ol>
+<p>关于webview的source属性可以去参考官方文档, 我这里只会说比较重要的几个属性。</p>
+<p>2.接下来是重头戏webview和native的通信
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">button</span>&gt;</span>Send post message from web<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"qq"</span>&gt;</span>Post message log<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"ww"</span>&gt;</span>5<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">style</span>=<span class="string">"height: 50%; width: 100%;"</span> <span class="attr">readonly</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript"><span class="keyword">var</span> log = <span class="built_in">document</span>.querySelector(<span class="string">"textarea"</span>);</span></div><div class="line"><span class="javascript"><span class="built_in">console</span>.log(<span class="string">"Send post message"</span>);</span></div><div class="line"><span class="javascript"><span class="built_in">document</span>.querySelector(<span class="string">'.qq'</span>).style.backgroundColor = <span class="string">'red'</span>;   </span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript"><span class="built_in">document</span>.querySelector(<span class="string">"button"</span>).onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></div><div class="line"><span class="javascript">    <span class="built_in">document</span>.querySelector(<span class="string">'.qq'</span>).style.backgroundColor = <span class="string">'yellow'</span>;   </span></div><div class="line"><span class="javascript">    <span class="comment">// 点击按钮 会把信息发送到app里面 触发webview上的onmessage事件</span></span></div><div class="line"><span class="javascript">    <span class="built_in">window</span>.postMessage(<span class="string">"Post message from web"</span>, <span class="string">"*"</span>);</span></div><div class="line"><span class="undefined">&#125;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript"><span class="comment">// 接受来自app的postmessage 注意用documen 不是window</span></span></div><div class="line"><span class="javascript"><span class="built_in">document</span>.addEventListener(<span class="string">"message"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span></div><div class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">"Received post message"</span>, event);</span></div><div class="line"><span class="javascript">    <span class="built_in">document</span>.querySelector(<span class="string">'.qq'</span>).innerHTML = (<span class="keyword">new</span> <span class="built_in">Date</span>()) + <span class="string">" "</span> + <span class="string">'ddddddddddddd'</span>;</span></div><div class="line"><span class="javascript">    <span class="comment">// let inner = parseInt(document.querySelector('.ww').innerHTML);</span></span></div><div class="line"><span class="javascript">    <span class="comment">// document.querySelector('.ww').innerHTML = (inner + 1) + '';</span></span></div><div class="line"><span class="javascript">   <span class="comment">// logMessage(event.data);</span></span></div><div class="line"><span class="javascript">&#125;, <span class="literal">false</span>);</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript"> <span class="function"><span class="keyword">function</span> <span class="title">logMessage</span>(<span class="params">message</span>) </span>&#123;</span></div><div class="line"><span class="javascript">    <span class="keyword">let</span> div = <span class="built_in">document</span>.createElement(<span class="string">'div'</span>);</span></div><div class="line"><span class="javascript">     div.textContent = (<span class="keyword">new</span> <span class="built_in">Date</span>()) + <span class="string">" "</span> + message + <span class="string">"\n"</span>;</span></div><div class="line"><span class="undefined">     log.appendChild(div);</span></div><div class="line"><span class="undefined"> &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>上述是嵌入到app的里面的webview</p>
+<p>3.下面有几个需要注意
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> webView不能设置宽高 可以用代码方式解决  webview会自动撑开容器</div><div class="line">&lt;View style=&#123;&#123;<span class="attr">flexDirection</span>: <span class="string">'row'</span>,<span class="attr">width</span>: <span class="keyword">this</span>.props.width&#125;&#125;&gt;</div><div class="line">  &lt;View style=&#123;&#123;<span class="attr">flex</span>:<span class="number">1</span>,<span class="attr">height</span>: <span class="keyword">this</span>.props.height || <span class="number">400</span>&#125;&#125;&gt;</div><div class="line">    &lt;WebView</div><div class="line">      ...</div><div class="line">      injectedJavaScript=&#123;renderChart(<span class="keyword">this</span>.props)&#125;</div><div class="line">      ...</div><div class="line">    /&gt;</div><div class="line">  &lt;<span class="regexp">/View&gt;</span></div><div class="line"><span class="regexp">&lt;/</span>View&gt;</div><div class="line"></div><div class="line"><span class="number">2.</span> webView不能根据传参的变化进行刷新 （此方法刷新会有闪烁）</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Echarts</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>(props) &#123;</div><div class="line">    <span class="keyword">super</span>(props);</div><div class="line">    <span class="keyword">this</span>.state = &#123;</div><div class="line">      data: &#123;&#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  componentWillReceiveProps(nextProps) &#123;</div><div class="line">    <span class="keyword">if</span>(nextProps.option !== <span class="keyword">this</span>.props.option) &#123;</div><div class="line">      <span class="keyword">this</span>.refs.chart.reload();</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line"> ...</div><div class="line">  </div><div class="line">  render() &#123;</div><div class="line">   ...</div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style=&#123;&#123;<span class="attr">flexDirection</span>: <span class="string">'row'</span>,<span class="attr">width</span>: <span class="keyword">this</span>.props.width&#125;&#125;&gt;</div><div class="line">        &lt;View style=&#123;&#123;<span class="attr">flex</span>:<span class="number">1</span>,<span class="attr">height</span>: <span class="keyword">this</span>.props.height || <span class="number">400</span>&#125;&#125;&gt;</div><div class="line">          &lt;WebView</div><div class="line">            ref=<span class="string">"chart"</span></div><div class="line">          ...</div><div class="line">          /&gt;</div><div class="line">        &lt;<span class="regexp">/View&gt;</span></div><div class="line"><span class="regexp">      &lt;/</span>View&gt;</div><div class="line">    );</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>4.最后来一波福利
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span>* <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> x = <span class="keyword">yield</span> <span class="string">'qqqq'</span></div><div class="line">    <span class="built_in">console</span>.log(x)</div><div class="line">    <span class="keyword">let</span> y = <span class="keyword">yield</span> <span class="string">'qqqq111'</span></div><div class="line">    <span class="built_in">console</span>.log(y)</div><div class="line">    <span class="keyword">let</span> z = <span class="keyword">yield</span> <span class="string">'qqqq222'</span></div><div class="line">    <span class="built_in">console</span>.log(z)</div><div class="line">    <span class="keyword">return</span> x+y+z</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> gg = foo()</div><div class="line">gg.next()</div><div class="line">gg.next(<span class="number">3</span>)</div><div class="line">gg.next(<span class="number">2</span>)</div><div class="line">gg.next(<span class="number">5</span>)</div><div class="line">去试试是打印的什么，为什么会有<span class="number">4</span>个next</div></pre></td></tr></table></figure></p>
+<p>5.拓展
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeRequest</span>(<span class="params">url</span>) </span>&#123;</div><div class="line">    makeAjaxCall(url, <span class="function"><span class="keyword">function</span>(<span class="params">res</span>) </span>&#123;</div><div class="line">         it.next(res)</div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">let</span> result = <span class="keyword">yield</span> makeRequest(<span class="string">'someurl'</span>)</div><div class="line">    <span class="keyword">let</span> data = <span class="built_in">JSON</span>.parse(result)</div><div class="line"></div><div class="line">    <span class="keyword">let</span> result2 = <span class="keyword">yield</span> makeRequest(<span class="string">'otherurl'</span> + data.id)</div><div class="line">    <span class="keyword">let</span> res = <span class="built_in">JSON</span>.parse(result2)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> it = main()</div><div class="line">it.next()</div><div class="line">这一步就开始了</div></pre></td></tr></table></figure></p>
+<p>更多gen函数可以去看google上的博客, 这个算是对之前redux-saga的语法复习吧。。。</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://wcnmb.com/2019/03/16/react-native-webview/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/05/redux-saga-info/" class="archive-article-date">
-  	<time datetime="2019-03-05T11:34:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-05</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/05/redux-saga-info/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">redux-saga-info</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/05/redux-saga-info/">redux-saga-info</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/03/java-synchronized-test/" class="archive-article-date">
-  	<time datetime="2019-03-03T06:58:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/03/java-synchronized-test/">java-synchronized-test</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/26/react-native-comprehensive-motion/" class="archive-article-date">
-  	<time datetime="2019-02-26T13:25:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/26/react-native-comprehensive-motion/">react-native-comprehensive-motion</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/24/react-native-gesture/" class="archive-article-date">
-  	<time datetime="2019-02-24T05:16:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/24/react-native-gesture/">react-native-gesture</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/20/custom-html-element/" class="archive-article-date">
-  	<time datetime="2019-02-20T14:21:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/20/custom-html-element/">custom-html-element</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/11/react-native-animation/" class="archive-article-date">
-  	<time datetime="2019-02-11T12:27:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/11/react-native-animation/">react-native-animation</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/09/react-appolo-graphql/" class="archive-article-date">
-  	<time datetime="2019-02-09T13:46:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/09/react-appolo-graphql/">react-appolo-graphql</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/03/entry-apollo-graphql/" class="archive-article-date">
-  	<time datetime="2019-02-03T05:40:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/03/entry-apollo-graphql/">entry-apollo-graphql</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/30/custom-player/" class="archive-article-date">
-  	<time datetime="2019-01-30T12:20:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/30/custom-player/">custom-player</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2019/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -465,8 +344,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
