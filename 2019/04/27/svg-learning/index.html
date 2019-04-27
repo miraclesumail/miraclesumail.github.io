@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wcnmb.com">
-  <title>Archives: 2019 | miracle的博客</title>
+  <title>svg-learning | miracle的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="miracle的博客">
-<meta property="og:url" content="http://wcnmb.com/archives/2019/page/2/index.html">
+  <meta name="description" content="1.今天咱么来聊聊react native里面的svg, 先从svg开始看 1234567891011121314本片主要讲svg的path&amp;lt;Path d=&quot;M10 10 L90 90 L10 10 z&quot;/&amp;gt; // 起始M 画线到 L(绝对位置)&amp;lt;Path d=&quot;M10 10 l90 90 l10 10 z&quot;/&amp;gt; // 起始M 画线到 l(相对位置)&amp;lt;Path d=&quot;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="svg-learning">
+<meta property="og:url" content="http://wcnmb.com/2019/04/27/svg-learning/index.html">
 <meta property="og:site_name" content="miracle的博客">
+<meta property="og:description" content="1.今天咱么来聊聊react native里面的svg, 先从svg开始看 1234567891011121314本片主要讲svg的path&amp;lt;Path d=&quot;M10 10 L90 90 L10 10 z&quot;/&amp;gt; // 起始M 画线到 L(绝对位置)&amp;lt;Path d=&quot;M10 10 l90 90 l10 10 z&quot;/&amp;gt; // 起始M 画线到 l(相对位置)&amp;lt;Path d=&quot;">
+<meta property="og:updated_time" content="2019-04-27T08:12:35.932Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="miracle的博客">
+<meta name="twitter:title" content="svg-learning">
+<meta name="twitter:description" content="1.今天咱么来聊聊react native里面的svg, 先从svg开始看 1234567891011121314本片主要讲svg的path&amp;lt;Path d=&quot;M10 10 L90 90 L10 10 z&quot;/&amp;gt; // 起始M 画线到 L(绝对位置)&amp;lt;Path d=&quot;M10 10 l90 90 l10 10 z&quot;/&amp;gt; // 起始M 画线到 l(相对位置)&amp;lt;Path d=&quot;">
   
     <link rel="alternative" href="/atom.xml" title="miracle的博客" type="application/atom+xml">
   
@@ -153,241 +157,169 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-svg-learning" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      svg-learning
+    </h1>
+  
+
+        
+        <a href="/2019/04/27/svg-learning/" class="archive-article-date">
+  	<time datetime="2019-04-27T05:47:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-27</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3>1.今天咱么来聊聊react native里面的svg, 先从svg开始看</h3>
+<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">本片主要讲svg的path</div><div class="line">&lt;Path d=<span class="string">"M10 10 L90 90 L10 10 z"</span>/&gt; <span class="comment">// 起始M 画线到 L(绝对位置)</span></div><div class="line">&lt;Path d=<span class="string">"M10 10 l90 90 l10 10 z"</span>/&gt; <span class="comment">// 起始M 画线到 l(相对位置)</span></div><div class="line">&lt;Path d=<span class="string">"M10 10 H90 V90 H10 L10 10"</span>/&gt; <span class="comment">// H 横坐标绝对位置 V 纵坐标绝对位置</span></div><div class="line">&lt;Path d=<span class="string">"M10 10 h90 v90 h10 L10 10"</span>/&gt; <span class="comment">// h 横坐标相对偏移 v 纵坐标相对偏移</span></div><div class="line"></div><div class="line"><span class="comment">// 2次贝塞尔曲线 C 为控制点 绝对坐标 如果是c 相对上一个坐标</span></div><div class="line">&lt;path d=<span class="string">"M10 10 C 20 20, 40 20, 50 10"</span> stroke=<span class="string">"black"</span> fill=<span class="string">"transparent"</span>/&gt; </div><div class="line"><span class="comment">// 连续贝塞尔曲线 S 控制切线斜率对称</span></div><div class="line">&lt;path d=<span class="string">"M10 40 C 50 10, 60 100, 90 70 S 150 150, 180 80"</span> stroke=<span class="string">"black"</span> fill=<span class="string">"transparent"</span>/&gt;</div><div class="line"><span class="comment">// 普通连续贝塞尔曲线</span></div><div class="line">&lt;path d=<span class="string">"M10 40 C 50 10, 60 100, 90 70 C150 150, 170 30, 230 80"</span> stroke=<span class="string">"black"</span> fill=<span class="string">"transparent"</span>/&gt;</div><div class="line"><span class="comment">// 画圆 A rx ry x-axis-rotation large-arc-flag sweep-flag x y 优弧1 劣弧0 顺时针1 逆时针0 </span></div><div class="line">&lt;path d=<span class="string">"M100,100 A50,50 0 1,1 150,150 Z"</span> fill=<span class="string">"yellow"</span>/&gt;</div></pre></td></tr></table></figure></p>
+<p>好了基本情况也就是这样</p>
+<h3>2.通过svg动画 签名</h3>
+<p><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;svg width="580" height="400" xmlns="http://www.w3.org/2000/svg"&gt;</div><div class="line"> &lt;!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ --&gt;</div><div class="line"> &lt;<span class="selector-tag">g</span>&gt;</div><div class="line">  &lt;title&gt;background&lt;/title&gt;</div><div class="line">  &lt;rect fill="#fff" id="canvas_background" height="402" width="582" y="-1" x="-1"/&gt;</div><div class="line">  &lt;g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid"&gt;</div><div class="line">   &lt;rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/&gt;</div><div class="line">  &lt;/g&gt;</div><div class="line"> &lt;/g&gt;</div><div class="line"> &lt;<span class="selector-tag">g</span>&gt;</div><div class="line">  &lt;title&gt;Layer 1&lt;/title&gt;</div><div class="line">  &lt;path d="m168.5,30c0,-1 0.96384,-1.11587 4,-2c3.95868,-1.15277 9.04495,-0.2669 15,-1c4.09221,-0.50377 9.01257,-0.64556 4,18c1.70151,10.91351 1,24 " id="svg_1" stroke-width="1.5" stroke="#000" fill="none"/&gt;</div><div class="line"> &lt;/g&gt;</div><div class="line">&lt;/svg&gt;</div><div class="line"></div><div class="line"><span class="selector-tag">path</span> &#123;</div><div class="line">  <span class="attribute">stroke-dasharray</span>: <span class="number">3000</span>;</div><div class="line">  <span class="attribute">stroke-dashoffset</span>: <span class="number">3000</span>;</div><div class="line">  <span class="attribute">-webkit-animation</span>: dash <span class="number">5s</span> linear infinite;</div><div class="line">  <span class="attribute">animation</span>: dash <span class="number">5s</span> linear infinite;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上述就是通过stroke-dashoffset来设置的动画 需要预先算出path路径长度, 下面会介绍</p>
+<h3>3.利用svg实现添加购物车动画</h3>
+<p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 配置位移矢量 一共走200步  步数越多越细致</span></div><div class="line"><span class="keyword">var</span> STEP = <span class="number">100</span>;</div><div class="line"><span class="keyword">var</span> curStep = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="keyword">var</span> path = $(<span class="string">'#path'</span>)[<span class="number">0</span>];</div><div class="line"><span class="keyword">var</span> $car = $(<span class="string">'#car'</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> timer = <span class="literal">null</span>;</div><div class="line"><span class="comment">// 最重要的两个属性  获取长度，以及每个点的坐标</span></div><div class="line"><span class="keyword">var</span> totalLength = path.getTotalLength();</div><div class="line"><span class="keyword">var</span> initPosition = path.getPointAtLength(<span class="number">0</span>);</div><div class="line"><span class="keyword">var</span> prePosition = initPosition;</div><div class="line"><span class="keyword">var</span> curPosition = initPosition;</div><div class="line"></div><div class="line"><span class="comment">// 获取前进切线角度</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getRotate</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> k = (b.y - a.y) / (b.x - a.x);</div><div class="line">  <span class="keyword">var</span> rotate = <span class="built_in">Math</span>.atan(k) * <span class="number">180</span> / <span class="built_in">Math</span>.PI;</div><div class="line">  <span class="keyword">return</span> k &lt; <span class="number">0</span> ? rotate + <span class="number">90</span> : rotate - <span class="number">90</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 定位car </span></div><div class="line">$car.css(&#123;</div><div class="line">  left: initPosition.x,</div><div class="line">  top: initPosition.y,</div><div class="line">  <span class="string">'-webkit-transform'</span>: <span class="string">'translate(-2px, 0) rotate('</span> + getRotate(curPosition , path.getPointAtLength(<span class="number">1</span>)) +<span class="string">'deg)'</span></div><div class="line">&#125;).show()</div><div class="line"></div><div class="line"><span class="comment">// 定时器控制前进</span></div><div class="line">timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (curStep != STEP) &#123;</div><div class="line">    curStep++;</div><div class="line">    </div><div class="line">    curPosition = path.getPointAtLength(totalLength/STEP * curStep);</div><div class="line">   </div><div class="line">    $car.css(&#123;</div><div class="line">      left: curPosition.x,</div><div class="line">      top:curPosition.y,</div><div class="line">     <span class="string">'-webkit-transform'</span>: <span class="string">'translate(-2px, 0) rotate('</span>+getRotate(prePosition, curPosition)+<span class="string">'deg)'</span></div><div class="line">    &#125;).show();</div><div class="line">    prePosition = curPosition;</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    clearInterval(timer);</div><div class="line">  &#125; </div><div class="line">&#125;, <span class="number">1000</span>/<span class="number">60</span>)</div></pre></td></tr></table></figure></p>
+<p>上述getTotalLength  getPointAtLength 2个api需要注意</p>
+<p>###4. react-native art使用
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;ART&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"><span class="keyword">const</span> &#123;</div><div class="line">  Surface,</div><div class="line">  Group,</div><div class="line">  Shape,</div><div class="line">  Path,</div><div class="line">  Transform</div><div class="line">&#125; = ART;</div><div class="line"></div><div class="line"><span class="comment">// 绘制ART图像</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">drawVector</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> (</div><div class="line">    &lt;Surface width=&#123;<span class="number">300</span>&#125; height=&#123;<span class="number">400</span>&#125;&gt;</div><div class="line">      &lt;Group x=&#123;<span class="number">0</span>&#125; y=&#123;<span class="number">0</span>&#125;&gt;</div><div class="line">        &lt;Shape</div><div class="line">          scale=&#123;<span class="number">1.0</span>&#125;</div><div class="line">          stroke=&#123;<span class="string">"#ff0"</span>&#125;</div><div class="line">          strokeWidth=&#123;<span class="number">4</span>&#125;</div><div class="line">          d=&#123;generateSvgPath()&#125;</div><div class="line">          transform=&#123;<span class="keyword">new</span> Transform().translate(<span class="number">150</span>, <span class="number">150</span>).rotate(<span class="number">30</span>, <span class="number">100</span>, <span class="number">100</span>).scale(<span class="number">3</span>, <span class="number">2</span>)&#125;</div><div class="line">        /&gt;</div><div class="line">      &lt;<span class="regexp">/Group&gt;</span></div><div class="line"><span class="regexp">    &lt;/</span>Surface&gt;</div><div class="line">  );</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上述shape里面的d和svg path里面的d一样</p>
+<p>###4.做一个动画效果
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;ART, Animated&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div><div class="line"><span class="keyword">const</span> &#123;Shape, Group&#125; = ART;</div><div class="line"><span class="keyword">const</span> AnimatedShape = Animated.createAnimatedComponent(Shape);</div><div class="line"><span class="keyword">const</span> AnimatedGroup = Animated.createAnimatedComponent(Group);</div><div class="line"><span class="comment">// 一颗星星的SVG代码</span></div><div class="line"><span class="keyword">const</span> STAR = <span class="string">'M 0.000 10.000 L 11.756 16.180 L 9.511 3.090 L 19.021 -6.180 L 5.878 -8.090 L 0.000 -20.000 L -5.878 -8.090 L -19.021 -6.180 L -9.511 3.090 L -11.756 16.180 L 0.000 10.000'</span></div><div class="line"></div><div class="line"><span class="comment">// 某组件中...</span></div><div class="line"><span class="keyword">constructor</span> (props) &#123;</div><div class="line">  <span class="keyword">super</span>(props);</div><div class="line">  <span class="keyword">this</span>.state = &#123;</div><div class="line">    <span class="comment">// 设定Animated.Value初值</span></div><div class="line">    value: <span class="keyword">new</span> Animated.Value(<span class="number">0</span>)</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">this</span>.infiniteAnimate = <span class="keyword">this</span>.infiniteAnimate.bind(<span class="keyword">this</span>);</div><div class="line">&#125;</div><div class="line">componentDidMount () &#123;</div><div class="line">  <span class="keyword">this</span>.infiniteAnimate();</div><div class="line">&#125;</div><div class="line"><span class="comment">// 无限循环动画</span></div><div class="line">infiniteAnimate () &#123;</div><div class="line">  Animated.timing(<span class="keyword">this</span>.state.value, &#123;</div><div class="line">    duration: <span class="number">1000</span>,</div><div class="line">    toValue: <span class="number">1</span></div><div class="line">  &#125;).start(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    Animated.timing(<span class="keyword">this</span>.state.value, &#123;</div><div class="line">      duration: <span class="number">2000</span>,</div><div class="line">      toValue: <span class="number">0</span></div><div class="line">    &#125;).start(<span class="keyword">this</span>.infiniteAnimate);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line">render () &#123;</div><div class="line">  <span class="comment">// 不断缩小放大的星星</span></div><div class="line">  <span class="keyword">return</span> (</div><div class="line">    &lt;View&gt;</div><div class="line">      &lt;Surface width=&#123;width&#125; height=&#123;height&#125;&gt;</div><div class="line">        &lt;AnimatedShape</div><div class="line">          d=&#123;STAR&#125;</div><div class="line">          x=&#123;<span class="number">30</span>&#125;</div><div class="line">          y=&#123;<span class="number">30</span>&#125;</div><div class="line">          fill=&#123;<span class="string">"#280"</span>&#125;</div><div class="line">          scale=&#123;<span class="keyword">this</span>.state.value&#125;</div><div class="line">        /&gt;</div><div class="line">      &lt;<span class="regexp">/Surface&gt;</span></div><div class="line"><span class="regexp">    &lt;/</span>View&gt;</div><div class="line">  );</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>更多内容请参考 https://github.com/xu-duqing/React-Native-ART-Sample。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/20/custom-html-element/" class="archive-article-date">
-  	<time datetime="2019-02-20T14:21:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/20/custom-html-element/">custom-html-element</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://wcnmb.com/2019/04/27/svg-learning/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/11/react-native-animation/" class="archive-article-date">
-  	<time datetime="2019-02-11T12:27:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/21/april-learning/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">april-learning</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/11/react-native-animation/">react-native-animation</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/09/react-appolo-graphql/" class="archive-article-date">
-  	<time datetime="2019-02-09T13:46:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/09/react-appolo-graphql/">react-appolo-graphql</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/03/entry-apollo-graphql/" class="archive-article-date">
-  	<time datetime="2019-02-03T05:40:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/03/entry-apollo-graphql/">entry-apollo-graphql</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/30/custom-player/" class="archive-article-date">
-  	<time datetime="2019-01-30T12:20:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/30/custom-player/">custom-player</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/24/canvas-magic/" class="archive-article-date">
-  	<time datetime="2019-01-24T13:03:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/24/canvas-magic/">canvas-magic</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/19/java-react-socket/" class="archive-article-date">
-  	<time datetime="2019-01-19T06:02:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/19/java-react-socket/">java-react-socket</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/01/05/proxy-pro/" class="archive-article-date">
-  	<time datetime="2019-01-05T11:50:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/01/05/proxy-pro/">proxy-pro</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/">&laquo; Prev</a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -411,8 +343,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
