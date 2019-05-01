@@ -155,6 +155,81 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-vue-register-component" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/12/vue-register-component/">vue-register-component</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/12/vue-register-component/" class="archive-article-date">
+  	<time datetime="2018-12-12T12:29:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3>不用import在页面中引入component</h3>
+<p>1.来看下是如何做到的
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> requireComponent = <span class="built_in">require</span>.context(<span class="string">"./"</span>, <span class="literal">true</span>, /.vue$/); <span class="comment">// 递归获取当前目录下的vue文件</span></div></pre></td></tr></table></figure></p>
+<p>上述是webpack里面一个很重要的api
+2.接下来遍历处理这些vue
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">requireComponent.keys().forEach(<span class="function"><span class="params">filePath</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">const</span> componentConfig = requireComponent(filePath);</div><div class="line">    <span class="built_in">console</span>.log(componentConfig);</div><div class="line">    <span class="keyword">const</span> fileName = validateFileName(filePath);</div><div class="line">    <span class="built_in">console</span>.log(fileName);</div><div class="line">    <span class="keyword">const</span> componentName =</div><div class="line">        fileName.toLowerCase() === <span class="string">"index"</span></div><div class="line">        ? capitalizeFirstLetter(componentConfig.default.name)</div><div class="line">        : fileName;</div><div class="line">    Vue.component(componentName, componentConfig.default || componentConfig);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>3.可以去看每一个vue文件的componentConfig打印的是什么, 不难看出这就是全局注册组件而已
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">capitalizeFirstLetter</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> str.charAt(<span class="number">0</span>).toUpperCase() + str.slice(<span class="number">1</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">validateFileName</span>(<span class="params">str</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> str.replace(<span class="regexp">/\.\/([^\d]*)\.vue/</span>, <span class="function"><span class="keyword">function</span>(<span class="params">rs, $<span class="number">1</span></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> capitalizeFirstLetter(</div><div class="line">      $<span class="number">1.</span>indexOf(<span class="string">"/"</span>) != <span class="number">-1</span> ? $<span class="number">1.</span>split(<span class="string">"/"</span>)[$<span class="number">1.</span>split(<span class="string">"/"</span>).length - <span class="number">1</span>] : $<span class="number">1</span></div><div class="line">    );</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>利用正则将文件名提取出来, 按照组件命名规则首字母大写。</p>
+<p>最后在给大家一个小技巧
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">resolve: &#123;</div><div class="line">   extensions: [<span class="string">'.js'</span>, <span class="string">'.vue'</span>, <span class="string">'.json'</span>],</div><div class="line">   alias: &#123;</div><div class="line">     <span class="string">'vue$'</span>: <span class="string">'vue/dist/vue.esm.js'</span>,</div><div class="line">     <span class="string">'@'</span>: resolve(<span class="string">'src'</span>),</div><div class="line">   &#125;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p>在webpack文件中这样配置, 在项目中使用import时不用考虑相对路劲, 此时@代表的就是项目的src目录。
+@/common/test = /src/common/test 适用于extensions数组的文件种类。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/12/vue-register-component/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-private-javasvript" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -873,85 +948,9 @@ initialRouteName: 'Index'将其呈现出来。</p>
 
 
   
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/14/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/14/hello-world/" class="archive-article-date">
-  	<time datetime="2017-08-14T12:25:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2>Quick Start</h2>
-<h3>Create a new post</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3>Run server</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3>Generate static files</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3>Deploy to remote sites</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure></p>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/14/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
