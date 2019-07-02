@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wcnmb.com">
-  <title>Archives: 2019 | miracle的博客</title>
+  <title>react-graqhql-client | miracle的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="miracle的博客">
-<meta property="og:url" content="http://wcnmb.com/archives/2019/page/2/index.html">
+  <meta name="description" content="准备去新公司入职了, 祝贺我吧, 希望一切都顺利... 1.今天就不长篇大论了, 讲一下Apollo在客户端的运用 1234567891011121314151617181920212223242526import &amp;#123; InMemoryCache &amp;#125; from &apos;apollo-cache-inmemory&apos;import &amp;#123; withClientState &amp;#125;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-graqhql-client">
+<meta property="og:url" content="http://wcnmb.com/2019/07/02/react-graqhql-client/index.html">
 <meta property="og:site_name" content="miracle的博客">
+<meta property="og:description" content="准备去新公司入职了, 祝贺我吧, 希望一切都顺利... 1.今天就不长篇大论了, 讲一下Apollo在客户端的运用 1234567891011121314151617181920212223242526import &amp;#123; InMemoryCache &amp;#125; from &apos;apollo-cache-inmemory&apos;import &amp;#123; withClientState &amp;#125;">
+<meta property="og:updated_time" content="2019-07-02T13:55:55.296Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="miracle的博客">
+<meta name="twitter:title" content="react-graqhql-client">
+<meta name="twitter:description" content="准备去新公司入职了, 祝贺我吧, 希望一切都顺利... 1.今天就不长篇大论了, 讲一下Apollo在客户端的运用 1234567891011121314151617181920212223242526import &amp;#123; InMemoryCache &amp;#125; from &apos;apollo-cache-inmemory&apos;import &amp;#123; withClientState &amp;#125;">
   
     <link rel="alternative" href="/atom.xml" title="miracle的博客" type="application/atom+xml">
   
@@ -153,295 +157,162 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-react-graqhql-client" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      react-graqhql-client
+    </h1>
+  
+
+        
+        <a href="/2019/07/02/react-graqhql-client/" class="archive-article-date">
+  	<time datetime="2019-07-02T03:31:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-02</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3>准备去新公司入职了, 祝贺我吧, 希望一切都顺利...</h3>
+<p>1.今天就不长篇大论了, 讲一下Apollo在客户端的运用
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; InMemoryCache &#125; <span class="keyword">from</span> <span class="string">'apollo-cache-inmemory'</span></div><div class="line"><span class="keyword">import</span> &#123; withClientState &#125; <span class="keyword">from</span> <span class="string">'apollo-link-state'</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> cache = <span class="keyword">new</span> InMemoryCache(); </div><div class="line"></div><div class="line"><span class="comment">//   link: new HttpLink(&#123; uri: 'http://localhost:4000/graphql' &#125;) 这个是连接服务端</span></div><div class="line"><span class="keyword">const</span> client = <span class="keyword">new</span> ApolloClient(&#123;</div><div class="line">     cache,</div><div class="line">     link: withClientState(&#123; resolvers, <span class="attr">defaults</span>: &#123;</div><div class="line">        counter: <span class="number">440</span>,</div><div class="line">        todos: [</div><div class="line">            &#123;</div><div class="line">                completed: <span class="literal">false</span>,</div><div class="line">                id: <span class="number">0</span>,</div><div class="line">                text: <span class="string">"dddd"</span>,</div><div class="line">                __typename: <span class="string">"TodoItem"</span></div><div class="line">            &#125;,</div><div class="line">            &#123;</div><div class="line">                completed: <span class="literal">false</span>,</div><div class="line">                id: <span class="number">1</span>,</div><div class="line">                text: <span class="string">"eeee"</span>,</div><div class="line">                __typename: <span class="string">"TodoItem"</span></div><div class="line">            &#125;</div><div class="line">        ]</div><div class="line">     &#125;, cache, typeDefs &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>2.其实一看也明白, 只不过是把数据放在了客户端 下面是resolver
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> gql <span class="keyword">from</span> <span class="string">'graphql-tag'</span>;</div><div class="line"><span class="comment">// typeDefs</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> typeDefs = <span class="string">`</span></div><div class="line"><span class="string">  type Todo &#123;</span></div><div class="line"><span class="string">    id: Int!</span></div><div class="line"><span class="string">    text: String!</span></div><div class="line"><span class="string">    completed: Boolean!</span></div><div class="line"><span class="string">  &#125;</span></div><div class="line"><span class="string">  type Query &#123;</span></div><div class="line"><span class="string">    counter: Int</span></div><div class="line"><span class="string">    todos: [Todo]</span></div><div class="line"><span class="string">    todo(name: String!): Todo</span></div><div class="line"><span class="string">  &#125;</span></div><div class="line"><span class="string">  type Mutation &#123;</span></div><div class="line"><span class="string">    addTodo(text: String!): Todo</span></div><div class="line"><span class="string">    decrementCounter(unused: Boolean): Int</span></div><div class="line"><span class="string">    incrementCounter(unused: Boolean): Int</span></div><div class="line"><span class="string">    toggleTodo(id: Int!): Todo</span></div><div class="line"><span class="string">  &#125;</span></div><div class="line"><span class="string">`</span>;</div><div class="line"></div><div class="line"><span class="comment">// 这里需要把 @client 加上去</span></div><div class="line"><span class="keyword">const</span> query = gql<span class="string">`</span></div><div class="line"><span class="string">&#123;</span></div><div class="line"><span class="string">      counter @client</span></div><div class="line"><span class="string">&#125;</span></div><div class="line"><span class="string">`</span></div><div class="line"></div><div class="line"><span class="keyword">let</span> nextTodoId = <span class="number">2</span>;</div><div class="line"></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">    Query: &#123;</div><div class="line">        todo: <span class="function">(<span class="params">_, &#123;name&#125;, &#123;cache&#125;</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">const</span> query = gql<span class="string">`</span></div><div class="line"><span class="string">                  query GetToDos &#123;</span></div><div class="line"><span class="string">                      todos @client &#123;</span></div><div class="line"><span class="string">                          id</span></div><div class="line"><span class="string">                          text</span></div><div class="line"><span class="string">                          completed</span></div><div class="line"><span class="string">                      &#125;</span></div><div class="line"><span class="string">                  &#125;</span></div><div class="line"><span class="string">            `</span></div><div class="line">            <span class="keyword">const</span> &#123; todos &#125; = cache.readQuery(&#123;query&#125;);</div><div class="line">            <span class="keyword">return</span> todos.filter(<span class="function"><span class="params">item</span> =&gt;</span> item.text == name)[<span class="number">0</span>]</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="comment">// 只会用到前三个参数  需要知道分别代表什么</span></div><div class="line">    Mutation: &#123;</div><div class="line">        addTodo: <span class="function">(<span class="params">_, &#123;text&#125;, &#123;cache&#125;</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">const</span> query = gql<span class="string">`</span></div><div class="line"><span class="string">                  query GetToDos &#123;</span></div><div class="line"><span class="string">                      todos @client &#123;</span></div><div class="line"><span class="string">                          id</span></div><div class="line"><span class="string">                          text</span></div><div class="line"><span class="string">                          completed</span></div><div class="line"><span class="string">                      &#125;</span></div><div class="line"><span class="string">                  &#125;</span></div><div class="line"><span class="string">            `</span></div><div class="line">            <span class="keyword">const</span> previous = cache.readQuery(&#123;query&#125;);</div><div class="line">            <span class="keyword">const</span> newTodo = &#123;</div><div class="line">                id: nextTodoId++,</div><div class="line">                text,</div><div class="line">                completed: <span class="literal">false</span>,</div><div class="line">                __typename: <span class="string">'TodoItem'</span>,</div><div class="line">            &#125;;</div><div class="line">            <span class="keyword">const</span> data = &#123;</div><div class="line">                todos: previous.todos.concat([newTodo]),</div><div class="line">            &#125;;</div><div class="line">            cache.writeData(&#123; data &#125;);</div><div class="line">            <span class="keyword">return</span> newTodo;</div><div class="line">        &#125;,</div><div class="line">        decrementCounter: <span class="function">(<span class="params">_, params, &#123;cache&#125;</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">const</span> &#123; counter &#125; = cache.readQuery(&#123; query &#125;);</div><div class="line">            <span class="keyword">const</span> nextCounter = counter - <span class="number">1</span>;</div><div class="line">            <span class="keyword">const</span> data = &#123;</div><div class="line">                counter: nextCounter,</div><div class="line">            &#125;;</div><div class="line">            cache.writeData(&#123; data &#125;);</div><div class="line">            <span class="keyword">return</span> nextCounter;</div><div class="line">        &#125;,</div><div class="line">        incrementCounter: <span class="function">(<span class="params">_, params, &#123; cache &#125;</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">const</span> &#123; counter &#125; = cache.readQuery(&#123; query &#125;);</div><div class="line">            <span class="keyword">const</span> nextCounter = counter + <span class="number">1</span>;</div><div class="line">            <span class="keyword">const</span> data = &#123;</div><div class="line">                counter: nextCounter,</div><div class="line">            &#125;;</div><div class="line">            cache.writeData(&#123; data &#125;);</div><div class="line">            <span class="keyword">return</span> nextCounter;</div><div class="line">        &#125;,</div><div class="line">        toggleTodo: <span class="function">(<span class="params">_, variables, &#123; cache &#125;</span>) =&gt;</span> &#123;</div><div class="line">            <span class="keyword">const</span> id = <span class="string">`TodoItem:<span class="subst">$&#123;variables.id&#125;</span>`</span>;</div><div class="line">            <span class="keyword">const</span> fragment = gql<span class="string">`</span></div><div class="line"><span class="string">                fragment completeTodo on TodoItem &#123;</span></div><div class="line"><span class="string">                    completed</span></div><div class="line"><span class="string">                &#125;</span></div><div class="line"><span class="string">            `</span>;</div><div class="line">            <span class="keyword">const</span> todo = cache.readFragment(&#123; fragment, id &#125;);</div><div class="line">            <span class="keyword">const</span> data = &#123; ...todo, <span class="attr">completed</span>: !todo.completed &#125;;</div><div class="line">            cache.writeData(&#123; id, data &#125;);</div><div class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>3.看完了数据的处理, 再来看看在react中如何使用
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 再说一次 要加@client</span></div><div class="line"><span class="keyword">const</span> GET_TODOS = gql<span class="string">`</span></div><div class="line"><span class="string">  &#123;</span></div><div class="line"><span class="string">    todos @client &#123;</span></div><div class="line"><span class="string">      id</span></div><div class="line"><span class="string">      completed</span></div><div class="line"><span class="string">      text</span></div><div class="line"><span class="string">    &#125;</span></div><div class="line"><span class="string">  &#125;</span></div><div class="line"><span class="string">`</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> Todos =  <span class="function"><span class="params">()</span> =&gt;</span> (</div><div class="line">  &lt;Query query=&#123;GET_TODOS&#125;&gt;</div><div class="line">    &#123;(&#123; <span class="attr">data</span>: &#123; todos &#125; &#125;) =&gt; &#123;</div><div class="line">        <span class="built_in">console</span>.log(todos);</div><div class="line">        <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">TodosView</span> <span class="attr">todos</span>=<span class="string">&#123;todos&#125;</span> /&gt;</span></span></div><div class="line"><span class="xml">    &#125;&#125;</span></div><div class="line"><span class="xml">  <span class="tag">&lt;/<span class="name">Query</span>&gt;</span></span></div><div class="line">)</div><div class="line"></div><div class="line"><span class="keyword">const</span> TodosView = <span class="function">(<span class="params">&#123; todos &#125;</span>) =&gt;</span> (</div><div class="line">  &lt;div&gt;</div><div class="line">    &#123;todos.map(<span class="function"><span class="params">todo</span> =&gt;</span> (</div><div class="line">      &lt;TodoItem</div><div class="line">        completed=&#123;todo.completed&#125;</div><div class="line">        id=&#123;todo.id&#125; </div><div class="line">        key=&#123;todo.id&#125;</div><div class="line">        text=&#123;todo.text&#125;</div><div class="line">      /&gt;</div><div class="line">    ))&#125;</div><div class="line">  &lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp">)</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">const TOGGLE_TODO = gql`</span></div><div class="line"><span class="regexp">  mutation ToggleTodo($id: Int!) &#123;</span></div><div class="line"><span class="regexp">    toggleTodo(id: $id) @client</span></div><div class="line"><span class="regexp">  &#125;</span></div><div class="line"><span class="regexp">`;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">const TodoItem = (&#123; completed, id, text &#125;) =&gt; (</span></div><div class="line"><span class="regexp">  &lt;Mutation mutation=&#123;TOGGLE_TODO&#125; variables=&#123;&#123; id &#125;&#125;&gt;</span></div><div class="line"><span class="regexp">    &#123;toggleTodo =&gt; (</span></div><div class="line"><span class="regexp">      &lt;TodoView</span></div><div class="line"><span class="regexp">        completed=&#123;completed&#125;</span></div><div class="line"><span class="regexp">        text=&#123;text&#125;</span></div><div class="line"><span class="regexp">        onClick=&#123;toggleTodo&#125;</span></div><div class="line"><span class="regexp">      /</span>&gt;</div><div class="line">    )&#125;</div><div class="line">  &lt;<span class="regexp">/Mutation&gt;</span></div><div class="line"><span class="regexp">);</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">const GET_TODO = gql`</span></div><div class="line"><span class="regexp">    query getTodo($name: String!) &#123;</span></div><div class="line"><span class="regexp">        todo(name: $name) @client &#123;</span></div><div class="line"><span class="regexp">            text</span></div><div class="line"><span class="regexp">            completed</span></div><div class="line"><span class="regexp">        &#125;</span></div><div class="line"><span class="regexp">    &#125;</span></div><div class="line"><span class="regexp">`</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">&lt;Query query=&#123;GET_TODO&#125; variables=&#123;&#123; name: this.state.name&#125;&#125;&gt;</span></div><div class="line"><span class="regexp">                   &#123;(&#123; data:&#123; todo &#125; &#125;) =&gt; &lt;TODO todo=&#123;todo&#125;/</span>&gt;&#125;</div><div class="line">&lt;<span class="regexp">/Query&gt;</span></div></pre></td></tr></table></figure></p>
+<p>差不多就这么多了把。。。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/16/node-mongoose-ts/" class="archive-article-date">
-  	<time datetime="2019-04-16T12:10:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/16/node-mongoose-ts/">node-mongoose-ts</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://wcnmb.com/2019/07/02/react-graqhql-client/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/13/react-native-custom-module/" class="archive-article-date">
-  	<time datetime="2019-04-13T06:51:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/06/23/react-web-summary/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">react-web-summary</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/13/react-native-custom-module/">react-native-custom-module</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/22/react-native-tabview/" class="archive-article-date">
-  	<time datetime="2019-03-22T13:25:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/22/react-native-tabview/">react-native-tabview</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/16/react-native-webview/" class="archive-article-date">
-  	<time datetime="2019-03-16T12:06:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/16/react-native-webview/">react-native-webview</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/05/redux-saga-info/" class="archive-article-date">
-  	<time datetime="2019-03-05T11:34:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/05/redux-saga-info/">redux-saga-info</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/03/java-synchronized-test/" class="archive-article-date">
-  	<time datetime="2019-03-03T06:58:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/03/java-synchronized-test/">java-synchronized-test</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/26/react-native-comprehensive-motion/" class="archive-article-date">
-  	<time datetime="2019-02-26T13:25:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/26/react-native-comprehensive-motion/">react-native-comprehensive-motion</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/24/react-native-gesture/" class="archive-article-date">
-  	<time datetime="2019-02-24T05:16:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/24/react-native-gesture/">react-native-gesture</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/20/custom-html-element/" class="archive-article-date">
-  	<time datetime="2019-02-20T14:21:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/20/custom-html-element/">custom-html-element</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/11/react-native-animation/" class="archive-article-date">
-  	<time datetime="2019-02-11T12:27:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/11/react-native-animation/">react-native-animation</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2019/">&laquo; Prev</a><a class="page-number" href="/archives/2019/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2019/page/3/">3</a><a class="extend next" rel="next" href="/archives/2019/page/3/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -465,8 +336,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
