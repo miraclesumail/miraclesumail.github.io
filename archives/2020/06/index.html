@@ -6,18 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wcnmb.com">
-  <title>java-synchronized-test | miracle的博客</title>
+  <title>Archives: 2020/6 | miracle的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这个星期彻底弄明白了一件事, 是关于java的... 1.先来看下多线程 1234567891011121314151617181920212223242526272829303132public class DisplayMessage implements Runnable &amp;#123;    private String message;    public DisplayMessage(S">
-<meta property="og:type" content="article">
-<meta property="og:title" content="java-synchronized-test">
-<meta property="og:url" content="http://wcnmb.com/2019/03/03/java-synchronized-test/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="miracle的博客">
+<meta property="og:url" content="http://wcnmb.com/archives/2020/06/index.html">
 <meta property="og:site_name" content="miracle的博客">
-<meta property="og:description" content="这个星期彻底弄明白了一件事, 是关于java的... 1.先来看下多线程 1234567891011121314151617181920212223242526272829303132public class DisplayMessage implements Runnable &amp;#123;    private String message;    public DisplayMessage(S">
-<meta property="og:updated_time" content="2019-03-03T07:49:13.599Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java-synchronized-test">
-<meta name="twitter:description" content="这个星期彻底弄明白了一件事, 是关于java的... 1.先来看下多线程 1234567891011121314151617181920212223242526272829303132public class DisplayMessage implements Runnable &amp;#123;    private String message;    public DisplayMessage(S">
+<meta name="twitter:title" content="miracle的博客">
   
     <link rel="alternative" href="/atom.xml" title="miracle的博客" type="application/atom+xml">
   
@@ -157,188 +153,49 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-java-synchronized-test" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      java-synchronized-test
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/06/05/webpack-advance-concepts/" class="archive-article-date">
+  	<time datetime="2020-06-05T08:11:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-05</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/06/05/webpack-advance-concepts/">webpack-advance-concepts</a>
     </h1>
   
 
-        
-        <a href="/2019/03/03/java-synchronized-test/" class="archive-article-date">
-  	<time datetime="2019-03-03T06:58:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3>这个星期彻底弄明白了一件事, 是关于java的...</h3>
-<p>1.先来看下多线程
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DisplayMessage</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String message;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">DisplayMessage</span><span class="params">(String message)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.message = message;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">while</span>(<span class="keyword">true</span>) &#123;</div><div class="line">            System.out.println(message);</div><div class="line">            System.out.println(Thread.currentThread().getName());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GuessANumber</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">int</span> number;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">GuessANumber</span><span class="params">(<span class="keyword">int</span> number)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.number = number;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> counter = <span class="number">0</span>;</div><div class="line">        <span class="keyword">int</span> guess = <span class="number">0</span>;</div><div class="line">        <span class="keyword">do</span> &#123;</div><div class="line">            guess = (<span class="keyword">int</span>) (Math.random() * <span class="number">100</span> + <span class="number">1</span>);</div><div class="line">            System.out.println(<span class="keyword">this</span>.getName() + <span class="string">" guesses "</span> + guess);</div><div class="line">            counter++;</div><div class="line">        &#125; <span class="keyword">while</span>(guess != number);</div><div class="line">        System.out.println(<span class="string">"** Correct!"</span> + <span class="keyword">this</span>.getName() + <span class="string">"in"</span> + counter + <span class="string">"guesses.**"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>以上是实现多线程的2种方式, 区别是用runnable可以去再集成一个其他类.</p>
-<p>2.静态测试
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ThreadClassDemo</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span> </span>&#123;</div><div class="line">        System.out.println(<span class="string">"Starting thread3..."</span>);</div><div class="line">        Thread thread3 = <span class="keyword">new</span> GuessANumber(<span class="number">27</span>);</div><div class="line">        thread3.start();</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="comment">//此操作  强制占据主动权  只有带该线程完毕后才会执行下面的线程</span></div><div class="line">            <span class="comment">//强制占据100ms 100ms后该线程任务未完成  直接进入下一个线程 可以看出每次计算次数也不一样</span></div><div class="line">            thread3.join(<span class="number">100</span>);</div><div class="line">        &#125;<span class="keyword">catch</span>(InterruptedException e) &#123;</div><div class="line">            System.out.println(<span class="string">"Thread interrupted."</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 下面2个线程都用了while 需要设置守护线程不然停不下来。。。</span></div><div class="line">        Runnable hello = <span class="keyword">new</span> DisplayMessage(<span class="string">"Hello"</span>);</div><div class="line">        Thread thread1 = <span class="keyword">new</span> Thread(hello);</div><div class="line">        thread1.setDaemon(<span class="keyword">true</span>);</div><div class="line">        thread1.setName(<span class="string">"hello"</span>);</div><div class="line">        System.out.println(<span class="string">"Starting hello thread..."</span>);</div><div class="line">        thread1.start();</div><div class="line"></div><div class="line">        Runnable bye = <span class="keyword">new</span> DisplayMessage(<span class="string">"Goodbye"</span>);</div><div class="line">        Thread thread2 = <span class="keyword">new</span> Thread(bye);</div><div class="line">        <span class="comment">//thread2.setPriority(Thread.MIN_PRIORITY);</span></div><div class="line">        thread2.setDaemon(<span class="keyword">true</span>);</div><div class="line">        System.out.println(<span class="string">"Starting goodbye thread..."</span>);</div><div class="line">        thread2.start();</div><div class="line"></div><div class="line"></div><div class="line">        System.out.println(<span class="string">"Starting thread4..."</span>);</div><div class="line">        Thread thread4 = <span class="keyword">new</span> GuessANumber(<span class="number">75</span>);</div><div class="line">        <span class="comment">//thread4.setDaemon(true);</span></div><div class="line">        thread4.start();</div><div class="line">        System.out.println(<span class="string">"main() is ending..."</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>上述有四个线程, 输出结果应该是杂乱无章的, thread3实行了强制禁令, join...
-一个进程只有等待其所有非守护线程结束才能终止, 这也是为什么2个while的进程需要setDaemon(true)。</p>
-<p>3.言归正传, 这次的课程的是synchronized,会通过几个例子说明。
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SyncThread</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">        String threadName = Thread.currentThread().getName();</div><div class="line">        <span class="keyword">if</span> (threadName.startsWith(<span class="string">"A"</span>)) &#123;</div><div class="line">            async();</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (threadName.startsWith(<span class="string">"B"</span>)) &#123;</div><div class="line">            sync1();</div><div class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (threadName.startsWith(<span class="string">"C"</span>)) &#123;</div><div class="line">            sync2();</div><div class="line">        &#125; </div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * 方法中有 synchronized(this|object) &#123;&#125; 同步代码块</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">sync1</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">synchronized</span>(SyncThread.<span class="keyword">this</span>) &#123;</div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"_Sync1: "</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">"HH:mm:ss"</span>).format(<span class="keyword">new</span> Date()));</div><div class="line"></div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">"_Sync1_Start: "</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">"HH:mm:ss"</span>).format(<span class="keyword">new</span> Date()));</div><div class="line">                Thread.sleep(<span class="number">2000</span>);</div><div class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">"_Sync1_End: "</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">"HH:mm:ss"</span>).format(<span class="keyword">new</span> Date()));</div><div class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * synchronized 修饰非静态方法</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">sync2</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">"_Sync2: "</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">"HH:mm:ss"</span>).format(<span class="keyword">new</span> Date()));</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"_Sync2_Start: "</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">"HH:mm:ss"</span>).format(<span class="keyword">new</span> Date()));</div><div class="line">            Thread.sleep(<span class="number">2000</span>);</div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"_Sync2_End: "</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">"HH:mm:ss"</span>).format(<span class="keyword">new</span> Date()));</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</div><div class="line">            SyncThread syncThread = <span class="keyword">new</span> SyncThread();</div><div class="line">            Thread B_thread1 = <span class="keyword">new</span> Thread(syncThread, <span class="string">"B_thread1"</span>);</div><div class="line">            Thread B_thread2 = <span class="keyword">new</span> Thread(syncThread, <span class="string">"B_thread2"</span>);</div><div class="line">            Thread C_thread1 = <span class="keyword">new</span> Thread(syncThread, <span class="string">"C_thread1"</span>);</div><div class="line">            Thread C_thread2 = <span class="keyword">new</span> Thread(syncThread, <span class="string">"C_thread2"</span>);</div><div class="line"></div><div class="line">            B_thread1.start();</div><div class="line">            B_thread2.start();</div><div class="line">            C_thread1.start();</div><div class="line">            C_thread2.start();</div><div class="line">        &#125;</div><div class="line">        <span class="comment">//上述同步的是同一个对象 所有必须等待上一个执行完</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>上述展示了2种同步代码块的写法, 猜猜输出结果吧
-B_thread1  B_thread1_Sync2_Start B_thread1_Sync2_End
-需要注意的是上一个锁定对象执行的方法需要等下一个执行完才行。</p>
-<p>4.咱们改改代码
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</div><div class="line">     Thread B_thread1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> SyncThread(), <span class="string">"B_thread1"</span>);</div><div class="line">     Thread B_thread2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> SyncThread(), <span class="string">"B_thread2"</span>);</div><div class="line">     Thread C_thread1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> SyncThread(), <span class="string">"C_thread1"</span>);</div><div class="line">     Thread C_thread2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> SyncThread(), <span class="string">"C_thread2"</span>);</div><div class="line"></div><div class="line">     B_thread1.start();</div><div class="line">     B_thread2.start();</div><div class="line">     C_thread1.start();</div><div class="line">     C_thread2.start();</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
-<p>因为是四个不同的对象, 所以执行起来就是异步了的。</p>
-<p>5.再来改一下代码
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">sync1</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">synchronized</span>(SyncThread.Class) &#123;</div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"_Sync1: "</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">"HH:mm:ss"</span>).format(<span class="keyword">new</span> Date()));</div><div class="line"></div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">"_Sync1_Start: "</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">"HH:mm:ss"</span>).format(<span class="keyword">new</span> Date()));</div><div class="line">                Thread.sleep(<span class="number">2000</span>);</div><div class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">"_Sync1_End: "</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">"HH:mm:ss"</span>).format(<span class="keyword">new</span> Date()));</div><div class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * synchronized 修饰静态方法</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sync2</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">"_Sync2: "</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">"HH:mm:ss"</span>).format(<span class="keyword">new</span> Date()));</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"_Sync2_Start: "</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">"HH:mm:ss"</span>).format(<span class="keyword">new</span> Date()));</div><div class="line">            Thread.sleep(<span class="number">2000</span>);</div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"_Sync2_End: "</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">"HH:mm:ss"</span>).format(<span class="keyword">new</span> Date()));</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</div><div class="line">            Thread B_thread1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> SyncThread(), <span class="string">"B_thread1"</span>);</div><div class="line">            Thread B_thread2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> SyncThread(), <span class="string">"B_thread2"</span>);</div><div class="line">            Thread C_thread1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> SyncThread(), <span class="string">"C_thread1"</span>);</div><div class="line">            Thread C_thread2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> SyncThread(), <span class="string">"C_thread2"</span>);</div><div class="line"></div><div class="line">            B_thread1.start();</div><div class="line">            B_thread2.start();</div><div class="line">            C_thread1.start();</div><div class="line">            C_thread2.start();</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
-<p>尽管上面是四个不同的对象, 但是注意方法是静态方法, 而且synchronized(SyncThread.Class)锁定的是类, 所以其实也是同步执行的。
-有人说试试相同对象, 结果是一样的。</p>
-<p>6.再来看最后一种情况。
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">sync1</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">synchronized</span>(SyncThread.Class) &#123;</div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"_Sync1: "</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">"HH:mm:ss"</span>).format(<span class="keyword">new</span> Date()));</div><div class="line"></div><div class="line">            <span class="keyword">try</span> &#123;</div><div class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">"_Sync1_Start: "</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">"HH:mm:ss"</span>).format(<span class="keyword">new</span> Date()));</div><div class="line">                Thread.sleep(<span class="number">2000</span>);</div><div class="line">                System.out.println(Thread.currentThread().getName() + <span class="string">"_Sync1_End: "</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">"HH:mm:ss"</span>).format(<span class="keyword">new</span> Date()));</div><div class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">                e.printStackTrace();</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">/**</span></div><div class="line"><span class="comment">     * synchronized 修饰静态方法</span></div><div class="line"><span class="comment">     */</span></div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">sync2</span><span class="params">()</span> </span>&#123;</div><div class="line">        System.out.println(Thread.currentThread().getName() + <span class="string">"_Sync2: "</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">"HH:mm:ss"</span>).format(<span class="keyword">new</span> Date()));</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"_Sync2_Start: "</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">"HH:mm:ss"</span>).format(<span class="keyword">new</span> Date()));</div><div class="line">            Thread.sleep(<span class="number">2000</span>);</div><div class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">"_Sync2_End: "</span> + <span class="keyword">new</span> SimpleDateFormat(<span class="string">"HH:mm:ss"</span>).format(<span class="keyword">new</span> Date()));</div><div class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</div><div class="line">            Thread B_thread1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> SyncThread(), <span class="string">"B_thread1"</span>);</div><div class="line">            Thread B_thread2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> SyncThread(), <span class="string">"B_thread2"</span>);</div><div class="line">            Thread C_thread1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> SyncThread(), <span class="string">"C_thread1"</span>);</div><div class="line">            Thread C_thread2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> SyncThread(), <span class="string">"C_thread2"</span>);</div><div class="line"></div><div class="line">            B_thread1.start();</div><div class="line">            B_thread2.start();</div><div class="line">            C_thread1.start();</div><div class="line">            C_thread2.start();</div><div class="line">        &#125;</div></pre></td></tr></table></figure></p>
-<p>上面该是如何执行的呢？ 其实只要明白一点就行了, 对象锁和类锁是独立的，互不干扰。
-今天就到这, 以后博客还是会放在前端的react技术站上.</p>
+        <div class="article-info info-on-right">
+          
+          
 
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://wcnmb.com/2019/03/03/java-synchronized-test/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2019/03/05/redux-saga-info/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          redux-saga-info
-        
-      </div>
-    </a>
   
   
-    <a href="/2019/02/26/react-native-comprehensive-motion/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">react-native-comprehensive-motion</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -361,8 +218,8 @@ B_thread1  B_thread1_Sync2_Start B_thread1_Sync2_End
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
