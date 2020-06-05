@@ -179,7 +179,32 @@
 <li>webpack的plugins详解<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 插件代码</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyWebpackPlugin</span> </span>&#123;  </div><div class="line">    <span class="keyword">constructor</span>(options) &#123;  &#125;    </div><div class="line">    apply(compiler) &#123;    </div><div class="line">        <span class="comment">// 在emit阶段插入钩子函数    </span></div><div class="line">        compiler.hooks.emit.tap(<span class="string">'MyWebpackPlugin'</span>, (compilation) =&gt; &#123;&#125;);  </div><div class="line">    &#125;&#125;</div><div class="line">    <span class="built_in">module</span>.exports = MyWebpackPlugin;</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>compiler hooks的周期<br>|  钩子   | 说明  | 参数 | 类型 |<br>|  —-  | —-  |—- | —-  |<br>| afterPlugins  | 启动一次新的编译     | compiler | 同步<br>| emit  | 资源生成完成，输出之前 | compilation | 异步<br>更多参考网上教程</p>
+<p>compiler hooks的周期</p>
+<table>
+<thead>
+<tr>
+<th>钩子</th>
+<th>说明</th>
+<th>参数</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>afterPlugins</td>
+<td>启动一次新的编译</td>
+<td>compiler</td>
+<td>同步</td>
+</tr>
+<tr>
+<td>emit</td>
+<td>资源生成完成，输出之前</td>
+<td>compilation</td>
+<td>异步</td>
+</tr>
+</tbody>
+</table>
+<p>更多参考网上教程</p>
 <ol>
 <li>一个简单的实例<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 一般模式</span></div><div class="line">compileer.hooks.阶段.tap函数(<span class="string">'插件名称'</span>, (阶段回调参数) =&gt; &#123;</div><div class="line">  </div><div class="line">&#125;);</div><div class="line">compiler.hooks.emit.tapAsync(<span class="string">'MyWebpackPlugin'</span>, (compilation, callback) =&gt; &#123;  </div><div class="line">    setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;    </div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'文件列表'</span>, <span class="built_in">Object</span>.keys(compilation.assets).join(<span class="string">','</span>));    </div><div class="line">        callback();  </div><div class="line">    &#125;, <span class="number">1000</span>);</div><div class="line">    &#125;</div><div class="line">);</div></pre></td></tr></table></figure>
 </li>
