@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wcnmb.com">
-  <title>Archives | miracle的博客</title>
+  <title>micro-front-end | miracle的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="miracle的博客">
-<meta property="og:url" content="http://wcnmb.com/archives/page/6/index.html">
+  <meta name="description" content="今天来讲一下微前端，容器+服务S 1.配置容器container 12345678910111213141516171819202122232425// 项目配置的环境变量REACT_APP_BROWSE_HOST=http://localhost:3001REACT_APP_RESTAURANT_HOST=http://localhost:3002REACT_APP_CONTENT_HOST=h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="micro-front-end">
+<meta property="og:url" content="http://wcnmb.com/2020/07/03/micro-front-end/index.html">
 <meta property="og:site_name" content="miracle的博客">
+<meta property="og:description" content="今天来讲一下微前端，容器+服务S 1.配置容器container 12345678910111213141516171819202122232425// 项目配置的环境变量REACT_APP_BROWSE_HOST=http://localhost:3001REACT_APP_RESTAURANT_HOST=http://localhost:3002REACT_APP_CONTENT_HOST=h">
+<meta property="og:updated_time" content="2020-07-03T04:41:55.482Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="miracle的博客">
+<meta name="twitter:title" content="micro-front-end">
+<meta name="twitter:description" content="今天来讲一下微前端，容器+服务S 1.配置容器container 12345678910111213141516171819202122232425// 项目配置的环境变量REACT_APP_BROWSE_HOST=http://localhost:3001REACT_APP_RESTAURANT_HOST=http://localhost:3002REACT_APP_CONTENT_HOST=h">
   
     <link rel="alternative" href="/atom.xml" title="miracle的博客" type="application/atom+xml">
   
@@ -153,162 +157,167 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-micro-front-end" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/04/react-native-navigation/" class="archive-article-date">
-  	<time datetime="2018-01-04T14:00:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-04</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/04/react-native-navigation/">react-native-navigation</a>
+    <h1 class="article-title" itemprop="name">
+      micro-front-end
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/01/异步队列/" class="archive-article-date">
-  	<time datetime="2017-10-01T03:31:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-01</time>
+        
+        <a href="/2020/07/03/micro-front-end/" class="archive-article-date">
+  	<time datetime="2020-07-03T04:16:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-03</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/01/异步队列/">异步队列</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3>今天来讲一下微前端，容器+服务S</h3>
+<p>1.配置容器container
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 项目配置的环境变量</span></div><div class="line">REACT_APP_BROWSE_HOST=http:<span class="comment">//localhost:3001</span></div><div class="line">REACT_APP_RESTAURANT_HOST=http:<span class="comment">//localhost:3002</span></div><div class="line">REACT_APP_CONTENT_HOST=http:<span class="comment">//localhost:5000</span></div><div class="line"></div><div class="line"><span class="comment">// 容器的作用就是根据路由决定加载哪些服务</span></div><div class="line"><span class="keyword">const</span> &#123;</div><div class="line">  REACT_APP_BROWSE_HOST: browseHost,</div><div class="line">  REACT_APP_RESTAURANT_HOST: restaurantHost,</div><div class="line">&#125; = process.env;</div><div class="line"></div><div class="line"><span class="keyword">const</span> Browse = <span class="function">(<span class="params">&#123; history &#125;</span>) =&gt;</span> (</div><div class="line">  &lt;MicroFrontend history=&#123;history&#125; host=&#123;browseHost&#125; name=<span class="string">"Browse"</span> /&gt;</div><div class="line">);</div><div class="line"><span class="keyword">const</span> Restaurant = <span class="function">(<span class="params">&#123; history &#125;</span>) =&gt;</span> (</div><div class="line">  &lt;MicroFrontend history=&#123;history&#125; host=&#123;restaurantHost&#125; name=<span class="string">"Restaurant"</span> /&gt;</div><div class="line">);</div><div class="line"><span class="keyword">const</span> Random = <span class="function"><span class="params">()</span> =&gt;</span> &lt;Redirect to=&#123;<span class="string">`/restaurant/<span class="subst">$&#123;getRandomRestaurantId()&#125;</span>`</span>&#125; /&gt;;</div><div class="line"></div><div class="line"> &lt;Switch&gt;</div><div class="line">        &lt;Route exact path=<span class="string">"/"</span> component=&#123;Browse&#125; /&gt;</div><div class="line">        &lt;Route exact path=<span class="string">"/restaurant/:id"</span> component=&#123;Restaurant&#125; /&gt;</div><div class="line">        &lt;Route exact path=<span class="string">"/random"</span> render=&#123;Random&#125; /&gt;</div><div class="line">        &lt;Route exact path=<span class="string">"/about"</span> render=&#123;About&#125; /&gt;</div><div class="line"> &lt;<span class="regexp">/Switch&gt;</span></div></pre></td></tr></table></figure></p>
+<p>需要注意的是不同服务可能共享redux的全局state</p>
+<p>2.重点来看路由如何导向不同的服务以及加载模式
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// MicroFrontend代码</span></div><div class="line">componentDidMount() &#123;</div><div class="line">    <span class="keyword">const</span> &#123; name, host, <span class="built_in">document</span> &#125; = <span class="keyword">this</span>.props;</div><div class="line">    <span class="keyword">const</span> scriptId = <span class="string">`micro-frontend-script-<span class="subst">$&#123;name&#125;</span>`</span>;</div><div class="line"></div><div class="line">    <span class="comment">// 该脚本已经加载过</span></div><div class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.getElementById(scriptId)) &#123;</div><div class="line">      <span class="keyword">this</span>.renderMicroFrontend();</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fetch(<span class="string">`<span class="subst">$&#123;host&#125;</span>/asset-manifest.json`</span>)</div><div class="line">      .then(<span class="function"><span class="params">res</span> =&gt;</span> res.json())</div><div class="line">      .then(<span class="function"><span class="params">manifest</span> =&gt;</span> &#123;</div><div class="line">        <span class="keyword">const</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">        script.id = scriptId;</div><div class="line">        script.crossOrigin = <span class="string">''</span>;</div><div class="line">        script.src = <span class="string">`<span class="subst">$&#123;host&#125;</span><span class="subst">$&#123;manifest[<span class="string">'main.js'</span>]&#125;</span>`</span>;</div><div class="line">        script.onload = <span class="keyword">this</span>.renderMicroFrontend;</div><div class="line">        <span class="built_in">document</span>.head.appendChild(script);</div><div class="line">      &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">renderMicroFrontend = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">const</span> &#123; name, <span class="built_in">window</span>, history &#125; = <span class="keyword">this</span>.props;</div><div class="line"></div><div class="line">    <span class="built_in">window</span>[<span class="string">`render<span class="subst">$&#123;name&#125;</span>`</span>](<span class="string">`<span class="subst">$&#123;name&#125;</span>-container`</span>, history);</div><div class="line">  &#125;;</div></pre></td></tr></table></figure></p>
+<p>其实上面很好理解，就是根据传入的name和host决定加载</p>
+<p>3.来看服务如何编写
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">(<span class="built_in">window</span> <span class="keyword">as</span> any).renderBrowse = <span class="function">(<span class="params">containerId, history</span>) =&gt;</span> &#123;</div><div class="line">  ReactDOM.render(</div><div class="line">    &lt;App history=&#123;history&#125; /&gt;,</div><div class="line">    <span class="built_in">document</span>.getElementById(containerId),</div><div class="line">  );</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 注意因为无论任何路由 服务依托的组件是一样的 所以一定要销毁</span></div><div class="line">(<span class="built_in">window</span> <span class="keyword">as</span> any).unmountBrowse = <span class="function"><span class="params">containerId</span> =&gt;</span> &#123;</div><div class="line">  ReactDOM.unmountComponentAtNode(<span class="built_in">document</span>.getElementById(containerId));</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>4.将服务打包并用serve启动
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"format"</span>: <span class="string">"prettier --write"</span>,</div><div class="line">    <span class="string">"dev"</span>: <span class="string">"react-app-rewired start"</span>,</div><div class="line">    <span class="string">"build"</span>: <span class="string">"react-app-rewired build"</span>,</div><div class="line">    <span class="string">"test"</span>: <span class="string">"react-app-rewired test"</span>,</div><div class="line">    <span class="string">"start"</span>: <span class="string">"serve -l 3001 --cors build"</span></div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>注意要开启跨域</p>
+<p>5.总结，该微前端的实现是利用了不用路由加载不同服务打包后的js，注意history和state在跨服务的共享</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://wcnmb.com/2020/07/03/micro-front-end/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/14/test/" class="archive-article-date">
-  	<time datetime="2017-08-14T12:33:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-14</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/22/babel-advance-tutorial/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">babel-advance-tutorial</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/14/test/">test</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">aaa</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bbb</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ccc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/08/14/hello-world/" class="archive-article-date">
-  	<time datetime="2017-08-14T12:25:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/08/14/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/5/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="page-number current">6</span>
-    </nav>
   
 
 
@@ -332,8 +341,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

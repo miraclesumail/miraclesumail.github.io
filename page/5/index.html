@@ -155,6 +155,98 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-node-react-combined" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/01/11/node-react-combined/">node-react-combined</a>
+    </h1>
+  
+
+        
+        <a href="/2019/01/11/node-react-combined/" class="archive-article-date">
+  	<time datetime="2019-01-11T12:06:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3>今天的内容涉及nodejs进程和react hooks</h3>
+<ol>
+<li>Node.js开启服务进程例子
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> server = http.createServer();</div><div class="line">server.listen(<span class="number">3000</span>,()=&gt;&#123;</div><div class="line">    process.title=<span class="string">'程序员成长指北测试进程'</span>;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'进程id'</span>,process.pid)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></li>
+</ol>
+<p>一个线程只能隶属于一个进程，但是一个进程是可以拥有多个线程的。</p>
+<ol start="2">
+<li>下面演示一个开启子进程进行运算的例子
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line"><span class="keyword">const</span> fork = <span class="built_in">require</span>(<span class="string">'child_process'</span>).fork;</div><div class="line"></div><div class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">if</span>(req.url == <span class="string">'/compute'</span>)&#123;</div><div class="line">        <span class="keyword">const</span> compute = fork(<span class="string">'./fork_compute.js'</span>);</div><div class="line">        compute.send(<span class="string">'开启一个新的子进程'</span>);</div><div class="line"></div><div class="line">        <span class="comment">// 当一个子进程使用 process.send() 发送消息时会触发 'message' 事件</span></div><div class="line">        compute.on(<span class="string">'message'</span>, sum =&gt; &#123;</div><div class="line">            res.end(<span class="string">`Sum is <span class="subst">$&#123;sum&#125;</span>`</span>);</div><div class="line">            compute.kill();</div><div class="line">        &#125;);</div><div class="line"></div><div class="line">        <span class="comment">// 子进程监听到一些错误消息退出</span></div><div class="line">        compute.on(<span class="string">'close'</span>, (code, signal) =&gt; &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">`收到close事件，子进程收到信号 <span class="subst">$&#123;signal&#125;</span> 而终止，退出码 <span class="subst">$&#123;code&#125;</span>`</span>);</div><div class="line">            compute.kill();</div><div class="line">        &#125;)</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        res.end(<span class="string">`ok`</span>);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">server.listen(<span class="number">3000</span>, <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>, () =&gt; &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`server started at http://<span class="subst">$&#123;<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>&#125;</span>:<span class="subst">$&#123;<span class="number">3000</span>&#125;</span>`</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></li>
+</ol>
+<p>利用fork开启了一个子进程</p>
+<ol start="3">
+<li>看看子进程的文件
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> computation = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">let</span> sum = <span class="number">0</span>;</div><div class="line">    <span class="built_in">console</span>.info(<span class="string">'计算开始'</span>);</div><div class="line">    <span class="built_in">console</span>.time(<span class="string">'计算耗时'</span>);</div><div class="line"></div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">1e10</span>; i++) &#123;</div><div class="line">        sum += i</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    <span class="built_in">console</span>.info(<span class="string">'计算结束'</span>);</div><div class="line">    <span class="built_in">console</span>.timeEnd(<span class="string">'计算耗时'</span>);</div><div class="line">    <span class="keyword">return</span> sum;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">process.on(<span class="string">'message'</span>, msg =&gt; &#123;</div><div class="line">    <span class="built_in">console</span>.log(msg, <span class="string">'process.pid'</span>, process.pid); <span class="comment">// 子进程id</span></div><div class="line">    <span class="keyword">const</span> sum = computation();</div><div class="line"></div><div class="line">    <span class="comment">// 如果Node.js进程是通过进程间通信产生的，那么，process.send()方法可以用来给父进程发送消息</span></div><div class="line">    process.send(sum);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></li>
+</ol>
+<p>nodejs虽然是单线程模型，但是其基于事件驱动，异步非阻塞的模式，可用于高并发场景，避免了线程创建和线程上下文切换所消耗的资源。</p>
+<ol start="4">
+<li>cluster 开启子进程Demo
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line"><span class="keyword">const</span> numCPUs = <span class="built_in">require</span>(<span class="string">'os'</span>).cpus().length;</div><div class="line"><span class="keyword">const</span> cluster = <span class="built_in">require</span>(<span class="string">'cluster'</span>);</div><div class="line"></div><div class="line"><span class="keyword">if</span>(cluster.isMaster)&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Master proces id is'</span>,process.pid);</div><div class="line">    <span class="comment">// fork workers</span></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i= <span class="number">0</span>;i &lt; numCPUs.length;i++)&#123;</div><div class="line">        cluster.fork();</div><div class="line">    &#125;</div><div class="line">    cluster.on(<span class="string">'exit'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">worker,code,signal</span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'worker process died,id'</span>,worker.process.pid)</div><div class="line">    &#125;)</div><div class="line">&#125;<span class="keyword">else</span>&#123;</div><div class="line">    <span class="comment">// Worker可以共享同一个TCP连接</span></div><div class="line">    <span class="comment">// 这里是一个http服务器</span></div><div class="line">    http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</div><div class="line">        process.title = <span class="string">'无法违法'</span>;</div><div class="line">        res.writeHead(<span class="number">200</span>);</div><div class="line">        res.end(<span class="string">'hello word'</span>);</div><div class="line">    &#125;).listen(<span class="number">8000</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+</ol>
+<p>根据cpus的个数创建子进程</p>
+<ol start="5">
+<li>下面演示创建一个线程守护
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fork = <span class="built_in">require</span>(<span class="string">'child_process'</span>).fork;</div><div class="line"><span class="keyword">const</span> cpus = <span class="built_in">require</span>(<span class="string">'os'</span>).cpus();</div><div class="line"></div><div class="line"><span class="keyword">const</span> server = <span class="built_in">require</span>(<span class="string">'net'</span>).createServer();</div><div class="line">server.listen(<span class="number">3000</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> createWorker = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">const</span> worker = fork(<span class="string">'./worker.js'</span>);</div><div class="line"></div><div class="line">    worker.on(<span class="string">'message'</span>, msg =&gt; &#123;</div><div class="line">        <span class="keyword">if</span> (msg == <span class="string">'suicide'</span>) &#123;</div><div class="line">            createWorker();</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    worker.on(<span class="string">'exit'</span>, (code, signal) =&gt; &#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'worker process exited, code: %s signal: %s'</span>, code, signal);</div><div class="line">        <span class="keyword">delete</span> workers[worker.pid];</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    worker.send(<span class="string">'server'</span>, server);</div><div class="line">    workers[worker.pid] = worker;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'worker process created, pid: %s ppid: %s'</span>, worker.pid, process.pid);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 根据核数创建子进程</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;cpus.length; i++) &#123;</div><div class="line">    createWorker();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 父进程关闭要结束worker</span></div><div class="line">process.once(<span class="string">'exit'</span>, close.bind(<span class="keyword">this</span>));</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">close</span> (<span class="params">code</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'进程退出！'</span>, code);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> (code !== <span class="number">0</span>) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> pid <span class="keyword">in</span> workers) &#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">'master process exited, kill worker pid: '</span>, pid);</div><div class="line">            workers[pid].kill(<span class="string">'SIGINT'</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    process.exit(<span class="number">0</span>);</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// woker.js</span></div><div class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>);</div><div class="line"><span class="keyword">const</span> server = http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</div><div class="line">	res.writeHead(<span class="number">200</span>, &#123;</div><div class="line">		<span class="string">'Content-Type'</span>: <span class="string">'text/plan'</span></div><div class="line">	&#125;);</div><div class="line">	res.end(<span class="string">'I am worker, pid: '</span> + process.pid + <span class="string">', ppid: '</span> + process.ppid);</div><div class="line">	<span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'worker process exception!'</span>); <span class="comment">// 测试异常进程退出、重启</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">let</span> worker;</div><div class="line">process.title = <span class="string">'node-worker'</span></div><div class="line">process.on(<span class="string">'message'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">message, sendHandle</span>) </span>&#123;</div><div class="line">	<span class="keyword">if</span> (message === <span class="string">'server'</span>) &#123;</div><div class="line">		worker = sendHandle;</div><div class="line">        <span class="comment">// 3000端口连接</span></div><div class="line">		worker.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">socket</span>) </span>&#123;</div><div class="line">			server.emit(<span class="string">'connection'</span>, socket);</div><div class="line">		&#125;);</div><div class="line">	&#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">process.on(<span class="string">'uncaughtException'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err</span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(err);</div><div class="line">	process.send(&#123;<span class="attr">act</span>: <span class="string">'suicide'</span>&#125;);</div><div class="line">	worker.close(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">		process.exit(<span class="number">1</span>);</div><div class="line">	&#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></li>
+</ol>
+<p>nodejs进程的就到这里</p>
+<ol start="6">
+<li>typescript用法
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> 可选练</div><div class="line"><span class="keyword">let</span> x = foo?.bar().f</div><div class="line"></div><div class="line"><span class="number">2.</span> type Record&lt;K extends string, T&gt; = &#123;</div><div class="line">    [P <span class="keyword">in</span> K]: T</div><div class="line">&#125;</div><div class="line"></div><div class="line">type AnimakType = <span class="string">'cat'</span> | <span class="string">'dog'</span> | <span class="string">'frog'</span></div><div class="line"></div><div class="line">interface AnimaDes &#123;</div><div class="line">    name: string,</div><div class="line">    title: string</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> animaMap: Record&lt;AnimakType, AnimaDes&gt; = &#123;</div><div class="line">    cat: &#123;<span class="attr">name</span>: <span class="string">'cat'</span>, <span class="attr">title</span>: <span class="string">'ddd'</span>&#125;,</div><div class="line">    dog: &#123;<span class="attr">name</span>: <span class="string">'cat'</span>, <span class="attr">title</span>: <span class="string">'ddd'</span>&#125;,</div><div class="line">    frog: &#123;<span class="attr">name</span>: <span class="string">'cat'</span>, <span class="attr">title</span>: <span class="string">'ddd'</span>&#125;,</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/01/11/node-react-combined/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-proxy-pro" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -817,112 +909,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/01/10/basic-laravel/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-react-native-navigation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/04/react-native-navigation/">react-native-navigation</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/04/react-native-navigation/" class="archive-article-date">
-  	<time datetime="2018-01-04T14:00:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3>react-native 导航教程</h3>
-<p>本篇文章适合于react技术栈的人阅读，对native开发有兴趣的可以关注。</p>
-<p>废话不多说，直接上代码。</p>
-<h5>1简单路由配置</h5>
-<p><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> ExampleRoutes = &#123;</div><div class="line">  SimpleStack: &#123;</div><div class="line">    name: <span class="string">'Stack Example'</span>,</div><div class="line">    description: <span class="string">'A card stack'</span>,</div><div class="line">    screen: SimpleStack,</div><div class="line">  &#125;,</div><div class="line">  SimpleTabs: &#123;</div><div class="line">    name: <span class="string">'Tabs Example'</span>,</div><div class="line">    description: <span class="string">'Tabs following platform conventions'</span>,</div><div class="line">    screen: SimpleTabs,</div><div class="line">  &#125;,</div><div class="line">  Drawer: &#123;</div><div class="line">    name: <span class="string">'Drawer Example'</span>,</div><div class="line">    description: <span class="string">'Android-style drawer navigation'</span>,</div><div class="line">    screen: Drawer,</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>上述是三个简单的路由配件，下面用到代码中</p>
-<p><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainScreen</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span>&lt;*&gt; </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">const</span> &#123; navigation &#125; = <span class="keyword">this</span>.props;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style=&#123;&#123; <span class="attr">flex</span>: <span class="number">1</span> &#125;&#125;&gt;</div><div class="line">        &lt;ScrollView style=&#123;&#123; <span class="attr">flex</span>: <span class="number">1</span> &#125;&#125;&gt;</div><div class="line">          &lt;Banner /&gt;</div><div class="line">          &#123;<span class="built_in">Object</span>.keys(ExampleRoutes).map(<span class="function">(<span class="params">routeName: string</span>) =&gt;</span> (</div><div class="line">            &lt;TouchableOpacity</div><div class="line">              key=&#123;routeName&#125;</div><div class="line">              onPress=&#123;() =&gt; &#123;</div><div class="line">                <span class="keyword">const</span> &#123; path, params, screen &#125; = ExampleRoutes[routeName];</div><div class="line">                <span class="keyword">const</span> &#123; router &#125; = screen;</div><div class="line">                <span class="keyword">const</span> action =</div><div class="line">                  path &amp;&amp; router.getActionForPathAndParams(path, params);</div><div class="line">                navigation.navigate(routeName, &#123;&#125;, action);</div><div class="line">              &#125;&#125;</div><div class="line">            &gt;</div><div class="line">              &lt;SafeAreaView</div><div class="line">                style=&#123;styles.itemContainer&#125;</div><div class="line">                forceInset=&#123;&#123; <span class="attr">vertical</span>: <span class="string">'never'</span> &#125;&#125;</div><div class="line">              &gt;</div><div class="line">                &lt;View style=&#123;styles.item&#125;&gt;</div><div class="line">                  &lt;Text style=&#123;styles.title&#125;&gt;</div><div class="line">                    &#123;ExampleRoutes[routeName].name&#125;</div><div class="line">                  &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">                  &lt;Text style=&#123;styles.description&#125;&gt;</span></div><div class="line"><span class="regexp">                    &#123;ExampleRoutes[routeName].description&#125;</span></div><div class="line"><span class="regexp">                  &lt;/</span>Text&gt;</div><div class="line">                &lt;<span class="regexp">/View&gt;</span></div><div class="line"><span class="regexp">              &lt;/</span>SafeAreaView&gt;</div><div class="line">            &lt;<span class="regexp">/TouchableOpacity&gt;</span></div><div class="line"><span class="regexp">          ))&#125;</span></div><div class="line"><span class="regexp">        &lt;/</span>ScrollView&gt;</div><div class="line">        &lt;StatusBar barStyle=<span class="string">"light-content"</span> /&gt;</div><div class="line">        &lt;View style=&#123;styles.statusBarUnderlay&#125; /&gt;</div><div class="line">      &lt;<span class="regexp">/View&gt;</span></div><div class="line"><span class="regexp">    );</span></div><div class="line"><span class="regexp">  &#125;</span></div><div class="line"><span class="regexp">&#125;</span></div></pre></td></tr></table></figure></p>
-<p>相信对react有研究的同学看上面代码应该比较轻松。</p>
-<ul>
-<li>
-<p>react-native中使用view，忘记div，而且这种内置需要引入。
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;ScrollView,StyleSheet,TouchableOpacity,Text,StatusBar,View&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div></pre></td></tr></table></figure></p>
-</li>
-<li>
-<p>对es6了解的人对于这种解构操作比较习惯，navigation.navigate是push视图。</p>
-</li>
-</ul>
-<p>接下来是样式用法
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">  item: &#123;</div><div class="line">    paddingHorizontal: <span class="number">16</span>,</div><div class="line">    paddingVertical: <span class="number">12</span>,</div><div class="line">  &#125;,</div><div class="line">  itemContainer: &#123;</div><div class="line">    backgroundColor: <span class="string">'#fff'</span>,</div><div class="line">    borderBottomWidth: StyleSheet.hairlineWidth,</div><div class="line">    borderBottomColor: <span class="string">'#ddd'</span>,</div><div class="line">  &#125;,</div><div class="line">  image: &#123;</div><div class="line">    width: <span class="number">120</span>,</div><div class="line">    height: <span class="number">120</span>,</div><div class="line">    alignSelf: <span class="string">'center'</span>,</div><div class="line">    marginBottom: <span class="number">20</span>,</div><div class="line">    resizeMode: <span class="string">'contain'</span>,</div><div class="line">  &#125;,</div><div class="line">  statusBarUnderlay: &#123;</div><div class="line">    backgroundColor: <span class="string">'#673ab7'</span>,</div><div class="line">    position: <span class="string">'absolute'</span>,</div><div class="line">    top: <span class="number">0</span>,</div><div class="line">    left: <span class="number">0</span>,</div><div class="line">    right: <span class="number">0</span>,</div><div class="line">    height: Constants.statusBarHeight,</div><div class="line">  &#125;,</div><div class="line">  title: &#123;</div><div class="line">    fontSize: <span class="number">16</span>,</div><div class="line">    fontWeight: <span class="string">'bold'</span>,</div><div class="line">    color: <span class="string">'#444'</span>,</div><div class="line">  &#125;,</div><div class="line">  description: &#123;</div><div class="line">    fontSize: <span class="number">13</span>,</div><div class="line">    color: <span class="string">'#999'</span>,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>注意到view上面的样式是如何绑定的 style={styles.itemContainer}</p>
-<p>关键的位置来了，如何将这个路由串联起来</p>
-<pre><code class="language-js">const AppNavigator = StackNavigator(
-  {
-    ...ExampleRoutes,
-    Index: {
-      screen: MainScreen,
-    },
-  },
-  {
-    initialRouteName: 'Index',
-    headerMode: 'none',
-
-    /*
-   * Use modal on iOS because the card mode comes from the right,
-   * which conflicts with the drawer example gesture
-   */
-    mode: Platform.OS === 'ios' ? 'modal' : 'card',
-  }
-);
-
-export default () =&gt; &lt;AppNavigator /&gt;;
-</code></pre>
-<p>Index对应的是screen: MainScreen,mainscreen其实就是所有路由列表。
-initialRouteName: 'Index'将其呈现出来。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/04/react-native-navigation/">展开全文 >></a>
         </p>
       
 

@@ -155,6 +155,81 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-micro-front-end" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/03/micro-front-end/">micro-front-end</a>
+    </h1>
+  
+
+        
+        <a href="/2020/07/03/micro-front-end/" class="archive-article-date">
+  	<time datetime="2020-07-03T04:16:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3>今天来讲一下微前端，容器+服务S</h3>
+<p>1.配置容器container
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 项目配置的环境变量</span></div><div class="line">REACT_APP_BROWSE_HOST=http:<span class="comment">//localhost:3001</span></div><div class="line">REACT_APP_RESTAURANT_HOST=http:<span class="comment">//localhost:3002</span></div><div class="line">REACT_APP_CONTENT_HOST=http:<span class="comment">//localhost:5000</span></div><div class="line"></div><div class="line"><span class="comment">// 容器的作用就是根据路由决定加载哪些服务</span></div><div class="line"><span class="keyword">const</span> &#123;</div><div class="line">  REACT_APP_BROWSE_HOST: browseHost,</div><div class="line">  REACT_APP_RESTAURANT_HOST: restaurantHost,</div><div class="line">&#125; = process.env;</div><div class="line"></div><div class="line"><span class="keyword">const</span> Browse = <span class="function">(<span class="params">&#123; history &#125;</span>) =&gt;</span> (</div><div class="line">  &lt;MicroFrontend history=&#123;history&#125; host=&#123;browseHost&#125; name=<span class="string">"Browse"</span> /&gt;</div><div class="line">);</div><div class="line"><span class="keyword">const</span> Restaurant = <span class="function">(<span class="params">&#123; history &#125;</span>) =&gt;</span> (</div><div class="line">  &lt;MicroFrontend history=&#123;history&#125; host=&#123;restaurantHost&#125; name=<span class="string">"Restaurant"</span> /&gt;</div><div class="line">);</div><div class="line"><span class="keyword">const</span> Random = <span class="function"><span class="params">()</span> =&gt;</span> &lt;Redirect to=&#123;<span class="string">`/restaurant/<span class="subst">$&#123;getRandomRestaurantId()&#125;</span>`</span>&#125; /&gt;;</div><div class="line"></div><div class="line"> &lt;Switch&gt;</div><div class="line">        &lt;Route exact path=<span class="string">"/"</span> component=&#123;Browse&#125; /&gt;</div><div class="line">        &lt;Route exact path=<span class="string">"/restaurant/:id"</span> component=&#123;Restaurant&#125; /&gt;</div><div class="line">        &lt;Route exact path=<span class="string">"/random"</span> render=&#123;Random&#125; /&gt;</div><div class="line">        &lt;Route exact path=<span class="string">"/about"</span> render=&#123;About&#125; /&gt;</div><div class="line"> &lt;<span class="regexp">/Switch&gt;</span></div></pre></td></tr></table></figure></p>
+<p>需要注意的是不同服务可能共享redux的全局state</p>
+<p>2.重点来看路由如何导向不同的服务以及加载模式
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// MicroFrontend代码</span></div><div class="line">componentDidMount() &#123;</div><div class="line">    <span class="keyword">const</span> &#123; name, host, <span class="built_in">document</span> &#125; = <span class="keyword">this</span>.props;</div><div class="line">    <span class="keyword">const</span> scriptId = <span class="string">`micro-frontend-script-<span class="subst">$&#123;name&#125;</span>`</span>;</div><div class="line"></div><div class="line">    <span class="comment">// 该脚本已经加载过</span></div><div class="line">    <span class="keyword">if</span> (<span class="built_in">document</span>.getElementById(scriptId)) &#123;</div><div class="line">      <span class="keyword">this</span>.renderMicroFrontend();</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fetch(<span class="string">`<span class="subst">$&#123;host&#125;</span>/asset-manifest.json`</span>)</div><div class="line">      .then(<span class="function"><span class="params">res</span> =&gt;</span> res.json())</div><div class="line">      .then(<span class="function"><span class="params">manifest</span> =&gt;</span> &#123;</div><div class="line">        <span class="keyword">const</span> script = <span class="built_in">document</span>.createElement(<span class="string">'script'</span>);</div><div class="line">        script.id = scriptId;</div><div class="line">        script.crossOrigin = <span class="string">''</span>;</div><div class="line">        script.src = <span class="string">`<span class="subst">$&#123;host&#125;</span><span class="subst">$&#123;manifest[<span class="string">'main.js'</span>]&#125;</span>`</span>;</div><div class="line">        script.onload = <span class="keyword">this</span>.renderMicroFrontend;</div><div class="line">        <span class="built_in">document</span>.head.appendChild(script);</div><div class="line">      &#125;);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">renderMicroFrontend = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">const</span> &#123; name, <span class="built_in">window</span>, history &#125; = <span class="keyword">this</span>.props;</div><div class="line"></div><div class="line">    <span class="built_in">window</span>[<span class="string">`render<span class="subst">$&#123;name&#125;</span>`</span>](<span class="string">`<span class="subst">$&#123;name&#125;</span>-container`</span>, history);</div><div class="line">  &#125;;</div></pre></td></tr></table></figure></p>
+<p>其实上面很好理解，就是根据传入的name和host决定加载</p>
+<p>3.来看服务如何编写
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">(<span class="built_in">window</span> <span class="keyword">as</span> any).renderBrowse = <span class="function">(<span class="params">containerId, history</span>) =&gt;</span> &#123;</div><div class="line">  ReactDOM.render(</div><div class="line">    &lt;App history=&#123;history&#125; /&gt;,</div><div class="line">    <span class="built_in">document</span>.getElementById(containerId),</div><div class="line">  );</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 注意因为无论任何路由 服务依托的组件是一样的 所以一定要销毁</span></div><div class="line">(<span class="built_in">window</span> <span class="keyword">as</span> any).unmountBrowse = <span class="function"><span class="params">containerId</span> =&gt;</span> &#123;</div><div class="line">  ReactDOM.unmountComponentAtNode(<span class="built_in">document</span>.getElementById(containerId));</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>4.将服务打包并用serve启动
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"format"</span>: <span class="string">"prettier --write"</span>,</div><div class="line">    <span class="string">"dev"</span>: <span class="string">"react-app-rewired start"</span>,</div><div class="line">    <span class="string">"build"</span>: <span class="string">"react-app-rewired build"</span>,</div><div class="line">    <span class="string">"test"</span>: <span class="string">"react-app-rewired test"</span>,</div><div class="line">    <span class="string">"start"</span>: <span class="string">"serve -l 3001 --cors build"</span></div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>注意要开启跨域</p>
+<p>5.总结，该微前端的实现是利用了不用路由加载不同服务打包后的js，注意history和state在跨服务的共享</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/03/micro-front-end/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-babel-advance-tutorial" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -884,87 +959,6 @@ webpack自带一些plugin可以去看看progress-bar-webpack-plugin</p>
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/11/24/november-last-article/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-react-ssr-ast" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/16/react-ssr-ast/">react-ssr-ast</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/16/react-ssr-ast/" class="archive-article-date">
-  	<time datetime="2019-10-16T02:55:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3>又一个月了，写点东西吧</h3>
-<ol>
-<li>先学习一点抽象语法树
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> tips = [</div><div class="line">  <span class="string">"Click on any AST node with a '+' to expand it"</span>,</div><div class="line"></div><div class="line">  <span class="string">"Hovering over a node highlights the \</span></div><div class="line"><span class="string">   corresponding part in the source code"</span>,</div><div class="line"></div><div class="line">  <span class="string">"Shift click on an AST node expands the whole substree"</span></div><div class="line">];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">printTips</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  tips.forEach(<span class="function">(<span class="params">tip, i</span>) =&gt;</span> <span class="built_in">console</span>.log(<span class="string">`Tip <span class="subst">$&#123;i&#125;</span>:`</span> + tip));</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
-</ol>
-<p>以上代码转化为ast
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> ast = &#123;</div><div class="line">      body: [</div><div class="line">            &#123;</div><div class="line">                type: VariableDeclaration,</div><div class="line">                declarations: [</div><div class="line">                    &#123;</div><div class="line">                        type: VariableDeclarator,</div><div class="line">                        id: &#123;</div><div class="line">                            type: Indentifier,</div><div class="line">                            name: tips</div><div class="line">                        &#125;,</div><div class="line">                        init: &#123;</div><div class="line">                            type: ArrayExpression,</div><div class="line">                            elements: [</div><div class="line">                                &#123;</div><div class="line">                                    type: Literal,</div><div class="line">                                    raw:,</div><div class="line">                                    value:,</div><div class="line">                                &#125;</div><div class="line">                            ]</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                ]</div><div class="line">            &#125;,</div><div class="line">            &#123; </div><div class="line">                type: FunctionDeclaration,</div><div class="line">                id: &#123;</div><div class="line">                    type: Identifier,</div><div class="line">                    name: printTips,</div><div class="line">                    params: [],</div><div class="line">                    body: &#123;</div><div class="line">                        type: blockStatement,</div><div class="line">                        body: &#123;</div><div class="line">                            type: ExpressionStatement,</div><div class="line">                            expresssion: CallExpression</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">]</div></pre></td></tr></table></figure></p>
-<p>大概就是这个模式, 我们来玩一个</p>
-<ol start="2">
-<li>ast语法学习
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// test the code</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">decrementAndAdd</span>(<span class="params">a, b</span>)</span>&#123;</div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params">c, d</span>)</span>&#123;</div><div class="line">      <span class="keyword">return</span> c + d;</div><div class="line">   &#125;</div><div class="line">   a--;</div><div class="line">   b = b - <span class="number">1</span>;</div><div class="line">   <span class="keyword">return</span> add(a,b)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> recast = <span class="built_in">require</span>(<span class="string">'recast'</span>);</div><div class="line"><span class="keyword">const</span> &#123; Parser &#125; = <span class="built_in">require</span>(<span class="string">"acorn"</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> ast = Parser.parse(readFileSync(fileName).toString());</div><div class="line"></div><div class="line">recast.visit(ast, visitFunctionDeclaration(path)&#123;</div><div class="line">  <span class="built_in">console</span>.log(path.node.type); <span class="comment">// will print "FunctionDeclaration"</span></div><div class="line">  functionNames.push(path.node.id.name); <span class="comment">// will add the name of the function to the array</span></div><div class="line">  </div><div class="line">  <span class="keyword">var</span> newPath = path.get(<span class="string">'body'</span>);</div><div class="line"></div><div class="line">  <span class="comment">// subtraversing</span></div><div class="line">  recast.visit(newPath, visitFunctionDeclaration(path)&#123;</div><div class="line">    functionNames.push(path.node.id.name);</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  &#125;)</div><div class="line">  <span class="comment">// avoid deep visit</span></div><div class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></li>
-</ol>
-<p>3.再来一个
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> recast = <span class="built_in">require</span>(<span class="string">"recast"</span>);</div><div class="line"><span class="keyword">var</span> code = [</div><div class="line">    <span class="string">"function add(a, b) &#123;"</span>,</div><div class="line">    <span class="string">"  return a +"</span>,</div><div class="line">    <span class="string">"    // Weird formatting, huh?"</span>,</div><div class="line">    <span class="string">"    b;"</span>,</div><div class="line">    <span class="string">"&#125;"</span></div><div class="line">].join(<span class="string">"\n"</span>);</div><div class="line"><span class="keyword">var</span> ast = recast.parse(code);</div><div class="line"></div><div class="line"><span class="keyword">var</span> add = ast.program.body[<span class="number">0</span>];</div><div class="line"><span class="keyword">var</span> b = recast.type.builders;</div><div class="line"></div><div class="line">ast.program.body[<span class="number">0</span>] = b.variableDeclaration(<span class="string">"var"</span>, [</div><div class="line">    b.variableDeclarator(add.id, b.functionExpression(</div><div class="line">        <span class="literal">null</span>, <span class="comment">// Anonymize the function expression.</span></div><div class="line">        add.params, <span class="comment">// params</span></div><div class="line">        add.body <span class="comment">// and body are left unchanged</span></div><div class="line">    ))</div><div class="line">]);</div><div class="line"></div><div class="line"><span class="comment">// Just for fun, because addition is commutative:</span></div><div class="line">add.params.push(add.params.shift());</div><div class="line"></div><div class="line"><span class="keyword">var</span> code = [</div><div class="line">    <span class="string">"var obj = &#123;"</span>,</div><div class="line">    <span class="string">"/** this is my property */"</span>,</div><div class="line">    <span class="string">"myProperty: 'string'"</span>,</div><div class="line">    <span class="string">"&#125;"</span></div><div class="line">].join(<span class="string">"\n"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> objAst = recast.parse(code);</div><div class="line">attributeComments = [];</div><div class="line"></div><div class="line">recast.visit(objAst, &#123;</div><div class="line">  visitProperty: <span class="function"><span class="keyword">function</span>(<span class="params">path</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (path.value.comments) &#123;</div><div class="line">      attributeComments.push(&#123;</div><div class="line">        name: path.value.key.name,</div><div class="line">        comments: path.value.comments.map(<span class="function"><span class="keyword">function</span>(<span class="params">c</span>) </span>&#123;</div><div class="line">          <span class="keyword">return</span> c.value;</div><div class="line">        &#125;).join(<span class="string">'\n'</span>)</div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">this</span>.traverse(path);</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(attributeComments);</div><div class="line">[ &#123; <span class="attr">name</span>: <span class="string">'myProperty'</span>, <span class="attr">comments</span>: <span class="string">'* this is my property '</span> &#125; ]</div></pre></td></tr></table></figure></p>
-<ol start="4">
-<li>再来个路由转场
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> &#123;</div><div class="line">  Route,</div><div class="line">  Switch,</div><div class="line">  withRouter,</div><div class="line">  BrowserRouter</div><div class="line">&#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> <span class="string">'./index.css'</span>;</div><div class="line"><span class="keyword">import</span> &#123;RouterConfig&#125; <span class="keyword">from</span> <span class="string">'./RouteConfig'</span>;</div><div class="line"><span class="keyword">import</span> &#123;CSSTransition, TransitionGroup&#125; <span class="keyword">from</span> <span class="string">'react-transition-group'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> DEFAULT_SCENE_CONFIG = &#123;</div><div class="line">  enter: <span class="string">'from-right'</span>,</div><div class="line">  exit: <span class="string">'to-exit'</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">const</span> getSceneConfig = <span class="function"><span class="params">location</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">const</span> matchedRoute = RouterConfig.find(<span class="function"><span class="params">config</span> =&gt;</span> <span class="keyword">new</span> <span class="built_in">RegExp</span>(<span class="string">`^<span class="subst">$&#123;config.path&#125;</span>$`</span>).test(location.pathname));</div><div class="line">  <span class="keyword">return</span> (matchedRoute &amp;&amp; matchedRoute.sceneConfig) || DEFAULT_SCENE_CONFIG;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">let</span> oldLocation = <span class="literal">null</span>;</div><div class="line"><span class="keyword">const</span> Routes = withRouter(<span class="function">(<span class="params">&#123;location, history&#125;</span>) =&gt;</span> &#123;</div><div class="line"></div><div class="line">  <span class="comment">// 转场动画应该都是采用当前页面的sceneConfig，所以：</span></div><div class="line">  <span class="comment">// push操作时，用新location匹配的路由sceneConfig</span></div><div class="line">  <span class="comment">// pop操作时，用旧location匹配的路由sceneConfig</span></div><div class="line">  <span class="keyword">let</span> classNames = <span class="string">''</span>;</div><div class="line">  <span class="keyword">if</span>(history.action === <span class="string">'PUSH'</span>) &#123;</div><div class="line">    classNames = <span class="string">'forward-'</span> + getSceneConfig(location).enter;</div><div class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>(history.action === <span class="string">'POP'</span> &amp;&amp; oldLocation) &#123;</div><div class="line">    classNames = <span class="string">'back-'</span> + getSceneConfig(oldLocation).exit;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="comment">// 更新旧location</span></div><div class="line">  oldLocation = location;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> (</div><div class="line">    &lt;TransitionGroup</div><div class="line">      className=&#123;<span class="string">'router-wrapper'</span>&#125;</div><div class="line">      childFactory=&#123;child =&gt; React.cloneElement(child, &#123;classNames&#125;)&#125;</div><div class="line">    &gt;</div><div class="line">      &lt;CSSTransition timeout=&#123;<span class="number">500</span>&#125; key=&#123;location.pathname&#125;&gt;</div><div class="line">        &lt;Switch location=&#123;location&#125;&gt;</div><div class="line">          &#123;RouterConfig.map(<span class="function">(<span class="params">config, index</span>) =&gt;</span> (</div><div class="line">            &lt;Route exact key=&#123;index&#125; &#123;...config&#125;/&gt;</div><div class="line">          ))&#125;</div><div class="line">        &lt;<span class="regexp">/Switch&gt;</span></div><div class="line"><span class="regexp">      &lt;/</span>CSSTransition&gt;</div><div class="line">    &lt;<span class="regexp">/TransitionGroup&gt;</span></div><div class="line"><span class="regexp">  );</span></div><div class="line"><span class="regexp">&#125;);</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">export default class App4 extends React.PureComponent &#123;</span></div><div class="line"><span class="regexp">  render() &#123;</span></div><div class="line"><span class="regexp">    return (</span></div><div class="line"><span class="regexp">      &lt;BrowserRouter&gt;</span></div><div class="line"><span class="regexp">        &lt;Routes/</span>&gt;</div><div class="line">      &lt;<span class="regexp">/BrowserRouter&gt;</span></div><div class="line"><span class="regexp">    );</span></div><div class="line"><span class="regexp">  &#125;</span></div><div class="line"><span class="regexp">&#125;</span></div></pre></td></tr></table></figure></li>
-</ol>
-<p>地址 https://github.com/SmallStoneSK/react-router-animation-demo</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/16/react-ssr-ast/">展开全文 >></a>
         </p>
       
 
