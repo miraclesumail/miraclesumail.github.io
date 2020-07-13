@@ -155,6 +155,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-basic-laravel" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/10/basic-laravel/">basic-laravel</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/10/basic-laravel/" class="archive-article-date">
+  	<time datetime="2018-01-10T14:05:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3>laravel基础教程</h3>
+<h5>1 路由配置</h5>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Route::group([<span class="string">'prefix'</span> =&gt; <span class="string">'User'</span>], <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">    $resource   = <span class="string">'User'</span>;</div><div class="line">    $controller = <span class="string">'UserController@'</span>;</div><div class="line">    Route::get(<span class="string">'/'</span>,             [<span class="string">'as'</span> =&gt; $resource . <span class="string">'.index'</span>,          <span class="string">'uses'</span> =&gt; $controller . <span class="string">'index'</span>]);</div><div class="line">    Route::get(<span class="string">'/detail/&#123;name&#125;'</span>,             [<span class="string">'as'</span> =&gt; $resource . <span class="string">'.detail'</span>,          <span class="string">'uses'</span> =&gt; $controller . <span class="string">'detail'</span>]);</div><div class="line">    Route::get(<span class="string">'/create'</span>, [<span class="string">'as'</span> =&gt; $resource . <span class="string">'.create'</span>,          <span class="string">'uses'</span> =&gt; $controller . <span class="string">'create'</span>]);</div><div class="line">    Route::post(<span class="string">'/create'</span>, [<span class="string">'as'</span> =&gt; $resource . <span class="string">'.add'</span>,          <span class="string">'uses'</span> =&gt; $controller . <span class="string">'add'</span>]);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h5>2 在public的index.blade.php下可以自定义函数</h5>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">style</span><span class="params">($aliases, $attributes = array<span class="params">()</span>, $interim = <span class="string">''</span>)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (is_array($aliases)) &#123;</div><div class="line">        <span class="keyword">foreach</span> ($aliases <span class="keyword">as</span> $key =&gt; $value) &#123;</div><div class="line">            $interim .= (is_int($key)) ? style($value, $attributes, $interim) : style($key, $value, $interim);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> $interim;</div><div class="line">    &#125;</div><div class="line">    $cssAliases = Config::get(<span class="string">'extend.webAssets.cssAliases'</span>);</div><div class="line">    $url = <span class="keyword">isset</span>($cssAliases[$aliases]) ? $cssAliases[$aliases] : $aliases;</div><div class="line">    <span class="keyword">return</span> HTML::style($url, $attributes);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><em>注意到可以用config的get方法获取配置信息</em></p>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> <span class="keyword">array</span>(</div><div class="line">    <span class="string">'webAssets'</span> =&gt; <span class="keyword">array</span>(</div><div class="line"></div><div class="line">        <span class="string">'cssAliases'</span> =&gt; <span class="keyword">array</span>(</div><div class="line">            <span class="string">'hero'</span>   =&gt; <span class="string">'css/hero.css'</span>,</div><div class="line">        ),</div><div class="line">    )</div><div class="line">);</div></pre></td></tr></table></figure></p>
+<p>这个配置是写在config的extend目录下</p>
+<p>我们会发现HTML 这个东西找不到</p>
+<ol>
+<li>运行composer require &quot;laravelcollective/html&quot;</li>
+<li>config的app下面providers添加 Collective\Html\HtmlServiceProvider::class</li>
+<li>aliases下添加'HTML' =&gt; Collective\Html\HtmlFacade::class</li>
+</ol>
+<p><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">新建模型并生成迁移：php artusan make:model hero -m </div><div class="line"></div><div class="line">生成hero随机种子：php artisan make:seeder HeroesTableSeeder 在database的seed下</div><div class="line"></div><div class="line">factory(App\hero::class)-&gt;times(<span class="number">10</span>)-&gt;make()-&gt;each(<span class="function"><span class="keyword">function</span><span class="params">($hero,$index)</span></span>&#123;</div><div class="line">             $hero-&gt;save();</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">先定义factory php artisan make:factory HeroFactory --model=hero</div><div class="line">$factory-&gt;define(App\hero::class, <span class="function"><span class="keyword">function</span> <span class="params">(Faker $faker)</span> </span>&#123;</div><div class="line"></div><div class="line">         <span class="keyword">return</span> [</div><div class="line">             <span class="comment">// 直接调用 faker API 生成假数据，更多 faker 相关查看 文档。</span></div><div class="line">             <span class="string">'name'</span> =&gt; $faker-&gt;name,</div><div class="line">             <span class="string">'airline'</span> =&gt; $faker-&gt;unique()-&gt;safeEmail,</div><div class="line">         ];</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/10/basic-laravel/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-react-native-navigation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
