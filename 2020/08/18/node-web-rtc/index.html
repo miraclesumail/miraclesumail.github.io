@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wcnmb.com">
-  <title>miracle的博客</title>
+  <title>node-web-rtc | miracle的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="miracle的博客">
-<meta property="og:url" content="http://wcnmb.com/page/6/index.html">
+  <meta name="description" content="今天是一篇关于node，socket，webrtc的内容，先复习一下node stream的基本知识 stream 经典案例 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node-web-rtc">
+<meta property="og:url" content="http://wcnmb.com/2020/08/18/node-web-rtc/index.html">
 <meta property="og:site_name" content="miracle的博客">
+<meta property="og:description" content="今天是一篇关于node，socket，webrtc的内容，先复习一下node stream的基本知识 stream 经典案例 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273">
+<meta property="og:updated_time" content="2020-08-18T11:48:14.840Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="miracle的博客">
+<meta name="twitter:title" content="node-web-rtc">
+<meta name="twitter:description" content="今天是一篇关于node，socket，webrtc的内容，先复习一下node stream的基本知识 stream 经典案例 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273">
   
     <link rel="alternative" href="/atom.xml" title="miracle的博客" type="application/atom+xml">
   
@@ -153,194 +157,59 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-vue-is" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-node-web-rtc" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/17/vue-is/">vue-is</a>
+    <h1 class="article-title" itemprop="name">
+      node-web-rtc
     </h1>
   
 
         
-        <a href="/2018/01/17/vue-is/" class="archive-article-date">
-  	<time datetime="2018-01-17T13:17:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-17</time>
+        <a href="/2020/08/18/node-web-rtc/" class="archive-article-date">
+  	<time datetime="2020-08-18T11:20:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="vue-is"><a href="#vue-is" class="headerlink" title="vue-is"></a>vue-is</h3><p>在 vue 中，当使用 DOM 作为模板时，你会受到 HTML 的一些限制。像 ul 、ol、table、select 这样的元素里如果写入自定义组件将被当做无效内容， 例如：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">my-row</span>&gt;</span>...<span class="tag">&lt;/<span class="name">my-row</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line"> &lt;input v-model=<span class="string">'newTodo'</span> @keyup.enter=<span class="string">'addNewdo'</span> placeholder =<span class="string">'Add  a todo-list-example'</span>/&gt;</div><div class="line"> &lt;li is=<span class="string">'todo-item'</span> v-<span class="keyword">for</span>=<span class="string">'(todo,index) in todos'</span> :key=<span class="string">'index'</span> :title=<span class="string">'todo.title'</span> @remove=<span class="string">'move'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></div><div class="line"></div><div class="line"> <span class="keyword">new</span> Vue(&#123;</div><div class="line">     el:<span class="string">'#is'</span>,</div><div class="line">     data:&#123;</div><div class="line">	newTodo:<span class="string">''</span>,</div><div class="line">		todos: [</div><div class="line">	    &#123;<span class="attr">title</span>:<span class="string">'Do the dishes'</span> &#125;,</div><div class="line">	    &#123;<span class="attr">title</span>: <span class="string">'Take out the trash'</span>,&#125;,</div><div class="line">	    &#123;<span class="attr">title</span>: <span class="string">'Mow the lawn'</span> &#125;</div><div class="line">		]</div><div class="line">&#125;,</div><div class="line">      components:&#123;</div><div class="line">	<span class="string">'todo-item'</span>:&#123;</div><div class="line">		props:[<span class="string">'title'</span>],</div><div class="line">		template:<span class="string">`&lt;li&gt;</span></div><div class="line"><span class="string">     &#123;&#123; title &#125;&#125;</span></div><div class="line"><span class="string">     &lt;button @click="$emit('remove')"&gt;X&lt;/button&gt;</span></div><div class="line"><span class="string">   	&lt;/li&gt;`</span></div><div class="line">	&#125;,</div><div class="line">       methods:&#123;</div><div class="line">	addNewdo()&#123;</div><div class="line">		<span class="comment">/*在 vue 中访问任何数据都要在前面加 this ，否则会报错*/</span></div><div class="line">		<span class="keyword">this</span>.todos.push(&#123;<span class="attr">title</span>:<span class="keyword">this</span>.newTodo&#125;);</div><div class="line">		<span class="keyword">this</span>.newTodo=<span class="string">''</span>;</div><div class="line">	&#125;,</div><div class="line">       move()&#123;</div><div class="line">		 <span class="keyword">return</span> <span class="keyword">this</span>.todos.splice(<span class="keyword">this</span>.todos.index,<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"> &#125;)</div></pre></td></tr></table></figure>
-<p>另外附上一个axios的用法<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">axios.all([</div><div class="line">      axios.get(<span class="string">'https://api.github.com/users/mzabriskie'</span>),</div><div class="line">      axios.get(<span class="string">'https://api.github.com/users/mzabriskie/orgs'</span>)</div><div class="line">    ]).then(axios.spread(<span class="function"><span class="keyword">function</span> (<span class="params">user, orgs</span>) </span>&#123;</div><div class="line">      <span class="built_in">document</span>.getElementById(<span class="string">'useravatar'</span>).src = user.data.avatar_url;</div><div class="line">      <span class="built_in">document</span>.getElementById(<span class="string">'username'</span>).innerHTML = user.data.name;</div><div class="line">      <span class="built_in">document</span>.getElementById(<span class="string">'orgs'</span>).innerHTML = orgs.data.map(<span class="function"><span class="keyword">function</span> (<span class="params">org</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> (</div><div class="line">          <span class="string">'&lt;li class="row"&gt;'</span> +</div><div class="line">            <span class="string">'&lt;img src="'</span> + org.avatar_url + <span class="string">'" class="col-md-1"/&gt;'</span> +</div><div class="line">            <span class="string">'&lt;div class="col-md-3"&gt;'</span> +</div><div class="line">              <span class="string">'&lt;strong&gt;'</span> + org.login + <span class="string">'&lt;/strong&gt;'</span> +</div><div class="line">            <span class="string">'&lt;/div&gt;'</span> +</div><div class="line">          <span class="string">'&lt;/li&gt;'</span></div><div class="line">        );</div><div class="line">      &#125;).join(<span class="string">''</span>);</div><div class="line">    &#125;));</div></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/17/vue-is/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-swift-motion" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/14/swift-motion/">swift-motion</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/14/swift-motion/" class="archive-article-date">
-  	<time datetime="2018-01-14T13:34:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="实现swift动画的轨迹绘制"><a href="#实现swift动画的轨迹绘制" class="headerlink" title="实现swift动画的轨迹绘制"></a>实现swift动画的轨迹绘制</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"> </div><div class="line">class ViewController: UIViewController &#123;</div><div class="line">    <span class="comment">//动画播放时间</span></div><div class="line">    <span class="keyword">var</span> duration:CFTimeInterval = <span class="number">3</span></div><div class="line">     </div><div class="line">    <span class="comment">//运动的方块</span></div><div class="line">    <span class="keyword">var</span> square:UIView!</div><div class="line">     </div><div class="line">    <span class="comment">//绘制路线的图层</span></div><div class="line">    <span class="keyword">var</span> pathLayer:CAShapeLayer!</div><div class="line"></div><div class="line">    override func viewDidLoad() &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">         </div><div class="line">        <span class="comment">//初始化方块</span></div><div class="line">        square = UIView(frame:CGRect(x:<span class="number">0</span>, <span class="attr">y</span>:<span class="number">0</span>, <span class="attr">width</span>:<span class="number">20</span>, <span class="attr">height</span>:<span class="number">20</span>))</div><div class="line">        square.backgroundColor = UIColor.orange</div><div class="line"></div><div class="line">        <span class="keyword">let</span> centerX = view.bounds.size.width/<span class="number">2</span></div><div class="line">        <span class="keyword">let</span> transform = CGAffineTransform(translationX: centerX, <span class="attr">y</span>: <span class="number">50</span>)</div><div class="line"></div><div class="line">        <span class="keyword">let</span> path =  CGMutablePath()</div><div class="line">        path.move(to: CGPoint(x:<span class="number">0</span> ,<span class="attr">y</span>:<span class="number">0</span>), <span class="attr">transform</span>: transform)</div><div class="line">        path.addLine(to: CGPoint(x:<span class="number">0</span> ,<span class="attr">y</span>:<span class="number">75</span>), <span class="attr">transform</span>: transform)</div><div class="line">        path.addLine(to: CGPoint(x:<span class="number">75</span> ,<span class="attr">y</span>:<span class="number">75</span>), <span class="attr">transform</span>: transform)</div><div class="line">        path.addArc(center: CGPoint(x:<span class="number">0</span> ,<span class="attr">y</span>:<span class="number">75</span>), <span class="attr">radius</span>: <span class="number">75</span>, <span class="attr">startAngle</span>: <span class="number">0</span>,</div><div class="line">                    endAngle: CGFloat(<span class="number">1.5</span> * .pi), <span class="attr">clockwise</span>: <span class="literal">false</span>, <span class="attr">transform</span>: transform)</div><div class="line"></div><div class="line">        <span class="comment">//给方块添加移动动画</span></div><div class="line">        <span class="keyword">let</span> orbit = CAKeyframeAnimation(keyPath:<span class="string">"position"</span>)</div><div class="line">        orbit.duration = duration</div><div class="line">        orbit.path = path</div><div class="line">        orbit.calculationMode = kCAAnimationPaced</div><div class="line">        orbit.isRemovedOnCompletion = <span class="literal">false</span></div><div class="line">        orbit.fillMode = kCAFillModeForwards</div><div class="line">        square.layer.add(orbit,<span class="attr">forKey</span>:<span class="string">"Move"</span>)</div><div class="line"></div><div class="line">        <span class="comment">//绘制运动轨迹</span></div><div class="line">        pathLayer = CAShapeLayer()</div><div class="line">        pathLayer.frame = self.view.bounds</div><div class="line">        pathLayer.path = path</div><div class="line">        pathLayer.fillColor = nil</div><div class="line">        pathLayer.lineWidth = <span class="number">1</span></div><div class="line">        pathLayer.strokeColor = UIColor.black.cgColor</div><div class="line"></div><div class="line">        <span class="comment">//给运动轨迹添加动画</span></div><div class="line">        <span class="keyword">let</span> pathAnimation = CABasicAnimation.init(keyPath: <span class="string">"strokeEnd"</span>)</div><div class="line">        pathAnimation.duration = duration</div><div class="line">        pathAnimation.fromValue = <span class="number">0</span></div><div class="line">        pathAnimation.toValue = <span class="number">1</span></div><div class="line">        pathLayer.add(pathAnimation , <span class="attr">forKey</span>: <span class="string">"strokeEnd"</span>)</div><div class="line"></div><div class="line">        <span class="comment">//将轨道添加到视图层中</span></div><div class="line">        self.view.layer.addSublayer(pathLayer)</div><div class="line">        <span class="comment">//将方块添加到视图中</span></div><div class="line">        self.view.addSubview(square)</div><div class="line">    &#125;    </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>注意到move和addLine都是以transform为基础</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/14/swift-motion/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-egret-one" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/14/egret-one/">egret-one</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/14/egret-one/" class="archive-article-date">
-  	<time datetime="2018-01-14T12:51:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="egret入门教程"><a href="#egret入门教程" class="headerlink" title="egret入门教程"></a>egret入门教程</h3><ol>
-<li><p>定义一个主场景</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Main</span> <span class="keyword">extends</span> <span class="title">egret</span>.<span class="title">DisplayObjectContainer</span></span></div></pre></td></tr></table></figure>
+        <h3 id="今天是一篇关于node，socket，webrtc的内容，先复习一下node-stream的基本知识"><a href="#今天是一篇关于node，socket，webrtc的内容，先复习一下node-stream的基本知识" class="headerlink" title="今天是一篇关于node，socket，webrtc的内容，先复习一下node stream的基本知识"></a>今天是一篇关于node，socket，webrtc的内容，先复习一下node stream的基本知识</h3><ol>
+<li><p>stream 经典案例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> Readable = <span class="built_in">require</span>(<span class="string">"stream"</span>).Readable;</div><div class="line"><span class="keyword">var</span> Writable = <span class="built_in">require</span>(<span class="string">"stream"</span>).Writable;</div><div class="line"><span class="keyword">var</span> Transform = <span class="built_in">require</span>(<span class="string">"stream"</span>).Transform;</div><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</div><div class="line"></div><div class="line"><span class="keyword">var</span> util = <span class="built_in">require</span>(<span class="string">"util"</span>);</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">DatabaseWriteStream</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> DatabaseWriteStream))</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> DatabaseWriteStream(options);</div><div class="line">  <span class="keyword">if</span> (!options) options = &#123;&#125;;</div><div class="line">  options.objectMode = <span class="literal">true</span>;</div><div class="line">  Writable.call(<span class="keyword">this</span>, options);</div><div class="line">&#125;</div><div class="line">util.inherits(DatabaseWriteStream, Writable);</div><div class="line"></div><div class="line">DatabaseWriteStream.prototype._write = <span class="function"><span class="keyword">function</span> <span class="title">write</span>(<span class="params">doc, encoding, callback</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"fsf"</span>);</div><div class="line">  fs.writeFileSync(path.resolve(__dirname, <span class="string">"./test.txt"</span>), doc, &#123; <span class="attr">flag</span>: <span class="string">"a"</span> &#125;);</div><div class="line">  callback();</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">JSONEncode</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> JSONEncode)) <span class="keyword">return</span> <span class="keyword">new</span> JSONEncode(options);</div><div class="line">  <span class="keyword">if</span> (!options) options = &#123;&#125;;</div><div class="line">  options.objectMode = <span class="literal">true</span>;</div><div class="line">  Transform.call(<span class="keyword">this</span>, options);</div><div class="line">&#125;</div><div class="line">util.inherits(JSONEncode, Transform);</div><div class="line">JSONEncode.prototype._transform = <span class="function"><span class="keyword">function</span> <span class="title">_transform</span>(<span class="params">obj, encoding, callback</span>) </span>&#123;</div><div class="line">  <span class="keyword">try</span> &#123;</div><div class="line">    obj = <span class="string">"temp"</span> + <span class="string">""</span> + obj;</div><div class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</div><div class="line">    <span class="keyword">return</span> callback(err);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">this</span>.push(obj);</div><div class="line">  callback();</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Thermometer</span>(<span class="params">options</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Thermometer)) <span class="keyword">return</span> <span class="keyword">new</span> Thermometer(options);</div><div class="line">  <span class="keyword">if</span> (!options) options = &#123;&#125;;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">"www"</span>);</div><div class="line">  options.objectMode = <span class="literal">true</span>;</div><div class="line">  Readable.call(<span class="keyword">this</span>, options);</div><div class="line">&#125;</div><div class="line"></div><div class="line">util.inherits(Thermometer, Readable);</div><div class="line"></div><div class="line"><span class="keyword">const</span> getTemperatureReadingFromThermometer = <span class="function"><span class="params">fn</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">const</span> temperature = (<span class="built_in">Math</span>.random() * <span class="number">39</span>) | <span class="number">0</span>;</div><div class="line">  fn(<span class="literal">null</span>, temperature);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">let</span> count = <span class="number">0</span>;</div><div class="line">Thermometer.prototype._read = <span class="function"><span class="keyword">function</span> <span class="title">read</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span>;</div><div class="line">  getTemperatureReadingFromThermometer(<span class="function"><span class="keyword">function</span>(<span class="params">err, temperature</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (err) self.emit(<span class="string">"error"</span>, err);</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">      <span class="keyword">if</span> (count &gt;= <span class="number">10</span>) self.unpipe();</div><div class="line">      count++;</div><div class="line">      self.push(temperature);</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> thermomether = Thermometer();</div><div class="line"><span class="keyword">var</span> db = DatabaseWriteStream();</div><div class="line"><span class="keyword">const</span> json = JSONEncode();</div><div class="line"></div><div class="line">thermomether.pipe(json).pipe(db);</div><div class="line"></div><div class="line">thermomether.on(<span class="string">"data"</span>, <span class="function"><span class="keyword">function</span>(<span class="params">temp</span>) </span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">"temp:"</span>, temp);</div><div class="line">   db.write(<span class="string">`<span class="subst">$&#123;temp&#125;</span>\n`</span>);</div><div class="line">   thermomether.pause();</div><div class="line">   setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">     thermomether.resume();</div><div class="line">   &#125;, <span class="number">2000</span>);</div><div class="line">Ï&#125;);</div></pre></td></tr></table></figure>
 </li>
-<li><p>初始化构造器</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public <span class="keyword">constructor</span>() &#123;</div><div class="line">        <span class="keyword">super</span>();</div><div class="line">        <span class="keyword">this</span>.once( egret.Event.ADDED_TO_STAGE, <span class="keyword">this</span>.onAddToStage, <span class="keyword">this</span> );</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<li><p>正式介绍web-rtc的实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> socket = io(<span class="string">"/"</span>);</div><div class="line"><span class="keyword">const</span> videoGrid = <span class="built_in">document</span>.getElementById(<span class="string">"video-grid"</span>);</div><div class="line"><span class="keyword">const</span> myPeer = <span class="keyword">new</span> Peer(<span class="literal">undefined</span>, &#123;</div><div class="line">  host: <span class="string">"/"</span>,</div><div class="line">  port: <span class="string">"3001"</span></div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// mypeer打开就要加入socket</span></div><div class="line">myPeer.on(<span class="string">"open"</span>, id =&gt; &#123;</div><div class="line">  socket.emit(<span class="string">"join-room"</span>, ROOM_ID, id);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="keyword">const</span> myVideo = <span class="built_in">document</span>.createElement(<span class="string">"video"</span>);</div><div class="line">myVideo.muted = <span class="literal">true</span>;  <span class="comment">// 自己静音</span></div><div class="line"><span class="keyword">const</span> peers = &#123;&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addVideoStream</span>(<span class="params">video, stream</span>) </span>&#123;</div><div class="line">  video.srcObject = stream;</div><div class="line">  video.addEventListener(<span class="string">"loadedmetadata"</span>, () =&gt; &#123;</div><div class="line">    video.play();</div><div class="line">  &#125;);</div><div class="line">  videoGrid.append(video);</div><div class="line">&#125;</div><div class="line"></div><div class="line">navigator.mediaDevices</div><div class="line">  .getUserMedia(&#123;</div><div class="line">    video: <span class="literal">true</span>,</div><div class="line">    audio: <span class="literal">true</span></div><div class="line">  &#125;)</div><div class="line">  .then(<span class="function"><span class="params">stream</span> =&gt;</span> &#123;</div><div class="line">    <span class="comment">// 一进来就加载自己的音视频  </span></div><div class="line">    addVideoStream(myVideo, stream);</div><div class="line">    <span class="comment">// 响应呼叫</span></div><div class="line">    myPeer.on(<span class="string">"call"</span>, call =&gt; &#123;</div><div class="line">      <span class="comment">// 把自己的stream回传过去  </span></div><div class="line">      call.answer(stream);</div><div class="line">      <span class="keyword">const</span> video = <span class="built_in">document</span>.createElement(<span class="string">"video"</span>);</div><div class="line">      call.on(<span class="string">"stream"</span>, userVideoStream =&gt; &#123;</div><div class="line">        addVideoStream(video, userVideoStream);</div><div class="line">      &#125;);</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    <span class="comment">// 1 新用户进来</span></div><div class="line">    socket.on(<span class="string">"user-connected"</span>, userId =&gt; &#123;</div><div class="line">      connectToNewUser(userId, stream);</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">socket.on(<span class="string">"user-disconnected"</span>, userId =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (peers[userId]) peers[userId].close();</div><div class="line">&#125;);</div><div class="line">Ï</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">connectToNewUser</span>(<span class="params">userId, stream</span>) </span>&#123;</div><div class="line">    <span class="comment">// 呼叫对应userId的peer</span></div><div class="line">    <span class="keyword">const</span> call = myPeer.call(userId, stream);</div><div class="line">    <span class="keyword">const</span> video = <span class="built_in">document</span>.createElement(<span class="string">"video"</span>);</div><div class="line">    <span class="comment">// 接受对方发送过来的stream</span></div><div class="line">    call.on(<span class="string">"stream"</span>, userVideoStream =&gt; &#123;</div><div class="line">         addVideoStream(video, userVideoStream);</div><div class="line">    &#125;);</div><div class="line">    <span class="comment">// socket关掉后 video也需要移除</span></div><div class="line">    call.on(<span class="string">"close"</span>, () =&gt; &#123;</div><div class="line">        video.remove();</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    peers[userId] = call;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 这是服务端的代码</span></div><div class="line">io.on(<span class="string">'connection'</span>, socket =&gt; &#123;</div><div class="line">  socket.on(<span class="string">'join-room'</span>, (roomId, userId) =&gt; &#123;</div><div class="line">    socket.join(roomId)</div><div class="line">    socket.to(roomId).broadcast.emit(<span class="string">'user-connected'</span>, userId)</div><div class="line"></div><div class="line">    socket.on(<span class="string">'disconnect'</span>, () =&gt; &#123;</div><div class="line">      socket.to(roomId).broadcast.emit(<span class="string">'user-disconnected'</span>, userId)</div><div class="line">    &#125;)</div><div class="line">  &#125;)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<p><strong> ADDED_TO_STAGE事件触发onAddToStage函数 </strong></p>
-<ol>
-<li>加载一个图片资源<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">private onAddToStage(event:egret.Event)&#123;</div><div class="line">    <span class="keyword">var</span> imgLoader:egret.ImageLoader = <span class="keyword">new</span> egret.ImageLoader;</div><div class="line">    imgLoader.once( egret.Event.COMPLETE, <span class="keyword">this</span>.imgLoadHandler, <span class="keyword">this</span> );</div><div class="line">    imgLoader.load( <span class="string">"resource/cartoon-egret_00.png"</span> );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><strong> 图片加载完又一个imgLoadHandler </strong></p>
-<ol>
-<li>添加物体到主视图<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">private imgLoadHandler( evt:egret.Event ):<span class="keyword">void</span> &#123;</div><div class="line">        <span class="keyword">this</span>._bird = <span class="keyword">new</span> egret.Bitmap( evt.currentTarget.data );</div><div class="line">        <span class="keyword">this</span>.addChild( <span class="keyword">this</span>._bird );</div><div class="line">   &#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><strong> 通过evt.currentTarget.data获取图片资源信息 </strong></p>
-<ol>
-<li><p>为舞台添加触碰事件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.stage.addEventListener( egret.TouchEvent.TOUCH_BEGIN, <span class="keyword">this</span>.touchHandler, <span class="keyword">this</span> );</div></pre></td></tr></table></figure>
-</li>
-<li><p>touch事件监测</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">private touchHandler(evt:egret.Event)&#123;</div><div class="line">   <span class="comment">//通过evt.type判断事件类型 </span></div><div class="line">   <span class="keyword">switch</span> ( evt.type )&#123;</div><div class="line">            <span class="keyword">case</span> egret.TouchEvent.TOUCH_MOVE:</div><div class="line">                <span class="keyword">this</span>.checkCollision( evt.stageX, evt.stageY );</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> egret.TouchEvent.TOUCH_BEGIN:</div><div class="line">                <span class="comment">// 可以直接调用hitTestPoint方法来检测是否碰到_txInfo区域</span></div><div class="line">                <span class="keyword">if</span>( !<span class="keyword">this</span>._txInfo.hitTestPoint( evt.stageX, evt.stageY ) )&#123; </div><div class="line">                    <span class="keyword">this</span>.stage.addEventListener( egret.TouchEvent.TOUCH_MOVE, <span class="keyword">this</span>.touchHandler, <span class="keyword">this</span> );</div><div class="line">                    <span class="keyword">this</span>.stage.once( egret.TouchEvent.TOUCH_END, <span class="keyword">this</span>.touchHandler, <span class="keyword">this</span> );</div><div class="line">                    <span class="keyword">this</span>.addChild( <span class="keyword">this</span>._dot );</div><div class="line">                    <span class="keyword">this</span>.checkCollision( evt.stageX, evt.stageY );</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">            <span class="keyword">case</span> egret. TouchEvent.TOUCH_END:</div><div class="line">                <span class="keyword">this</span>.stage.removeEventListener( egret.TouchEvent.TOUCH_MOVE, <span class="keyword">this</span>.touchHandler, <span class="keyword">this</span> );</div><div class="line">                <span class="keyword">this</span>.stage.addEventListener( egret.TouchEvent.TOUCH_BEGIN, <span class="keyword">this</span>.touchHandler, <span class="keyword">this</span> );</div><div class="line">                <span class="keyword">if</span>( <span class="keyword">this</span>._dot.parent )&#123;</div><div class="line">                    <span class="keyword">this</span>._dot.parent.removeChild( <span class="keyword">this</span>._dot );</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">this</span>.updateInfo( TouchCollideStatus.NO_TOUCHED );</div><div class="line">                <span class="keyword">break</span>;</div><div class="line">        &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><strong> 注意在begin事件里面对于TOUCH_END用的是once 而移动过程中会不断去检测</strong></p>
-<ol>
-<li>最后看下这个函数可以和原声js对比一下<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>._txInfo.addEventListener( egret.TouchEvent.TOUCH_TAP, ( evt:egret.TouchEvent )=&gt;&#123;</div><div class="line">            evt.stopImmediatePropagation();</div><div class="line">            <span class="keyword">this</span>._bShapeTest = ! <span class="keyword">this</span>._bShapeTest;</div><div class="line">            <span class="keyword">this</span>.updateInfo( TouchCollideStatus.NO_TOUCHED );</div><div class="line">        &#125;, <span class="keyword">this</span> );</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<p><strong> 这里用到了stopImmediatePropagation阻止事件冒泡 因为之前在舞台中绑定了touch </strong></p>
-<p>这是egret第一讲 有兴趣的同学可以看<a href="http://developer.egret.com/cn/example/egret2d/index.html#010-disp-basic" target="_blank" rel="external">这里</a></p>
+<p>以上就是所有,之前讲过socket加入房间和广播消息,这里有用到</p>
 
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -349,16 +218,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/14/egret-one/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://wcnmb.com/2020/08/18/node-web-rtc/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/06/nodejs-error-handling/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">nodejs-error-handling</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -378,406 +306,14 @@
 
 
 
-
-  
-    <article id="post-basic-laravel" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/10/basic-laravel/">basic-laravel</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/10/basic-laravel/" class="archive-article-date">
-  	<time datetime="2018-01-10T14:05:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="laravel基础教程"><a href="#laravel基础教程" class="headerlink" title="laravel基础教程"></a>laravel基础教程</h3><h5 id="1-路由配置"><a href="#1-路由配置" class="headerlink" title="1 路由配置"></a>1 路由配置</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Route::group([<span class="string">'prefix'</span> =&gt; <span class="string">'User'</span>], <span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</div><div class="line">    $resource   = <span class="string">'User'</span>;</div><div class="line">    $controller = <span class="string">'UserController@'</span>;</div><div class="line">    Route::get(<span class="string">'/'</span>,             [<span class="string">'as'</span> =&gt; $resource . <span class="string">'.index'</span>,          <span class="string">'uses'</span> =&gt; $controller . <span class="string">'index'</span>]);</div><div class="line">    Route::get(<span class="string">'/detail/&#123;name&#125;'</span>,             [<span class="string">'as'</span> =&gt; $resource . <span class="string">'.detail'</span>,          <span class="string">'uses'</span> =&gt; $controller . <span class="string">'detail'</span>]);</div><div class="line">    Route::get(<span class="string">'/create'</span>, [<span class="string">'as'</span> =&gt; $resource . <span class="string">'.create'</span>,          <span class="string">'uses'</span> =&gt; $controller . <span class="string">'create'</span>]);</div><div class="line">    Route::post(<span class="string">'/create'</span>, [<span class="string">'as'</span> =&gt; $resource . <span class="string">'.add'</span>,          <span class="string">'uses'</span> =&gt; $controller . <span class="string">'add'</span>]);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<h5 id="2-在public的index-blade-php下可以自定义函数"><a href="#2-在public的index-blade-php下可以自定义函数" class="headerlink" title="2 在public的index.blade.php下可以自定义函数"></a>2 在public的index.blade.php下可以自定义函数</h5><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">style</span><span class="params">($aliases, $attributes = array<span class="params">()</span>, $interim = <span class="string">''</span>)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (is_array($aliases)) &#123;</div><div class="line">        <span class="keyword">foreach</span> ($aliases <span class="keyword">as</span> $key =&gt; $value) &#123;</div><div class="line">            $interim .= (is_int($key)) ? style($value, $attributes, $interim) : style($key, $value, $interim);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> $interim;</div><div class="line">    &#125;</div><div class="line">    $cssAliases = Config::get(<span class="string">'extend.webAssets.cssAliases'</span>);</div><div class="line">    $url = <span class="keyword">isset</span>($cssAliases[$aliases]) ? $cssAliases[$aliases] : $aliases;</div><div class="line">    <span class="keyword">return</span> HTML::style($url, $attributes);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p><em>注意到可以用config的get方法获取配置信息</em></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> <span class="keyword">array</span>(</div><div class="line">    <span class="string">'webAssets'</span> =&gt; <span class="keyword">array</span>(</div><div class="line"></div><div class="line">        <span class="string">'cssAliases'</span> =&gt; <span class="keyword">array</span>(</div><div class="line">            <span class="string">'hero'</span>   =&gt; <span class="string">'css/hero.css'</span>,</div><div class="line">        ),</div><div class="line">    )</div><div class="line">);</div></pre></td></tr></table></figure>
-<p>这个配置是写在config的extend目录下</p>
-<p>我们会发现HTML 这个东西找不到</p>
-<ol>
-<li>运行composer require “laravelcollective/html”</li>
-<li>config的app下面providers添加 Collective\Html\HtmlServiceProvider::class</li>
-<li>aliases下添加’HTML’ =&gt; Collective\Html\HtmlFacade::class</li>
-</ol>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">新建模型并生成迁移：php artusan make:model hero -m </div><div class="line"></div><div class="line">生成hero随机种子：php artisan make:seeder HeroesTableSeeder 在database的seed下</div><div class="line"></div><div class="line">factory(App\hero::class)-&gt;times(<span class="number">10</span>)-&gt;make()-&gt;each(<span class="function"><span class="keyword">function</span><span class="params">($hero,$index)</span></span>&#123;</div><div class="line">             $hero-&gt;save();</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">先定义factory php artisan make:factory HeroFactory --model=hero</div><div class="line">$factory-&gt;define(App\hero::class, <span class="function"><span class="keyword">function</span> <span class="params">(Faker $faker)</span> </span>&#123;</div><div class="line"></div><div class="line">         <span class="keyword">return</span> [</div><div class="line">             <span class="comment">// 直接调用 faker API 生成假数据，更多 faker 相关查看 文档。</span></div><div class="line">             <span class="string">'name'</span> =&gt; $faker-&gt;name,</div><div class="line">             <span class="string">'airline'</span> =&gt; $faker-&gt;unique()-&gt;safeEmail,</div><div class="line">         ];</div><div class="line"></div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/10/basic-laravel/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-react-native-navigation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/04/react-native-navigation/">react-native-navigation</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/04/react-native-navigation/" class="archive-article-date">
-  	<time datetime="2018-01-04T14:00:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="react-native-导航教程"><a href="#react-native-导航教程" class="headerlink" title="react-native 导航教程"></a>react-native 导航教程</h3><p>本篇文章适合于react技术栈的人阅读，对native开发有兴趣的可以关注。</p>
-<p>废话不多说，直接上代码。</p>
-<h5 id="1简单路由配置"><a href="#1简单路由配置" class="headerlink" title="1简单路由配置"></a>1简单路由配置</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> ExampleRoutes = &#123;</div><div class="line">  SimpleStack: &#123;</div><div class="line">    name: <span class="string">'Stack Example'</span>,</div><div class="line">    description: <span class="string">'A card stack'</span>,</div><div class="line">    screen: SimpleStack,</div><div class="line">  &#125;,</div><div class="line">  SimpleTabs: &#123;</div><div class="line">    name: <span class="string">'Tabs Example'</span>,</div><div class="line">    description: <span class="string">'Tabs following platform conventions'</span>,</div><div class="line">    screen: SimpleTabs,</div><div class="line">  &#125;,</div><div class="line">  Drawer: &#123;</div><div class="line">    name: <span class="string">'Drawer Example'</span>,</div><div class="line">    description: <span class="string">'Android-style drawer navigation'</span>,</div><div class="line">    screen: Drawer,</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>上述是三个简单的路由配件，下面用到代码中</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainScreen</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span>&lt;*&gt; </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">const</span> &#123; navigation &#125; = <span class="keyword">this</span>.props;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> (</div><div class="line">      &lt;View style=&#123;&#123; <span class="attr">flex</span>: <span class="number">1</span> &#125;&#125;&gt;</div><div class="line">        &lt;ScrollView style=&#123;&#123; <span class="attr">flex</span>: <span class="number">1</span> &#125;&#125;&gt;</div><div class="line">          &lt;Banner /&gt;</div><div class="line">          &#123;<span class="built_in">Object</span>.keys(ExampleRoutes).map(<span class="function">(<span class="params">routeName: string</span>) =&gt;</span> (</div><div class="line">            &lt;TouchableOpacity</div><div class="line">              key=&#123;routeName&#125;</div><div class="line">              onPress=&#123;() =&gt; &#123;</div><div class="line">                <span class="keyword">const</span> &#123; path, params, screen &#125; = ExampleRoutes[routeName];</div><div class="line">                <span class="keyword">const</span> &#123; router &#125; = screen;</div><div class="line">                <span class="keyword">const</span> action =</div><div class="line">                  path &amp;&amp; router.getActionForPathAndParams(path, params);</div><div class="line">                navigation.navigate(routeName, &#123;&#125;, action);</div><div class="line">              &#125;&#125;</div><div class="line">            &gt;</div><div class="line">              &lt;SafeAreaView</div><div class="line">                style=&#123;styles.itemContainer&#125;</div><div class="line">                forceInset=&#123;&#123; <span class="attr">vertical</span>: <span class="string">'never'</span> &#125;&#125;</div><div class="line">              &gt;</div><div class="line">                &lt;View style=&#123;styles.item&#125;&gt;</div><div class="line">                  &lt;Text style=&#123;styles.title&#125;&gt;</div><div class="line">                    &#123;ExampleRoutes[routeName].name&#125;</div><div class="line">                  &lt;<span class="regexp">/Text&gt;</span></div><div class="line"><span class="regexp">                  &lt;Text style=&#123;styles.description&#125;&gt;</span></div><div class="line"><span class="regexp">                    &#123;ExampleRoutes[routeName].description&#125;</span></div><div class="line"><span class="regexp">                  &lt;/</span>Text&gt;</div><div class="line">                &lt;<span class="regexp">/View&gt;</span></div><div class="line"><span class="regexp">              &lt;/</span>SafeAreaView&gt;</div><div class="line">            &lt;<span class="regexp">/TouchableOpacity&gt;</span></div><div class="line"><span class="regexp">          ))&#125;</span></div><div class="line"><span class="regexp">        &lt;/</span>ScrollView&gt;</div><div class="line">        &lt;StatusBar barStyle=<span class="string">"light-content"</span> /&gt;</div><div class="line">        &lt;View style=&#123;styles.statusBarUnderlay&#125; /&gt;</div><div class="line">      &lt;<span class="regexp">/View&gt;</span></div><div class="line"><span class="regexp">    );</span></div><div class="line"><span class="regexp">  &#125;</span></div><div class="line"><span class="regexp">&#125;</span></div></pre></td></tr></table></figure>
-<p>相信对react有研究的同学看上面代码应该比较轻松。</p>
-<ul>
-<li><p>react-native中使用view，忘记div，而且这种内置需要引入。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123;ScrollView,StyleSheet,TouchableOpacity,Text,StatusBar,View&#125; <span class="keyword">from</span> <span class="string">'react-native'</span>;</div></pre></td></tr></table></figure>
-</li>
-<li><p>对es6了解的人对于这种解构操作比较习惯，navigation.navigate是push视图。</p>
-</li>
-</ul>
-<p>接下来是样式用法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> styles = StyleSheet.create(&#123;</div><div class="line">  item: &#123;</div><div class="line">    paddingHorizontal: <span class="number">16</span>,</div><div class="line">    paddingVertical: <span class="number">12</span>,</div><div class="line">  &#125;,</div><div class="line">  itemContainer: &#123;</div><div class="line">    backgroundColor: <span class="string">'#fff'</span>,</div><div class="line">    borderBottomWidth: StyleSheet.hairlineWidth,</div><div class="line">    borderBottomColor: <span class="string">'#ddd'</span>,</div><div class="line">  &#125;,</div><div class="line">  image: &#123;</div><div class="line">    width: <span class="number">120</span>,</div><div class="line">    height: <span class="number">120</span>,</div><div class="line">    alignSelf: <span class="string">'center'</span>,</div><div class="line">    marginBottom: <span class="number">20</span>,</div><div class="line">    resizeMode: <span class="string">'contain'</span>,</div><div class="line">  &#125;,</div><div class="line">  statusBarUnderlay: &#123;</div><div class="line">    backgroundColor: <span class="string">'#673ab7'</span>,</div><div class="line">    position: <span class="string">'absolute'</span>,</div><div class="line">    top: <span class="number">0</span>,</div><div class="line">    left: <span class="number">0</span>,</div><div class="line">    right: <span class="number">0</span>,</div><div class="line">    height: Constants.statusBarHeight,</div><div class="line">  &#125;,</div><div class="line">  title: &#123;</div><div class="line">    fontSize: <span class="number">16</span>,</div><div class="line">    fontWeight: <span class="string">'bold'</span>,</div><div class="line">    color: <span class="string">'#444'</span>,</div><div class="line">  &#125;,</div><div class="line">  description: &#123;</div><div class="line">    fontSize: <span class="number">13</span>,</div><div class="line">    color: <span class="string">'#999'</span>,</div><div class="line">  &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<p>注意到view上面的样式是如何绑定的 style={styles.itemContainer}</p>
-<p>关键的位置来了，如何将这个路由串联起来</p>
-<pre><code class="js"><span class="keyword">const</span> AppNavigator = StackNavigator(
-  {
-    ...ExampleRoutes,
-    Index: {
-      screen: MainScreen,
-    },
-  },
-  {
-    initialRouteName: <span class="string">'Index'</span>,
-    headerMode: <span class="string">'none'</span>,
-
-    <span class="comment">/*</span>
-<span class="comment">   * Use modal on iOS because the card mode comes from the right,</span>
-<span class="comment">   * which conflicts with the drawer example gesture</span>
-<span class="comment">   */</span>
-    mode: Platform.OS === <span class="string">'ios'</span> ? <span class="string">'modal'</span> : <span class="string">'card'</span>,
-  }
-);
-
-<span class="keyword">export</span> <span class="keyword">default</span> () =&gt; <span class="xml"><span class="tag">&lt;<span class="name">AppNavigator</span> /&gt;</span>;</span>
-</code></pre>
-<p>Index对应的是screen: MainScreen,mainscreen其实就是所有路由列表。<br>initialRouteName: ‘Index’将其呈现出来。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/04/react-native-navigation/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-异步队列" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/01/异步队列/">异步队列</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/01/异步队列/" class="archive-article-date">
-  	<time datetime="2017-10-01T03:31:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="wwww"><a href="#wwww" class="headerlink" title="wwww"></a>wwww</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> quene = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">   <span class="keyword">const</span> lists = [];</div><div class="line">   <span class="keyword">let</span> index = <span class="number">0</span>;</div><div class="line">   </div><div class="line">   next: <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">      <span class="keyword">if</span>(index &gt;= list.length - <span class="number">1</span>) <span class="keyword">return</span>;</div><div class="line">      <span class="keyword">const</span> cur = list[index++];</div><div class="line">      cur(next)</div><div class="line">   &#125;</div><div class="line">   </div><div class="line">   add: <span class="function">(<span class="params">...fns</span>)=&gt;</span>&#123;</div><div class="line">       lists.push(...fns)</div><div class="line">   &#125;     </div><div class="line"></div><div class="line">   run: <span class="function"><span class="params">()</span>=&gt;</span>&#123;</div><div class="line">       <span class="keyword">const</span> cur = list[index];</div><div class="line">       <span class="keyword">typeof</span> cur == <span class="string">'function'</span> &amp;&amp; cur(next)</div><div class="line">   &#125;</div><div class="line"></div><div class="line">   <span class="keyword">return</span> &#123;</div><div class="line">       add:add,</div><div class="line">       run:run</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/01/异步队列/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-test" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/14/test/">test</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/14/test/" class="archive-article-date">
-  	<time datetime="2017-08-14T12:33:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="wcnmb"><a href="#wcnmb" class="headerlink" title="wcnmb"></a>wcnmb</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install webpack -g</div></pre></td></tr></table></figure>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">qwe</span></span>&#123;</div><div class="line">      <span class="function"><span class="keyword">public</span> <span class="title">qwe</span><span class="params">(<span class="keyword">int</span> age)</span></span></div><div class="line"><span class="function">          <span class="keyword">this</span>.age </span>= age;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>#sndbkldbbklkdl</p>
-<h4 id="今天出来粗口"><a href="#今天出来粗口" class="headerlink" title="今天出来粗口"></a>今天出来粗口</h4><p><a href="http://www.cnblogs.com/yoissee" target="_blank" rel="external">miracle</a><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</div><div class="line">   <span class="built_in">console</span>.log(i)</div><div class="line">&#125;)(<span class="string">'ddd'</span>)</div></pre></td></tr></table></figure></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">qwe</span><span class="params">(n)</span>:</span></div><div class="line">   ss = [<span class="keyword">for</span> i <span class="keyword">in</span> range(n)]</div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">aaa</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bbb</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ccc</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/14/test/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/14/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/14/hello-world/" class="archive-article-date">
-  	<time datetime="2017-08-14T12:25:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/14/hello-world/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -800,8 +336,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
