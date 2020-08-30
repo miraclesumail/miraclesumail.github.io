@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://wcnmb.com">
-  <title>Archives: 2020 | miracle的博客</title>
+  <title>august-last-summary | miracle的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="miracle的博客">
-<meta property="og:url" content="http://wcnmb.com/archives/2020/page/2/index.html">
+  <meta name="description" content="这是8月最后一篇文章 明天转移阵地了  一段代码学习一下事件循环 12345678910111213141516171819202122function someAsyncOperation(callback) &amp;#123;  // Assume this takes 95ms to complete  fs.readFile(&quot;./index.js&quot;, callback);&amp;#125;const">
+<meta property="og:type" content="article">
+<meta property="og:title" content="august-last-summary">
+<meta property="og:url" content="http://wcnmb.com/2020/08/30/august-last-summary/index.html">
 <meta property="og:site_name" content="miracle的博客">
+<meta property="og:description" content="这是8月最后一篇文章 明天转移阵地了  一段代码学习一下事件循环 12345678910111213141516171819202122function someAsyncOperation(callback) &amp;#123;  // Assume this takes 95ms to complete  fs.readFile(&quot;./index.js&quot;, callback);&amp;#125;const">
+<meta property="og:updated_time" content="2020-08-30T08:48:00.342Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="miracle的博客">
+<meta name="twitter:title" content="august-last-summary">
+<meta name="twitter:description" content="这是8月最后一篇文章 明天转移阵地了  一段代码学习一下事件循环 12345678910111213141516171819202122function someAsyncOperation(callback) &amp;#123;  // Assume this takes 95ms to complete  fs.readFile(&quot;./index.js&quot;, callback);&amp;#125;const">
   
     <link rel="alternative" href="/atom.xml" title="miracle的博客" type="application/atom+xml">
   
@@ -153,160 +157,175 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-august-last-summary" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      august-last-summary
+    </h1>
+  
+
+        
+        <a href="/2020/08/30/august-last-summary/" class="archive-article-date">
+  	<time datetime="2020-08-30T07:49:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-30</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3>这是8月最后一篇文章 明天转移阵地了</h3>
+<ol>
+<li>一段代码学习一下事件循环
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">someAsyncOperation</span>(<span class="params">callback</span>) </span>&#123;</div><div class="line">  <span class="comment">// Assume this takes 95ms to complete</span></div><div class="line">  fs.readFile(<span class="string">"./index.js"</span>, callback);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> timeoutScheduled = <span class="built_in">Date</span>.now();</div><div class="line"></div><div class="line">someAsyncOperation(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">const</span> startCallback = <span class="built_in">Date</span>.now();</div><div class="line">  <span class="comment">// do something that will take 10ms...</span></div><div class="line">  <span class="keyword">while</span> (<span class="built_in">Date</span>.now() - startCallback &lt; <span class="number">1180</span>) &#123;</div><div class="line">    <span class="comment">// do nothing</span></div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"> </div><div class="line"> <span class="comment">// process.nextTick(() =&gt; console.log("process next tick"));</span></div><div class="line"> <span class="comment">// promise 都是微任务</span></div><div class="line"> setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">   <span class="keyword">const</span> delay = <span class="built_in">Date</span>.now() - timeoutScheduled;</div><div class="line">   <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;delay&#125;</span>ms have passed since I was scheduled`</span>);</div><div class="line">   <span class="comment">// 打印 1180</span></div><div class="line"> &#125;, <span class="number">100</span>);</div></pre></td></tr></table></figure></li>
+</ol>
+<p>以上定时器被异步回调阻塞了，需要注意的是 在主线和事件循环的每个阶段完成后，会立刻运行微任务回调。</p>
+<ol start="2">
+<li>学习一下react hoc的ref如何转发
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">hoc</span>(<span class="params">Cmp</span>) </span>&#123;</div><div class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Wrapped</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</div><div class="line">       render() &#123;</div><div class="line">          <span class="keyword">const</span> &#123; forwardedRef, ...rest &#125; = <span class="keyword">this</span>.props;</div><div class="line">          <span class="keyword">return</span> &lt;Cmp &#123;...rest&#125; forwardedRef=&#123;forwardedRef&#125; /&gt;;</div><div class="line">       &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return React.forwardRef((props, ref) =&gt; &lt;Wrapped &#123;...props&#125; forwardedRef=&#123;ref&#125;/&gt;)</div><div class="line">&#125;</div><div class="line"></div><div class="line">const Test: React.FunctionComponent&lt;any&gt; = (&#123; forwardedRef &#125;) =&gt; &#123;</div><div class="line">  return &lt;div ref=&#123;forwardedRef&#125; className="block" /&gt;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">const DecratorCmp = hoc(Danc);</div><div class="line"></div><div class="line">class App extends Component &#123;</div><div class="line">    ref = React.createRef&lt;HTMLelement&gt;();</div><div class="line"></div><div class="line">    render() &#123;</div><div class="line">        &lt;DecratorCmp ref=&#123;this.ref&#125;/&gt;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// https://stackoverflow.com/questions/53849369/react-forwardref-hoc-not-giving-reference-to-container-element</div></pre></td></tr></table></figure></li>
+</ol>
+<p>确实有点复杂, 实际操作中还是慎用</p>
+<ol start="3">
+<li>学习一下eventsource
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="number">1.</span> It only allows data reception <span class="keyword">from</span> the server (unidirectional)</div><div class="line"><span class="number">2.</span> Events are limited to UTF<span class="number">-8</span> (no binary data)</div><div class="line"><span class="comment">// handle imformation flowing from server to client</span></div><div class="line"><span class="keyword">const</span> nests = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line"><span class="keyword">let</span> clients = [];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">eventsHandler</span>(<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">  <span class="comment">// Mandatory headers and http status to keep connection open</span></div><div class="line">  <span class="keyword">const</span> headers = &#123;</div><div class="line">    <span class="string">'Content-Type'</span>: <span class="string">'text/event-stream'</span>,</div><div class="line">    <span class="string">'Connection'</span>: <span class="string">'keep-alive'</span>,</div><div class="line">    <span class="string">'Cache-Control'</span>: <span class="string">'no-cache'</span></div><div class="line">  &#125;;</div><div class="line">  res.writeHead(<span class="number">200</span>, headers);</div><div class="line">  <span class="comment">// After client opens connection send all nests as string</span></div><div class="line">  <span class="keyword">const</span> data = <span class="string">`data: <span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(nests)&#125;</span>\n\n`</span>;</div><div class="line">  res.write(data);</div><div class="line"></div><div class="line">  <span class="keyword">const</span> clientId = <span class="built_in">Date</span>.now();</div><div class="line">  <span class="keyword">const</span> newClient = &#123;</div><div class="line">    id: clientId,</div><div class="line">    res</div><div class="line">  &#125;;</div><div class="line">  clients.push(newClient);</div><div class="line"></div><div class="line">  <span class="comment">// eventsource关闭了</span></div><div class="line">  req.on(<span class="string">'close'</span>, () =&gt; &#123;</div><div class="line">    <span class="built_in">console</span>.log($&#123;clientId&#125; Connection closed);</div><div class="line">    clients = clients.filter(<span class="function"><span class="params">c</span> =&gt;</span> c.id !== clientId);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sendEventsToAll</span>(<span class="params">newNest</span>) </span>&#123;</div><div class="line">  clients.forEach(<span class="function"><span class="params">c</span> =&gt;</span> c.res.write(data: $&#123;<span class="built_in">JSON</span>.stringify(newNest)&#125;\n\n))</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">addNest</span>(<span class="params">req, res, next</span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> newNest = req.body;</div><div class="line">  nests.push(newNest);</div><div class="line">  <span class="comment">// Send recently added nest as POST result</span></div><div class="line">  res.json(newNest)</div><div class="line">  <span class="comment">// Invoke iterate and send function</span></div><div class="line">  <span class="keyword">return</span> sendEventsToAll(newNest);</div><div class="line">&#125;</div><div class="line"></div><div class="line">app.get(<span class="string">'/events'</span>, eventsHandler);</div><div class="line">app.post(<span class="string">'/nest'</span>, addNest);</div><div class="line"></div><div class="line"><span class="comment">// 客户端代码</span></div><div class="line"><span class="keyword">const</span> events = <span class="keyword">new</span> EventSource(<span class="string">'http://localhost:3000/events'</span>);</div><div class="line">evtSource.onmessage = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> newElement = <span class="built_in">document</span>.createElement(<span class="string">"li"</span>);</div><div class="line"></div><div class="line">    newElement.textContent = <span class="string">"message: "</span> + e.data;</div><div class="line">    eventList.appendChild(newElement);</div><div class="line">  &#125;;</div><div class="line"></div><div class="line"><span class="comment">// 关闭连接</span></div><div class="line">button.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'Connection closed'</span>);</div><div class="line">    evtSource.close();</div><div class="line">  &#125;;</div></pre></td></tr></table></figure></li>
+</ol>
+<p>eventsource是服务端单向推送 客户端不能向服务端发消息 不能发送二进制</p>
+<ol start="4">
+<li>buffer的read操作
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> buf = Buffer.from(<span class="string">'abc'</span>);</div><div class="line"><span class="built_in">console</span>.log(buf4.readUInt8(<span class="number">0</span>));  <span class="comment">// 97</span></div><div class="line"><span class="built_in">console</span>.log(buf4.readUInt8(<span class="number">1</span>));  <span class="comment">// 98</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> buf1 = Buffer.from([<span class="number">1</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>]);</div><div class="line"><span class="built_in">console</span>.log(buf1.readIntBE(<span class="number">0</span>, <span class="number">1</span>))  <span class="comment">// 1</span></div><div class="line"><span class="built_in">console</span>.log(buf1.readIntBE(<span class="number">0</span>, <span class="number">2</span>))  <span class="comment">// 259  1*256 + 3</span></div><div class="line"><span class="built_in">console</span>.log(buf1.readIntBE(<span class="number">0</span>, <span class="number">3</span>))  <span class="comment">// 66306  1*256*256 + 3*256 + 2</span></div><div class="line"><span class="built_in">console</span>.log(buf1.readInt16BE(<span class="number">0</span>));  <span class="comment">// 259  1*256 + 3</span></div><div class="line"><span class="built_in">console</span>.log(buf1.readInt32BE(<span class="number">0</span>));  <span class="comment">// 66306  1*256*256 + 3*256 + 2</span></div><div class="line"><span class="built_in">console</span>.log(buf1.readIntLE(<span class="number">0</span>, <span class="number">3</span>))  <span class="comment">// 1 + 256*3 + 256*256*2</span></div><div class="line"></div><div class="line"><span class="comment">// readIntLE是 readIntBE反着过来的</span></div></pre></td></tr></table></figure></li>
+</ol>
+<p>就到这里了</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/24/node-basic-tutorial/" class="archive-article-date">
-  	<time datetime="2020-04-24T06:59:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/node-basic-tutorial/">node-basic-tutorial</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://wcnmb.com/2020/08/30/august-last-summary/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/18/webpack-study/" class="archive-article-date">
-  	<time datetime="2020-03-18T06:22:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-18</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/22/webpack-hot-middleware-analysis/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">webpack-hot-middleware-analysis</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/18/webpack-study/">webpack-study</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/11/react-dom-diff/" class="archive-article-date">
-  	<time datetime="2020-03-11T04:11:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/11/react-dom-diff/">react-dom-diff</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/react-ssr-master/" class="archive-article-date">
-  	<time datetime="2020-03-06T14:37:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/react-ssr-master/">react-ssr-master</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/01/11/nodejs-2020/" class="archive-article-date">
-  	<time datetime="2020-01-11T12:16:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/01/11/nodejs-2020/">nodejs-2020</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/">&laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -330,8 +349,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
